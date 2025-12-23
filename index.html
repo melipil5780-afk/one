@@ -1,248 +1,228 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Calm, Professional Websites for Therapists</title>
+<title>Gentle, Professional Websites for Therapists</title>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ======================================================
-   Design System
-====================================================== */
+/* =====================================================
+   Trauma-Informed Design System
+===================================================== */
 :root {
-  --bg-light: #f8f9f8;
-  --bg-muted: #eeeeee;
-  --bg-dark: #1b1d1f;
+  --bg-main: #f6f3ee;        /* warm linen */
+  --bg-soft: #ebe6de;        /* soft sand */
+  --bg-card: #ffffff;
 
-  --text-main: #1f2328;
-  --text-soft: #6a6f75;
-  --text-invert: #ffffff;
+  --text-primary: #2f2e2c;   /* charcoal */
+  --text-secondary: #6f6b66; /* muted taupe */
 
-  --accent-primary: #6b7a6e;
-  --accent-gold: #b2937d;
+  --sage: #7b8f86;
+  --clay: #b08a72;
+  --accent: #8a6f5a;
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
+  --radius: 16px;
+  --radius-soft: 24px;
 
-  --shadow-soft: 0 12px 40px rgba(0,0,0,0.08);
-  --transition: 0.35s ease;
+  --shadow: 0 10px 30px rgba(0,0,0,0.06);
 }
 
-/* ======================================================
-   Base Styles
-====================================================== */
+/* =====================================================
+   Base
+===================================================== */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: "Inter", system-ui, sans-serif;
-  background: var(--bg-light);
-  color: var(--text-main);
-  line-height: 1.7;
+  font-family: "Inter", sans-serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.75;
 }
 
 h1, h2, h3 {
   font-family: "Playfair Display", serif;
-  letter-spacing: -0.02em;
-}
-
-h1 {
-  font-size: clamp(2.4rem, 5vw, 4rem);
-}
-
-h2 {
-  font-size: clamp(1.9rem, 4vw, 2.8rem);
-  margin-bottom: 1rem;
+  font-weight: 500;
 }
 
 p {
-  color: var(--text-soft);
+  color: var(--text-secondary);
+  font-size: 1.05rem;
 }
 
-a {
-  text-decoration: none;
+section {
+  padding: 100px 24px;
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 80px 24px;
 }
 
-/* ======================================================
-   Buttons
-====================================================== */
-.btn {
-  display: inline-block;
-  padding: 16px 40px;
-  border-radius: var(--radius-sm);
-  background: var(--accent-primary);
-  color: white;
-  font-weight: 600;
-  transition: var(--transition);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  background: #566358;
-}
-
-/* ======================================================
-   Hero
-====================================================== */
+/* =====================================================
+   Hero (Soft, Non-Demanding)
+===================================================== */
 .hero {
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: var(--text-invert);
-  background:
-    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-    url("https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&w=1600")
-    center / cover no-repeat;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-soft),
+    var(--bg-main)
+  );
 }
 
-.hero-content {
+.hero-inner {
   max-width: 720px;
-  margin: auto;
+}
+
+.hero h1 {
+  font-size: clamp(2.3rem, 4.5vw, 3.6rem);
+  margin-bottom: 28px;
 }
 
 .hero p {
   font-size: 1.15rem;
-  margin: 24px auto 40px;
-  color: #e3e3e3;
+  max-width: 600px;
 }
 
-/* ======================================================
-   Portfolio
-====================================================== */
+/* =====================================================
+   Gentle Button
+===================================================== */
+.btn {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 16px 36px;
+  border-radius: 999px;
+  background: var(--sage);
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #6a8077;
+}
+
+/* =====================================================
+   Work / Portfolio (Quiet Confidence)
+===================================================== */
 .work {
-  background: var(--bg-light);
-  text-align: center;
+  background: var(--bg-main);
 }
 
 .work-grid {
-  margin-top: 48px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
-}
-
-.work-item {
-  background: white;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.work-item:hover {
-  transform: translateY(-6px);
-}
-
-.work-item img {
-  width: 100%;
-  display: block;
-}
-
-/* ======================================================
-   Value Proposition
-====================================================== */
-.value {
-  background: var(--bg-muted);
-}
-
-.value-grid {
-  margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 40px;
-  text-align: center;
+  margin-top: 60px;
 }
 
-.value h3 {
-  margin-bottom: 10px;
-  color: var(--accent-primary);
+.work-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-soft);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
 }
 
-/* ======================================================
-   Pricing
-====================================================== */
-.pricing {
-  background: var(--bg-dark);
-  color: white;
-  text-align: center;
-}
-
-.pricing p {
-  color: #c7c7c7;
-}
-
-.price-old {
-  font-size: 1.4rem;
-  text-decoration: line-through;
-  color: #777;
-}
-
-.price-new {
-  font-size: clamp(3rem, 6vw, 4.5rem);
-  color: var(--accent-gold);
-  margin: 10px 0 24px;
+.work-card img {
+  width: 100%;
+  border-radius: var(--radius);
   display: block;
 }
 
-/* ======================================================
-   Footer
-====================================================== */
-footer {
-  padding: 40px 20px;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #888;
+/* =====================================================
+   Philosophy Section
+===================================================== */
+.philosophy {
+  background: var(--bg-soft);
 }
 
-/* ======================================================
-   Lightbox
-====================================================== */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 60px;
+  margin-top: 50px;
+}
+
+.philosophy h3 {
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+/* =====================================================
+   Invitation / Pricing (No Pressure)
+===================================================== */
+.invitation {
+  background: linear-gradient(
+    to bottom,
+    var(--bg-main),
+    #f1ede7
+  );
+  text-align: center;
+}
+
+.price {
+  margin: 40px 0;
+  font-size: 2.8rem;
+  color: var(--clay);
+}
+
+.invitation p {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   Footer
+===================================================== */
+footer {
+  padding: 60px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #8a857f;
+}
+
+/* =====================================================
+   Lightbox (Soft)
+===================================================== */
 #lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.92);
+  background: rgba(32,30,27,0.85);
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 999;
 }
 
 #lightbox img {
   max-width: 90%;
   max-height: 85%;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
 }
 
-.lightbox-close {
+.close {
   position: absolute;
   top: 24px;
   right: 32px;
-  font-size: 36px;
-  color: white;
+  font-size: 32px;
+  color: #f5f2ed;
   cursor: pointer;
 }
 
-/* ======================================================
+/* =====================================================
    Mobile
-====================================================== */
+===================================================== */
 @media (max-width: 600px) {
-  .container {
-    padding: 60px 20px;
+  section {
+    padding: 80px 20px;
   }
 }
 </style>
@@ -252,72 +232,93 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <h1>Calm, Professional Websites for Therapists</h1>
+  <div class="container hero-inner">
+    <h1>
+      Gentle, grounded websites<br>
+      for therapy practices
+    </h1>
     <p>
-      Thoughtfully designed websites that help clients feel safe, confident,
-      and ready to reach out — before the first session.
+      Thoughtfully designed spaces that help clients feel
+      safe, steady, and ready to reach out — without pressure
+      or overwhelm.
     </p>
-    <a href="#work" class="btn">View Recent Work</a>
+
+    <a href="#work" class="btn">View example work</a>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section id="work" class="work container">
-  <h2>Recent Projects</h2>
-  <p>Click any project to view it full-screen.</p>
+<!-- WORK -->
+<section id="work" class="work">
+  <div class="container">
+    <h2>Selected work</h2>
+    <p>
+      Each site is designed to feel calm, human,
+      and emotionally spacious.
+    </p>
 
-  <div class="work-grid">
-    <div class="work-item" onclick="openLightbox('second.png')">
-      <img src="second.png" alt="Therapist Website Example">
-    </div>
-    <div class="work-item" onclick="openLightbox('ok.png')">
-      <img src="ok.png" alt="Therapy Practice Website">
-    </div>
-    <div class="work-item" onclick="openLightbox('wbsi.png')">
-      <img src="wbsi.png" alt="Counseling Website Design">
-    </div>
-    <div class="work-item" onclick="openLightbox('web.png')">
-      <img src="web.png" alt="Mental Health Website">
-    </div>
-  </div>
-</section>
-
-<!-- VALUE -->
-<section class="value container">
-  <h2>Designed Specifically for Therapy Practices</h2>
-
-  <div class="value-grid">
-    <div>
-      <h3>Trust-Focused Design</h3>
-      <p>Your website communicates safety, professionalism, and emotional calm.</p>
-    </div>
-    <div>
-      <h3>Search-Ready</h3>
-      <p>Built with clean structure so clients can actually find you online.</p>
-    </div>
-    <div>
-      <h3>No Monthly Fees</h3>
-      <p>One transparent price. You own your website outright.</p>
+    <div class="work-grid">
+      <div class="work-card" onclick="openLightbox('second.png')">
+        <img src="second.png" alt="Therapist website example">
+      </div>
+      <div class="work-card" onclick="openLightbox('ok.png')">
+        <img src="ok.png" alt="Private practice website">
+      </div>
+      <div class="work-card" onclick="openLightbox('wbsi.png')">
+        <img src="wbsi.png" alt="Counseling website">
+      </div>
+      <div class="work-card" onclick="openLightbox('web.png')">
+        <img src="web.png" alt="Mental health website">
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing container">
-  <p>Limited Availability</p>
-  <h2>Start Your Website</h2>
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="container">
+    <h2>Design that respects nervous systems</h2>
 
-  <span class="price-old">$1,799</span>
-  <span class="price-new">$500</span>
+    <div class="philosophy-grid">
+      <div>
+        <h3>Emotionally safe</h3>
+        <p>
+          No visual urgency, no sensory overload —
+          just steady, grounded design.
+        </p>
+      </div>
 
-  <p style="margin-bottom: 32px;">
-    Complete website, mobile-optimized, SEO-ready, and launch support included.
-  </p>
+      <div>
+        <h3>Quietly credible</h3>
+        <p>
+          Professional without feeling corporate or cold.
+        </p>
+      </div>
 
-  <a href="contact.html" class="btn" style="background: var(--accent-gold); color:#1b1d1f;">
-    Reach Out to Get Started
-  </a>
+      <div>
+        <h3>Owned outright</h3>
+        <p>
+          One-time investment. No subscriptions.
+          No ongoing pressure.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVITATION -->
+<section class="invitation">
+  <div class="container">
+    <h2>An invitation to begin</h2>
+
+    <div class="price">$500</div>
+
+    <p>
+      Includes a complete website, mobile optimization,
+      and thoughtful structure designed for therapy clients.
+    </p>
+
+    <a href="contact.html" class="btn">Reach out when ready</a>
+  </div>
 </section>
 
 <footer>
@@ -326,22 +327,22 @@ footer {
 
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close">&times;</span>
-  <img id="lightbox-image" src="">
+  <span class="close">&times;</span>
+  <img id="lightbox-img">
 </div>
 
 <script>
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightbox-image");
+const lb = document.getElementById("lightbox");
+const lbImg = document.getElementById("lightbox-img");
 
 function openLightbox(src) {
-  lightboxImage.src = src;
-  lightbox.style.display = "flex";
+  lbImg.src = src;
+  lb.style.display = "flex";
   document.body.style.overflow = "hidden";
 }
 
 function closeLightbox() {
-  lightbox.style.display = "none";
+  lb.style.display = "none";
   document.body.style.overflow = "auto";
 }
 </script>
