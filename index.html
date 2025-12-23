@@ -1,334 +1,349 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Specialized Trauma Recovery & EMDR</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+<title>Calm, Professional Websites for Therapists</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
+/* ======================================================
+   Design System
+====================================================== */
 :root {
-  --sage:#5e6d62;
-  --bone:#f9f7f4;
-  --ink:#2c312e;
-  --mist:#e6e4df;
-  --white:#ffffff;
+  --bg-light: #f8f9f8;
+  --bg-muted: #eeeeee;
+  --bg-dark: #1b1d1f;
+
+  --text-main: #1f2328;
+  --text-soft: #6a6f75;
+  --text-invert: #ffffff;
+
+  --accent-primary: #6b7a6e;
+  --accent-gold: #b2937d;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+
+  --shadow-soft: 0 12px 40px rgba(0,0,0,0.08);
+  --transition: 0.35s ease;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+/* ======================================================
+   Base Styles
+====================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  font-family:'Inter', sans-serif;
-  background:var(--bone);
-  color:var(--ink);
-  line-height:1.8;
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.7;
 }
 
-h1,h2,h3 {
-  font-family:'Cormorant Garamond', serif;
-  font-weight:300;
-  font-style:italic;
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  letter-spacing: -0.02em;
 }
 
-p { font-size:1rem; color:#3a3f3c; }
-
-section {
-  padding:160px 24px;
-  max-width:1100px;
-  margin:0 auto;
+h1 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
 }
 
-.reveal {
-  opacity:0;
-  transform:translateY(60px);
-  transition:1.6s cubic-bezier(.19,1,.22,1);
+h2 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  margin-bottom: 1rem;
 }
 
-.reveal.active {
-  opacity:1;
-  transform:translateY(0);
+p {
+  color: var(--text-soft);
 }
 
-/* ---------- HERO ---------- */
-header {
-  height:100vh;
-  background:
-    linear-gradient(rgba(249,247,244,.75),rgba(249,247,244,.85)),
-    url('https://images.pexels.com/photos/1058068/pexels-photo-1058068.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+a {
+  text-decoration: none;
 }
 
-.hero {
-  max-width:900px;
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
 }
 
-.hero p {
-  letter-spacing:5px;
-  text-transform:uppercase;
-  font-size:.75rem;
-  margin-bottom:28px;
-}
-
-.hero h1 {
-  font-size:clamp(3.2rem,8vw,5.8rem);
-  line-height:1.05;
-  margin-bottom:50px;
-}
-
-/* ---------- BUTTON ---------- */
+/* ======================================================
+   Buttons
+====================================================== */
 .btn {
-  display:inline-block;
-  padding:20px 48px;
-  background:var(--sage);
-  color:var(--white);
-  text-decoration:none;
-  letter-spacing:3px;
-  font-size:.75rem;
-  text-transform:uppercase;
-  transition:.35s ease;
+  display: inline-block;
+  padding: 16px 40px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-primary);
+  color: white;
+  font-weight: 600;
+  transition: var(--transition);
 }
 
 .btn:hover {
-  background:var(--ink);
-  transform:translateY(-2px);
+  transform: translateY(-2px);
+  background: #566358;
 }
 
-/* ---------- PHILOSOPHY ---------- */
-.philosophy {
-  text-align:center;
+/* ======================================================
+   Hero
+====================================================== */
+.hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-invert);
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url("https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&w=1600")
+    center / cover no-repeat;
 }
 
-.philosophy h2 {
-  font-size:3.4rem;
-  margin-bottom:30px;
+.hero-content {
+  max-width: 720px;
+  margin: auto;
 }
 
-.philosophy p {
-  max-width:760px;
-  margin:0 auto;
-  font-size:1.05rem;
+.hero p {
+  font-size: 1.15rem;
+  margin: 24px auto 40px;
+  color: #e3e3e3;
 }
 
-/* ---------- PROCESS ---------- */
-.process {
-  background:var(--white);
+/* ======================================================
+   Portfolio
+====================================================== */
+.work {
+  background: var(--bg-light);
+  text-align: center;
 }
 
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:80px;
-  margin-top:100px;
+.work-grid {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
 }
 
-.card {
-  padding:50px;
-  border:1px solid var(--mist);
+.work-item {
+  background: white;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.card h3 {
-  font-size:2.2rem;
-  margin-bottom:18px;
+.work-item:hover {
+  transform: translateY(-6px);
 }
 
-.card span {
-  font-size:.8rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--sage);
-  display:block;
-  margin-bottom:10px;
+.work-item img {
+  width: 100%;
+  display: block;
 }
 
-/* ---------- SPECIALTIES ---------- */
-.specialties {
-  text-align:center;
+/* ======================================================
+   Value Proposition
+====================================================== */
+.value {
+  background: var(--bg-muted);
 }
 
-.specialties h2 {
-  font-size:3.2rem;
-  margin-bottom:40px;
+.value-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  text-align: center;
 }
 
-.specialties ul {
-  list-style:none;
-  max-width:600px;
-  margin:0 auto;
+.value h3 {
+  margin-bottom: 10px;
+  color: var(--accent-primary);
 }
 
-.specialties li {
-  padding:18px 0;
-  border-bottom:1px solid var(--mist);
-  font-size:1.05rem;
+/* ======================================================
+   Pricing
+====================================================== */
+.pricing {
+  background: var(--bg-dark);
+  color: white;
+  text-align: center;
 }
 
-/* ---------- CONTACT ---------- */
-.contact {
-  background:var(--ink);
-  color:var(--white);
+.pricing p {
+  color: #c7c7c7;
 }
 
-.contact h2 {
-  font-size:3.8rem;
-  margin-bottom:30px;
-  color:var(--white);
+.price-old {
+  font-size: 1.4rem;
+  text-decoration: line-through;
+  color: #777;
 }
 
-.contact p {
-  max-width:620px;
-  margin-bottom:60px;
-  opacity:.85;
+.price-new {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  color: var(--accent-gold);
+  margin: 10px 0 24px;
+  display: block;
 }
 
-form {
-  max-width:600px;
-}
-
-input, textarea {
-  width:100%;
-  padding:18px;
-  margin-bottom:20px;
-  background:none;
-  border:1px solid rgba(255,255,255,.35);
-  color:white;
-  font-family:'Inter';
-}
-
-input::placeholder,
-textarea::placeholder {
-  color:rgba(255,255,255,.6);
-}
-
-textarea {
-  min-height:160px;
-}
-
-form button {
-  background:var(--white);
-  color:var(--ink);
-  border:none;
-  padding:20px 50px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:.3s ease;
-}
-
-form button:hover {
-  background:var(--mist);
-}
-
-/* ---------- FOOTER ---------- */
+/* ======================================================
+   Footer
+====================================================== */
 footer {
-  padding:60px 24px;
-  text-align:center;
-  font-size:.8rem;
-  color:#777;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* ======================================================
+   Lightbox
+====================================================== */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: var(--radius-sm);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ======================================================
+   Mobile
+====================================================== */
+@media (max-width: 600px) {
+  .container {
+    padding: 60px 20px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="hero reveal">
-    <p>Specialized Neuro-Biological Healing</p>
-    <h1>Beyond talk therapy.<br>True trauma processing.</h1>
-    <a href="#contact" class="btn">Request a Private Consultation</a>
-  </div>
-</header>
-
-<section class="philosophy">
-  <div class="reveal">
-    <h2>Why EMDR Works</h2>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Calm, Professional Websites for Therapists</h1>
     <p>
-      Trauma is not stored as a story—it is stored as sensation, emotion, and survival response.
-      EMDR works directly with the brain’s processing systems, allowing experiences to resolve
-      without forcing re-telling or re-living.
+      Thoughtfully designed websites that help clients feel safe, confident,
+      and ready to reach out — before the first session.
     </p>
+    <a href="#work" class="btn">View Recent Work</a>
   </div>
 </section>
 
-<section class="process">
-  <div class="reveal">
-    <h2 style="text-align:center;font-size:3.2rem;">The Work</h2>
-  </div>
+<!-- PORTFOLIO -->
+<section id="work" class="work container">
+  <h2>Recent Projects</h2>
+  <p>Click any project to view it full-screen.</p>
 
-  <div class="grid">
-    <div class="card reveal">
-      <span>Phase One</span>
-      <h3>Stabilization & Mapping</h3>
-      <p>
-        We identify nervous-system patterns, attachment wounds, and core memory targets
-        while ensuring safety and pacing.
-      </p>
+  <div class="work-grid">
+    <div class="work-item" onclick="openLightbox('second.png')">
+      <img src="second.png" alt="Therapist Website Example">
     </div>
-
-    <div class="card reveal">
-      <span>Phase Two</span>
-      <h3>EMDR Processing</h3>
-      <p>
-        Bilateral stimulation allows memories to reprocess,
-        reducing emotional charge while restoring adaptive meaning.
-      </p>
+    <div class="work-item" onclick="openLightbox('ok.png')">
+      <img src="ok.png" alt="Therapy Practice Website">
     </div>
-
-    <div class="card reveal">
-      <span>Phase Three</span>
-      <h3>Integration</h3>
-      <p>
-        We consolidate change—supporting embodiment, identity repair,
-        and a sustained sense of internal safety.
-      </p>
+    <div class="work-item" onclick="openLightbox('wbsi.png')">
+      <img src="wbsi.png" alt="Counseling Website Design">
+    </div>
+    <div class="work-item" onclick="openLightbox('web.png')">
+      <img src="web.png" alt="Mental Health Website">
     </div>
   </div>
 </section>
 
-<section class="specialties">
-  <div class="reveal">
-    <h2>Specializations</h2>
-    <ul>
-      <li>Complex & Developmental Trauma</li>
-      <li>Panic, Anxiety & Somatic Symptoms</li>
-      <li>Attachment & Relational Wounds</li>
-      <li>Medical & Single-Incident Trauma</li>
-    </ul>
+<!-- VALUE -->
+<section class="value container">
+  <h2>Designed Specifically for Therapy Practices</h2>
+
+  <div class="value-grid">
+    <div>
+      <h3>Trust-Focused Design</h3>
+      <p>Your website communicates safety, professionalism, and emotional calm.</p>
+    </div>
+    <div>
+      <h3>Search-Ready</h3>
+      <p>Built with clean structure so clients can actually find you online.</p>
+    </div>
+    <div>
+      <h3>No Monthly Fees</h3>
+      <p>One transparent price. You own your website outright.</p>
+    </div>
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="reveal">
-    <h2>Begin Carefully</h2>
-    <p>
-      This work is deliberate and private. Use the form below to request a consultation.
-      All inquiries are reviewed personally.
-    </p>
+<!-- PRICING -->
+<section class="pricing container">
+  <p>Limited Availability</p>
+  <h2>Start Your Website</h2>
 
-    <form>
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <textarea placeholder="Briefly share what brings you here"></textarea>
-      <button type="submit">Request Consultation</button>
-    </form>
-  </div>
+  <span class="price-old">$1,799</span>
+  <span class="price-new">$500</span>
+
+  <p style="margin-bottom: 32px;">
+    Complete website, mobile-optimized, SEO-ready, and launch support included.
+  </p>
+
+  <a href="contact.html" class="btn" style="background: var(--accent-gold); color:#1b1d1f;">
+    Reach Out to Get Started
+  </a>
 </section>
 
 <footer>
-  © 2025 Specialized Trauma Recovery · EMDR-Focused Care
+  © 2025 Therapist Web Design
 </footer>
 
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) entry.target.classList.add('active');
-  });
-},{ threshold:.15 });
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-image" src="">
+</div>
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightbox-image");
+
+function openLightbox(src) {
+  lightboxImage.src = src;
+  lightbox.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  lightbox.style.display = "none";
+  document.body.style.overflow = "auto";
+}
 </script>
 
 </body>
