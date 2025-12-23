@@ -1,76 +1,336 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Specialized Trauma Recovery & EMDR</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root { --sage: #5e6d62; --bone: #f9f7f4; --ink: #2c312e; --white: #ffffff; }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Inter', sans-serif; background:var(--bone); color:var(--ink); line-height:1.7; text-align:center; }
-        h1, h2 { font-family:'Cormorant Garamond'; font-weight:300; font-style:italic; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Specialized Trauma Recovery & EMDR</title>
 
-        /* Animation Classes */
-        .reveal { opacity:0; transform:translateY(50px); transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1); }
-        .reveal.active { opacity:1; transform:translateY(0); }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
 
-        /* Header & Hero */
-        header { height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(rgba(249,247,244,0.7),rgba(249,247,244,0.7)), url('https://images.pexels.com/photos/1058068/pexels-photo-1058068.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover; }
-        .hero h1 { font-size:clamp(3rem, 10vw, 5.5rem); line-height:1; margin-bottom:30px; }
-        .btn { padding:20px 45px; background:var(--sage); color:white; text-decoration:none; text-transform:uppercase; letter-spacing:3px; font-size:0.8rem; display:inline-block; transition:0.3s; border:none; cursor:pointer; }
-        .btn:hover { background:var(--ink); transform:scale(1.05); }
+<style>
+:root {
+  --sage:#5e6d62;
+  --bone:#f9f7f4;
+  --ink:#2c312e;
+  --mist:#e6e4df;
+  --white:#ffffff;
+}
 
-        /* Sections */
-        section { padding:140px 20px; max-width:1000px; margin:0 auto; }
-        .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:60px; margin-top:80px; text-align:left; }
-        .service-card { padding:40px; background:var(--white); border:1px solid #eee; }
-        .service-card h3 { font-family:'Cormorant Garamond'; font-size:2rem; margin-bottom:15px; font-style:italic; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-        /* Final CTA */
-        .final-cta { background:var(--ink); color:var(--white); padding:120px 20px; }
-        .final-cta h2 { font-size:3.5rem; color:var(--white); margin-bottom:40px; }
-    </style>
+body {
+  font-family:'Inter', sans-serif;
+  background:var(--bone);
+  color:var(--ink);
+  line-height:1.8;
+}
+
+h1,h2,h3 {
+  font-family:'Cormorant Garamond', serif;
+  font-weight:300;
+  font-style:italic;
+}
+
+p { font-size:1rem; color:#3a3f3c; }
+
+section {
+  padding:160px 24px;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+.reveal {
+  opacity:0;
+  transform:translateY(60px);
+  transition:1.6s cubic-bezier(.19,1,.22,1);
+}
+
+.reveal.active {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------- HERO ---------- */
+header {
+  height:100vh;
+  background:
+    linear-gradient(rgba(249,247,244,.75),rgba(249,247,244,.85)),
+    url('https://images.pexels.com/photos/1058068/pexels-photo-1058068.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero {
+  max-width:900px;
+}
+
+.hero p {
+  letter-spacing:5px;
+  text-transform:uppercase;
+  font-size:.75rem;
+  margin-bottom:28px;
+}
+
+.hero h1 {
+  font-size:clamp(3.2rem,8vw,5.8rem);
+  line-height:1.05;
+  margin-bottom:50px;
+}
+
+/* ---------- BUTTON ---------- */
+.btn {
+  display:inline-block;
+  padding:20px 48px;
+  background:var(--sage);
+  color:var(--white);
+  text-decoration:none;
+  letter-spacing:3px;
+  font-size:.75rem;
+  text-transform:uppercase;
+  transition:.35s ease;
+}
+
+.btn:hover {
+  background:var(--ink);
+  transform:translateY(-2px);
+}
+
+/* ---------- PHILOSOPHY ---------- */
+.philosophy {
+  text-align:center;
+}
+
+.philosophy h2 {
+  font-size:3.4rem;
+  margin-bottom:30px;
+}
+
+.philosophy p {
+  max-width:760px;
+  margin:0 auto;
+  font-size:1.05rem;
+}
+
+/* ---------- PROCESS ---------- */
+.process {
+  background:var(--white);
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:80px;
+  margin-top:100px;
+}
+
+.card {
+  padding:50px;
+  border:1px solid var(--mist);
+}
+
+.card h3 {
+  font-size:2.2rem;
+  margin-bottom:18px;
+}
+
+.card span {
+  font-size:.8rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--sage);
+  display:block;
+  margin-bottom:10px;
+}
+
+/* ---------- SPECIALTIES ---------- */
+.specialties {
+  text-align:center;
+}
+
+.specialties h2 {
+  font-size:3.2rem;
+  margin-bottom:40px;
+}
+
+.specialties ul {
+  list-style:none;
+  max-width:600px;
+  margin:0 auto;
+}
+
+.specialties li {
+  padding:18px 0;
+  border-bottom:1px solid var(--mist);
+  font-size:1.05rem;
+}
+
+/* ---------- CONTACT ---------- */
+.contact {
+  background:var(--ink);
+  color:var(--white);
+}
+
+.contact h2 {
+  font-size:3.8rem;
+  margin-bottom:30px;
+  color:var(--white);
+}
+
+.contact p {
+  max-width:620px;
+  margin-bottom:60px;
+  opacity:.85;
+}
+
+form {
+  max-width:600px;
+}
+
+input, textarea {
+  width:100%;
+  padding:18px;
+  margin-bottom:20px;
+  background:none;
+  border:1px solid rgba(255,255,255,.35);
+  color:white;
+  font-family:'Inter';
+}
+
+input::placeholder,
+textarea::placeholder {
+  color:rgba(255,255,255,.6);
+}
+
+textarea {
+  min-height:160px;
+}
+
+form button {
+  background:var(--white);
+  color:var(--ink);
+  border:none;
+  padding:20px 50px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+form button:hover {
+  background:var(--mist);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  padding:60px 24px;
+  text-align:center;
+  font-size:.8rem;
+  color:#777;
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <div class="hero reveal">
-            <p style="letter-spacing:5px; text-transform:uppercase; font-size:0.8rem; margin-bottom:20px;">Specialized Neuro-Biological Healing</p>
-            <h1>Beyond talk therapy.<br>Processing the past.</h1>
-            <a href="#contact" class="btn">Request a Private Consultation</a>
-        </div>
-    </header>
 
-    <section>
-        <div class="reveal">
-            <h2 style="font-size:3rem; margin-bottom:20px;">Why EMDR?</h2>
-            <p style="max-width:700px; margin:0 auto;">When trauma occurs, it gets "locked" in the nervous system. Standard talk therapy addresses the mind, but EMDR addresses the brain's processing centers to unlock lasting relief.</p>
-        </div>
-        <div class="grid">
-            <div class="service-card reveal">
-                <h3>01. Assessment</h3>
-                <p>We identify the core target memories that are currently driving your triggers and anxiety.</p>
-            </div>
-            <div class="service-card reveal">
-                <h3>02. Desensitization</h3>
-                <p>Using bilateral stimulation to neutralize the emotional charge of traumatic events.</p>
-            </div>
-            <div class="service-card reveal">
-                <h3>03. Integration</h3>
-                <p>Installing positive beliefs and a renewed sense of safety within your body and mind.</p>
-            </div>
-        </div>
-    </section>
+<header>
+  <div class="hero reveal">
+    <p>Specialized Neuro-Biological Healing</p>
+    <h1>Beyond talk therapy.<br>True trauma processing.</h1>
+    <a href="#contact" class="btn">Request a Private Consultation</a>
+  </div>
+</header>
 
-    <div class="final-cta reveal" id="contact">
-        <h2>Begin Your Recovery</h2>
-        <p style="margin-bottom:40px; opacity:0.8;">Specialized care for Complex PTSD, Panic, and Attachment Trauma.</p>
-        <a href="contact.html" class="btn" style="background:var(--white); color:var(--ink);">Secure Your Consultation</a>
+<section class="philosophy">
+  <div class="reveal">
+    <h2>Why EMDR Works</h2>
+    <p>
+      Trauma is not stored as a story—it is stored as sensation, emotion, and survival response.
+      EMDR works directly with the brain’s processing systems, allowing experiences to resolve
+      without forcing re-telling or re-living.
+    </p>
+  </div>
+</section>
+
+<section class="process">
+  <div class="reveal">
+    <h2 style="text-align:center;font-size:3.2rem;">The Work</h2>
+  </div>
+
+  <div class="grid">
+    <div class="card reveal">
+      <span>Phase One</span>
+      <h3>Stabilization & Mapping</h3>
+      <p>
+        We identify nervous-system patterns, attachment wounds, and core memory targets
+        while ensuring safety and pacing.
+      </p>
     </div>
 
-    <script>
-        const observer = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }));
-        document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
-    </script>
+    <div class="card reveal">
+      <span>Phase Two</span>
+      <h3>EMDR Processing</h3>
+      <p>
+        Bilateral stimulation allows memories to reprocess,
+        reducing emotional charge while restoring adaptive meaning.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <span>Phase Three</span>
+      <h3>Integration</h3>
+      <p>
+        We consolidate change—supporting embodiment, identity repair,
+        and a sustained sense of internal safety.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="specialties">
+  <div class="reveal">
+    <h2>Specializations</h2>
+    <ul>
+      <li>Complex & Developmental Trauma</li>
+      <li>Panic, Anxiety & Somatic Symptoms</li>
+      <li>Attachment & Relational Wounds</li>
+      <li>Medical & Single-Incident Trauma</li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="reveal">
+    <h2>Begin Carefully</h2>
+    <p>
+      This work is deliberate and private. Use the form below to request a consultation.
+      All inquiries are reviewed personally.
+    </p>
+
+    <form>
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <textarea placeholder="Briefly share what brings you here"></textarea>
+      <button type="submit">Request Consultation</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © 2025 Specialized Trauma Recovery · EMDR-Focused Care
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add('active');
+  });
+},{ threshold:.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
+
