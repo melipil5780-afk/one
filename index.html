@@ -1,188 +1,336 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safe Space Web Design</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Trauma-Informed Color Palette */
-        :root { 
-            --deep-ocean: #2c3e50;    /* Trust and stability */
-            --soft-sand: #fdfaf5;     /* Warmth and calm background */
-            --muted-sage: #8da399;    /* Healing and nature */
-            --warm-slate: #545b64;    /* Professional text */
-            --white: #ffffff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Specialized Trauma Recovery & EMDR</title>
 
-        /* Basic Setup */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--soft-sand); 
-            color: var(--warm-slate); 
-            line-height: 1.8; 
-            text-align: center;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--deep-ocean); }
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+<style>
+:root {
+  --sage:#5e6d62;
+  --bone:#f9f7f4;
+  --ink:#2c312e;
+  --mist:#e6e4df;
+  --white:#ffffff;
+}
 
-        /* Navigation */
-        nav { padding: 30px; background: transparent; }
-        .nav-link { color: var(--deep-ocean); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--muted-sage); }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-        /* Hero Section - Designed to feel welcoming */
-        header { 
-            padding: 100px 20px;
-            background: linear-gradient(rgba(253, 250, 245, 0.8), rgba(253, 250, 245, 0.8)), 
-                        url('https://images.pexels.com/photos/7130541/pexels-photo-7130541.jpeg?auto=compress&cs=tinysrgb&w=1600'); 
-            background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .hero-text h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.2; margin-bottom: 20px; }
-        .hero-text p { font-size: 1.3rem; margin-bottom: 40px; max-width: 700px; margin-inline: auto; font-style: italic; }
+body {
+  font-family:'Inter', sans-serif;
+  background:var(--bone);
+  color:var(--ink);
+  line-height:1.8;
+}
 
-        /* Buttons - Warm and inviting */
-        .btn { 
-            padding: 18px 45px; 
-            background: var(--muted-sage); 
-            color: white; 
-            text-decoration: none; 
-            font-weight: 500; 
-            border-radius: 50px; /* Rounded for a softer feel */
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(141, 163, 153, 0.3);
-        }
-        .btn:hover { transform: translateY(-2px); background: var(--deep-ocean); }
+h1,h2,h3 {
+  font-family:'Cormorant Garamond', serif;
+  font-weight:300;
+  font-style:italic;
+}
 
-        /* Professional Grid */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 30px; 
-            margin-top: 50px;
-        }
-        .card { 
-            background: var(--white); 
-            padding: 40px; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid #f0f0f0;
-        }
-        .portfolio-img { 
-            width: 100%; 
-            height: 250px; 
-            object-fit: cover; 
-            border-radius: 10px; 
-            cursor: pointer;
-            transition: 0.4s;
-        }
-        .portfolio-img:hover { opacity: 0.8; }
+p { font-size:1rem; color:#3a3f3c; }
 
-        /* Compassionate Messaging Section */
-        .compassion-section { background: var(--white); padding: 100px 0; }
-        .compassion-section h2 { font-size: 2.5rem; margin-bottom: 30px; }
-        .line { width: 60px; height: 3px; background: var(--muted-sage); margin: 20px auto; }
+section {
+  padding:160px 24px;
+  max-width:1100px;
+  margin:0 auto;
+}
 
-        /* Pricing Box */
-        .price-card { 
-            background: var(--deep-ocean); 
-            color: white; 
-            padding: 80px 40px; 
-            border-radius: 20px;
-            margin-top: 50px;
-        }
-        .price-card h2 { color: var(--white); }
-        .old-price { text-decoration: line-through; opacity: 0.5; font-size: 1.5rem; }
-        .new-price { font-size: 5rem; display: block; margin: 20px 0; font-family: 'Playfair Display'; }
+.reveal {
+  opacity:0;
+  transform:translateY(60px);
+  transition:1.6s cubic-bezier(.19,1,.22,1);
+}
 
-        /* Popup */
-        #lightbox { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(44, 62, 80, 0.95); display: none; align-items: center; justify-content: center; z-index: 1000;
-        }
-        #lightbox img { max-width: 85%; max-height: 80%; border-radius: 10px; }
+.reveal.active {
+  opacity:1;
+  transform:translateY(0);
+}
 
-        footer { padding: 60px; font-size: 0.8rem; opacity: 0.6; }
+/* ---------- HERO ---------- */
+header {
+  height:100vh;
+  background:
+    linear-gradient(rgba(249,247,244,.75),rgba(249,247,244,.85)),
+    url('https://images.pexels.com/photos/1058068/pexels-photo-1058068.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
 
-    </style>
+.hero {
+  max-width:900px;
+}
+
+.hero p {
+  letter-spacing:5px;
+  text-transform:uppercase;
+  font-size:.75rem;
+  margin-bottom:28px;
+}
+
+.hero h1 {
+  font-size:clamp(3.2rem,8vw,5.8rem);
+  line-height:1.05;
+  margin-bottom:50px;
+}
+
+/* ---------- BUTTON ---------- */
+.btn {
+  display:inline-block;
+  padding:20px 48px;
+  background:var(--sage);
+  color:var(--white);
+  text-decoration:none;
+  letter-spacing:3px;
+  font-size:.75rem;
+  text-transform:uppercase;
+  transition:.35s ease;
+}
+
+.btn:hover {
+  background:var(--ink);
+  transform:translateY(-2px);
+}
+
+/* ---------- PHILOSOPHY ---------- */
+.philosophy {
+  text-align:center;
+}
+
+.philosophy h2 {
+  font-size:3.4rem;
+  margin-bottom:30px;
+}
+
+.philosophy p {
+  max-width:760px;
+  margin:0 auto;
+  font-size:1.05rem;
+}
+
+/* ---------- PROCESS ---------- */
+.process {
+  background:var(--white);
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:80px;
+  margin-top:100px;
+}
+
+.card {
+  padding:50px;
+  border:1px solid var(--mist);
+}
+
+.card h3 {
+  font-size:2.2rem;
+  margin-bottom:18px;
+}
+
+.card span {
+  font-size:.8rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--sage);
+  display:block;
+  margin-bottom:10px;
+}
+
+/* ---------- SPECIALTIES ---------- */
+.specialties {
+  text-align:center;
+}
+
+.specialties h2 {
+  font-size:3.2rem;
+  margin-bottom:40px;
+}
+
+.specialties ul {
+  list-style:none;
+  max-width:600px;
+  margin:0 auto;
+}
+
+.specialties li {
+  padding:18px 0;
+  border-bottom:1px solid var(--mist);
+  font-size:1.05rem;
+}
+
+/* ---------- CONTACT ---------- */
+.contact {
+  background:var(--ink);
+  color:var(--white);
+}
+
+.contact h2 {
+  font-size:3.8rem;
+  margin-bottom:30px;
+  color:var(--white);
+}
+
+.contact p {
+  max-width:620px;
+  margin-bottom:60px;
+  opacity:.85;
+}
+
+form {
+  max-width:600px;
+}
+
+input, textarea {
+  width:100%;
+  padding:18px;
+  margin-bottom:20px;
+  background:none;
+  border:1px solid rgba(255,255,255,.35);
+  color:white;
+  font-family:'Inter';
+}
+
+input::placeholder,
+textarea::placeholder {
+  color:rgba(255,255,255,.6);
+}
+
+textarea {
+  min-height:160px;
+}
+
+form button {
+  background:var(--white);
+  color:var(--ink);
+  border:none;
+  padding:20px 50px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.3s ease;
+}
+
+form button:hover {
+  background:var(--mist);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  padding:60px 24px;
+  text-align:center;
+  font-size:.8rem;
+  color:#777;
+}
+</style>
 </head>
+
 <body>
 
-    <nav>
-        <a href="contact.html" class="nav-link">Start a Conversation</a>
-    </nav>
+<header>
+  <div class="hero reveal">
+    <p>Specialized Neuro-Biological Healing</p>
+    <h1>Beyond talk therapy.<br>True trauma processing.</h1>
+    <a href="#contact" class="btn">Request a Private Consultation</a>
+  </div>
+</header>
 
-    <header>
-        <div class="hero-text">
-            <h1>A Gentle Digital Home <br>for Your Practice</h1>
-            <p>We build calm, professional websites that help your clients feel safe before they even book their first session.</p>
-            <a href="#work" class="btn">View Our Creations</a>
-        </div>
-    </header>
+<section class="philosophy">
+  <div class="reveal">
+    <h2>Why EMDR Works</h2>
+    <p>
+      Trauma is not stored as a story—it is stored as sensation, emotion, and survival response.
+      EMDR works directly with the brain’s processing systems, allowing experiences to resolve
+      without forcing re-telling or re-living.
+    </p>
+  </div>
+</section>
 
-    <section id="work" class="container">
-        <h2>Selected Gallery</h2>
-        <div class="line"></div>
-        <div class="grid">
-            <img src="second.png" class="portfolio-img" onclick="openLightbox(this.src)" alt="Project 1">
-            <img src="ok.png" class="portfolio-img" onclick="openLightbox(this.src)" alt="Project 2">
-            <img src="wbsi.png" class="portfolio-img" onclick="openLightbox(this.src)" alt="Project 3">
-        </div>
-    </section>
+<section class="process">
+  <div class="reveal">
+    <h2 style="text-align:center;font-size:3.2rem;">The Work</h2>
+  </div>
 
-    <section class="compassion-section">
-        <div class="container">
-            <h2>Design Built With Care</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Calm & Clear</h3>
-                    <p>We avoid "busy" layouts. Your visitors will find exactly what they need without feeling overwhelmed.</p>
-                </div>
-                <div class="card">
-                    <h3>Mobile Friendly</h3>
-                    <p>Many clients seek help while on their phones. We ensure your site is easy to use on any device.</p>
-                </div>
-                <div class="card">
-                    <h3>Trust First</h3>
-                    <p>Every color and word is chosen to reflect your expertise and your compassion as a therapist.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container">
-        <div class="price-card">
-            <h2>Invest in Your Future</h2>
-            <p>One simple payment. Lifetime support.</p>
-            <span class="old-price">$1,799</span>
-            <span class="new-price">$500</span>
-            <a href="contact.html" class="btn" style="background: var(--white); color: var(--deep-ocean);">Let's Build It Together</a>
-        </div>
-    </section>
-
-    <footer>
-        &copy; 2025 Healing Web Architecture. Built with compassion for therapists.
-    </footer>
-
-    <div id="lightbox" onclick="closeLightbox()">
-        <img id="lightbox-img" src="">
+  <div class="grid">
+    <div class="card reveal">
+      <span>Phase One</span>
+      <h3>Stabilization & Mapping</h3>
+      <p>
+        We identify nervous-system patterns, attachment wounds, and core memory targets
+        while ensuring safety and pacing.
+      </p>
     </div>
 
-    <script>
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox').style.display = 'flex';
-        }
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-        }
-    </script>
+    <div class="card reveal">
+      <span>Phase Two</span>
+      <h3>EMDR Processing</h3>
+      <p>
+        Bilateral stimulation allows memories to reprocess,
+        reducing emotional charge while restoring adaptive meaning.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <span>Phase Three</span>
+      <h3>Integration</h3>
+      <p>
+        We consolidate change—supporting embodiment, identity repair,
+        and a sustained sense of internal safety.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="specialties">
+  <div class="reveal">
+    <h2>Specializations</h2>
+    <ul>
+      <li>Complex & Developmental Trauma</li>
+      <li>Panic, Anxiety & Somatic Symptoms</li>
+      <li>Attachment & Relational Wounds</li>
+      <li>Medical & Single-Incident Trauma</li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="reveal">
+    <h2>Begin Carefully</h2>
+    <p>
+      This work is deliberate and private. Use the form below to request a consultation.
+      All inquiries are reviewed personally.
+    </p>
+
+    <form>
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <textarea placeholder="Briefly share what brings you here"></textarea>
+      <button type="submit">Request Consultation</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © 2025 Specialized Trauma Recovery · EMDR-Focused Care
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add('active');
+  });
+},{ threshold:.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
+
