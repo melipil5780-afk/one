@@ -1,49 +1,76 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trauma & EMDR Specialist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter:wght@200;400&display=swap" rel="stylesheet">
+    <title>Specialized Trauma Recovery & EMDR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --sage: #5e6d62; --bone: #f9f7f4; --ink: #2c312e; }
-        body { margin:0; font-family:'Inter'; background:var(--bone); color:var(--ink); overflow-x:hidden; }
+        :root { --sage: #5e6d62; --bone: #f9f7f4; --ink: #2c312e; --white: #ffffff; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter', sans-serif; background:var(--bone); color:var(--ink); line-height:1.7; text-align:center; }
         h1, h2 { font-family:'Cormorant Garamond'; font-weight:300; font-style:italic; }
-        
-        /* Animation: Section Drop */
-        .drop-in { opacity:0; transform:translateY(-50px); transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
-        .drop-in.active { opacity:1; transform:translateY(0); }
 
-        header { height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 20px; background:linear-gradient(rgba(249,247,244,0.8),rgba(249,247,244,0.8)), url('https://images.pexels.com/photos/1058068/pexels-photo-1058068.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover; }
-        .hero h1 { font-size:clamp(3rem, 10vw, 6rem); margin-bottom:20px; }
-        .hero p { letter-spacing:4px; text-transform:uppercase; font-size:0.9rem; }
+        /* Animation Classes */
+        .reveal { opacity:0; transform:translateY(50px); transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1); }
+        .reveal.active { opacity:1; transform:translateY(0); }
 
-        section { padding:150px 10%; max-width:1200px; margin:0 auto; }
-        .grid { display:grid; grid-template-columns: 1fr 1fr; gap:100px; align-items:center; }
-        .spec-box { border-left: 1px solid var(--sage); padding-left:40px; }
-        .img-wrap { width:100%; height:600px; background:url('https://images.pexels.com/photos/1617066/pexels-photo-1617066.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover; }
+        /* Header & Hero */
+        header { height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(rgba(249,247,244,0.7),rgba(249,247,244,0.7)), url('https://images.pexels.com/photos/1058068/pexels-photo-1058068.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover; }
+        .hero h1 { font-size:clamp(3rem, 10vw, 5.5rem); line-height:1; margin-bottom:30px; }
+        .btn { padding:20px 45px; background:var(--sage); color:white; text-decoration:none; text-transform:uppercase; letter-spacing:3px; font-size:0.8rem; display:inline-block; transition:0.3s; border:none; cursor:pointer; }
+        .btn:hover { background:var(--ink); transform:scale(1.05); }
+
+        /* Sections */
+        section { padding:140px 20px; max-width:1000px; margin:0 auto; }
+        .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:60px; margin-top:80px; text-align:left; }
+        .service-card { padding:40px; background:var(--white); border:1px solid #eee; }
+        .service-card h3 { font-family:'Cormorant Garamond'; font-size:2rem; margin-bottom:15px; font-style:italic; }
+
+        /* Final CTA */
+        .final-cta { background:var(--ink); color:var(--white); padding:120px 20px; }
+        .final-cta h2 { font-size:3.5rem; color:var(--white); margin-bottom:40px; }
     </style>
 </head>
 <body>
-    <header><div class="hero drop-in">
-        <p>Specialized EMDR & Trauma Recovery</p>
-        <h1>Processing the past,<br>reclaiming the present.</h1>
-    </div></header>
+    <header>
+        <div class="hero reveal">
+            <p style="letter-spacing:5px; text-transform:uppercase; font-size:0.8rem; margin-bottom:20px;">Specialized Neuro-Biological Healing</p>
+            <h1>Beyond talk therapy.<br>Processing the past.</h1>
+            <a href="#contact" class="btn">Request a Private Consultation</a>
+        </div>
+    </header>
 
-    <section class="grid">
-        <div class="img-wrap drop-in"></div>
-        <div class="spec-box drop-in">
-            <h2>The EMDR Protocol</h2>
-            <p>Moving beyond traditional talk therapy. We use bilateral stimulation to help your brain process traumatic memories that are "stuck," allowing for true neurological resolution.</p>
-            <br>
-            <h2>Specialized Care</h2>
-            <p>Focusing on Complex PTSD, childhood attachment wounds, and acute trauma. A clinical approach rooted in safety and containment.</p>
+    <section>
+        <div class="reveal">
+            <h2 style="font-size:3rem; margin-bottom:20px;">Why EMDR?</h2>
+            <p style="max-width:700px; margin:0 auto;">When trauma occurs, it gets "locked" in the nervous system. Standard talk therapy addresses the mind, but EMDR addresses the brain's processing centers to unlock lasting relief.</p>
+        </div>
+        <div class="grid">
+            <div class="service-card reveal">
+                <h3>01. Assessment</h3>
+                <p>We identify the core target memories that are currently driving your triggers and anxiety.</p>
+            </div>
+            <div class="service-card reveal">
+                <h3>02. Desensitization</h3>
+                <p>Using bilateral stimulation to neutralize the emotional charge of traumatic events.</p>
+            </div>
+            <div class="service-card reveal">
+                <h3>03. Integration</h3>
+                <p>Installing positive beliefs and a renewed sense of safety within your body and mind.</p>
+            </div>
         </div>
     </section>
 
+    <div class="final-cta reveal" id="contact">
+        <h2>Begin Your Recovery</h2>
+        <p style="margin-bottom:40px; opacity:0.8;">Specialized care for Complex PTSD, Panic, and Attachment Trauma.</p>
+        <a href="contact.html" class="btn" style="background:var(--white); color:var(--ink);">Secure Your Consultation</a>
+    </div>
+
     <script>
-        const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }));
-        document.querySelectorAll('.drop-in').forEach(d => obs.observe(d));
+        const observer = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }));
+        document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
     </script>
 </body>
 </html>
