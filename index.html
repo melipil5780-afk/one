@@ -1360,6 +1360,105 @@ const D={
    On load, checks for saved session and offers restore.
    Photo is excluded from storage (too large) - user re-uploads if needed. */
 const LS_KEY = 'wellovie_wizard_v2';
+/* ── Tone → Copy System ───────────────────────────────────────
+   Drives: opening fallback, CTA text, homepage closing band,
+   about page band, and mini-preview footer note.
+──────────────────────────────────────────────────────────────── */
+const TONE_COPY={
+  calm:{
+    opening:"You don't have to have it all figured out to begin.",
+    cta_booking:"Find your footing",
+    cta_email:"Reach out",
+    band:"There is room<br><em>for you here.</em>",
+    aboutBand:"No rush.<br><em>When you're ready.</em>",
+    preview:"There is room for you here.",
+    subhead:"No forms. No pressure. Just a conversation."
+  },
+  seen:{
+    opening:"Functioning on the outside. Exhausted on the inside.",
+    cta_booking:"You're not alone in this",
+    cta_email:"I see you — reach out",
+    band:"You've been carrying<br><em>this long enough.</em>",
+    aboutBand:"You don't have to<br><em>explain yourself here.</em>",
+    preview:"You've been carrying this long enough.",
+    subhead:"This is a place where you can say the real thing."
+  },
+  hopeful:{
+    opening:"You already know something needs to change.",
+    cta_booking:"Let's build toward it",
+    cta_email:"Start the conversation",
+    band:"Change is possible.<br><em>Let's find it together.</em>",
+    aboutBand:"Ready when<br><em>you are.</em>",
+    preview:"Change is possible. Let's find it together.",
+    subhead:"Therapy that moves. No waiting to feel better."
+  },
+  trusted:{
+    opening:"Evidence-based therapy, genuinely tailored to you.",
+    cta_booking:"Schedule a consultation",
+    cta_email:"Get in touch",
+    band:"Skilled, grounded,<br><em>invested in your progress.</em>",
+    aboutBand:"Ready when<br><em>you are.</em>",
+    preview:"Skilled, grounded, invested in your progress.",
+    subhead:"Rigorous, warm, and built around what you actually need."
+  }
+};
+
+const CS_EXAMPLES={
+  calm:[
+    "You don't have to have it all figured out to begin.",
+    "There's nothing wrong with needing support. Everyone does eventually.",
+    "You've been holding on for a long time. You don't have to keep doing that alone."
+  ],
+  seen:[
+    "Functioning on the outside. Exhausted on the inside.",
+    "You're doing everything right. You still don't feel okay.",
+    "You've been trying to manage it. It's not working anymore."
+  ],
+  hopeful:[
+    "You already know something needs to change.",
+    "You've been thinking about this for a while. This could be the moment.",
+    "Change is possible — even when it doesn't feel that way right now."
+  ],
+  trusted:[
+    "Evidence-based therapy, genuinely tailored to you.",
+    "Real progress requires real engagement. That's what we build.",
+    "You deserve a therapist who's rigorous, warm, and actually invested."
+  ],
+  default:[
+    "Functioning on the outside but exhausted on the inside.",
+    "You don't have to have it all figured out to begin.",
+    "You've been trying to manage it alone. There's another way."
+  ]
+};
+
+const BS_EXAMPLES={
+  calm:[
+    "It's the only place where you can say the thing you've never said out loud.",
+    "Most people have never had anyone truly listen. That's where we start.",
+    "Real healing begins with feeling safe enough to be honest."
+  ],
+  seen:[
+    "It's the only place where you can say the thing you've never said out loud.",
+    "The most powerful thing therapy can do is make you feel less alone inside your own life.",
+    "Change doesn't come from knowing what to do. It comes from finally feeling seen enough to try."
+  ],
+  hopeful:[
+    "Real change doesn't come from knowing what to do. It comes from finally feeling safe enough to do it.",
+    "Therapy isn't about fixing what's broken. It's about discovering what's already there.",
+    "The insight you need is already in you. Therapy just helps you reach it."
+  ],
+  trusted:[
+    "The best therapy is both rigorous and humane — evidence-driven and deeply personal.",
+    "You already have the answers. A skilled therapist helps you find them faster.",
+    "Good therapy changes how you understand yourself, not just how you feel."
+  ],
+  default:[
+    "It's the only place where you can say the thing you've never said out loud.",
+    "Real change doesn't come from knowing what to do. It comes from finally feeling safe enough to do it.",
+    "Most people have never had anyone truly listen. That's where we start."
+  ]
+};
+
 
 function saveSession(){
   try {
@@ -1593,63 +1692,7 @@ initTg('tgFmt','fmt');initTg('tgAcc','acc');initTg('tgTone','tone');
 /* ── Clickable example starters ─────────────────────────────
    Populate the cs/bs example chips based on tone selection.
    On tone change, re-render examples. On click, fill field.
-──────────────────────────────────────────────────────────────── */
-const CS_EXAMPLES={
-  calm:[
-    "You don't have to have it all figured out to begin.",
-    "There's nothing wrong with needing support. Everyone does eventually.",
-    "You've been holding on for a long time. You don't have to keep doing that alone."
-  ],
-  seen:[
-    "Functioning on the outside. Exhausted on the inside.",
-    "You're doing everything right. You still don't feel okay.",
-    "You've been trying to manage it. It's not working anymore."
-  ],
-  hopeful:[
-    "You already know something needs to change.",
-    "You've been thinking about this for a while. This could be the moment.",
-    "Change is possible — even when it doesn't feel that way right now."
-  ],
-  trusted:[
-    "Evidence-based therapy, genuinely tailored to you.",
-    "Real progress requires real engagement. That's what we build.",
-    "You deserve a therapist who's rigorous, warm, and actually invested."
-  ],
-  default:[
-    "Functioning on the outside but exhausted on the inside.",
-    "You don't have to have it all figured out to begin.",
-    "You've been trying to manage it alone. There's another way."
-  ]
-};
-const BS_EXAMPLES={
-  calm:[
-    "It's the only place where you can say the thing you've never said out loud.",
-    "Most people have never had anyone truly listen. That's where we start.",
-    "Real healing begins with feeling safe enough to be honest."
-  ],
-  seen:[
-    "It's the only place where you can say the thing you've never said out loud.",
-    "The most powerful thing therapy can do is make you feel less alone inside your own life.",
-    "Change doesn't come from knowing what to do. It comes from finally feeling seen enough to try."
-  ],
-  hopeful:[
-    "Real change doesn't come from knowing what to do. It comes from finally feeling safe enough to do it.",
-    "Therapy isn't about fixing what's broken. It's about discovering what's already there.",
-    "The insight you need is already in you. Therapy just helps you reach it."
-  ],
-  trusted:[
-    "The best therapy is both rigorous and humane — evidence-driven and deeply personal.",
-    "You already have the answers. A skilled therapist helps you find them faster.",
-    "Good therapy changes how you understand yourself, not just how you feel."
-  ],
-  default:[
-    "It's the only place where you can say the thing you've never said out loud.",
-    "Real change doesn't come from knowing what to do. It comes from finally feeling safe enough to do it.",
-    "Most people have never had anyone truly listen. That's where we start."
-  ]
-};
-
-function renderExamples(containerId, examples, targetId){
+──────────────────────────────────────────────────────────────── */function renderExamples(containerId, examples, targetId){
   const ct=document.getElementById(containerId);
   const ta=document.getElementById(targetId);
   if(!ct||!ta)return;
@@ -2195,9 +2238,6 @@ window.addEventListener('focus', checkCopyHelperReturn);
 checkCopyHelperReturn();
 
 /* ════ REVIEW BUILDER ════ */
-fun
-
-/* ════ REVIEW BUILDER ════ */
 function buildReview(){
   readSvcs();
   const rc=document.getElementById('rvContent');if(!rc)return;
@@ -2265,49 +2305,6 @@ const TRANSITIONS={
   'default':"You don\'t have to have it figured out to begin."
 };
 
-
-/* ── Tone → Copy System ───────────────────────────────────────
-   Drives: opening fallback, CTA text, homepage closing band,
-   about page band, and mini-preview footer note.
-──────────────────────────────────────────────────────────────── */
-const TONE_COPY={
-  calm:{
-    opening:"You don't have to have it all figured out to begin.",
-    cta_booking:"Find your footing",
-    cta_email:"Reach out",
-    band:"There is room<br><em>for you here.</em>",
-    aboutBand:"No rush.<br><em>When you're ready.</em>",
-    preview:"There is room for you here.",
-    subhead:"No forms. No pressure. Just a conversation."
-  },
-  seen:{
-    opening:"Functioning on the outside. Exhausted on the inside.",
-    cta_booking:"You're not alone in this",
-    cta_email:"I see you — reach out",
-    band:"You've been carrying<br><em>this long enough.</em>",
-    aboutBand:"You don't have to<br><em>explain yourself here.</em>",
-    preview:"You've been carrying this long enough.",
-    subhead:"This is a place where you can say the real thing."
-  },
-  hopeful:{
-    opening:"You already know something needs to change.",
-    cta_booking:"Let's build toward it",
-    cta_email:"Start the conversation",
-    band:"Change is possible.<br><em>Let's find it together.</em>",
-    aboutBand:"Ready when<br><em>you are.</em>",
-    preview:"Change is possible. Let's find it together.",
-    subhead:"Therapy that moves. No waiting to feel better."
-  },
-  trusted:{
-    opening:"Evidence-based therapy, genuinely tailored to you.",
-    cta_booking:"Schedule a consultation",
-    cta_email:"Get in touch",
-    band:"Skilled, grounded,<br><em>invested in your progress.</em>",
-    aboutBand:"Ready when<br><em>you are.</em>",
-    preview:"Skilled, grounded, invested in your progress.",
-    subhead:"Rigorous, warm, and built around what you actually need."
-  }
-};
 
 
 /* ════ PALETTE DATA ════ */
