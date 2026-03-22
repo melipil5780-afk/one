@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -30,151 +31,151 @@ input,textarea,select{font:inherit;}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
 
 /* Grain */
-body::after{content:'';position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.012;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");background-size:220px;}
-
+body::after{content:’’;position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.012;background-image:url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 512 512’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘g’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=’.74’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23g)’/%3E%3C/svg%3E”);background-size:220px;}
 
 /* Scroll progress */
-#spb{position:fixed;top:0;left:0;z-index:999;height:2px;width:0%;pointer-events:none;background:linear-gradient(90deg,var(--amber),var(--amber-hi));transition:width .1s linear;}
+#spb{position:fixed;top:0;left:0;z-index:999;height:2px;width:0%;pointer-events:none;background:linear-gradient(90deg,var(–amber),var(–amber-hi));transition:width .1s linear;}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav);display:flex;align-items:center;padding:0 clamp(20px,5vw,60px);border-bottom:1px solid transparent;transition:background .55s,border-color .55s;}
-.nav.s{background:rgba(12,9,7,.92);backdrop-filter:blur(48px);-webkit-backdrop-filter:blur(48px);border-color:var(--b);}
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(–nav);display:flex;align-items:center;padding:0 clamp(20px,5vw,60px);border-bottom:1px solid transparent;transition:background .55s,border-color .55s;padding-left:max(clamp(20px,5vw,60px),env(safe-area-inset-left));padding-right:max(clamp(20px,5vw,60px),env(safe-area-inset-right));}
+.nav.s{background:rgba(12,9,7,.92);backdrop-filter:blur(48px);-webkit-backdrop-filter:blur(48px);border-color:var(–b);}
 .nav-i{width:100%;max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
 .nav-brand{display:flex;flex-direction:column;gap:2px;}
-.logo{font-family:var(--ff-d);font-size:19px;font-weight:400;letter-spacing:.055em;line-height:1;transition:opacity .2s;}
+.logo{font-family:var(–ff-d);font-size:19px;font-weight:400;letter-spacing:.055em;line-height:1;transition:opacity .2s;}
 .logo:hover{opacity:.35;}
-.logo span{font-size:12px;letter-spacing:.14em;font-family:var(--ff-b);text-transform:uppercase;color:var(--amber-hi);margin-left:8px;vertical-align:middle;}
-.logo-sub{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-hi);line-height:1;}
-.nav-back{display:flex;align-items:center;gap:7px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);transition:color .2s,gap .22s var(--smooth);}
-.nav-back:hover{color:var(--ink);gap:11px;}
-.nav-back svg{transition:transform .22s var(--smooth);}
+.logo span{font-size:12px;letter-spacing:.14em;font-family:var(–ff-b);text-transform:uppercase;color:var(–amber-hi);margin-left:8px;vertical-align:middle;}
+.logo-sub{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(–amber-hi);line-height:1;}
+.nav-back{display:flex;align-items:center;gap:7px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(–ink-3);transition:color .2s,gap .22s var(–smooth);}
+.nav-back:hover{color:var(–ink);gap:11px;}
+.nav-back svg{transition:transform .22s var(–smooth);}
 .nav-back:hover svg{transform:translateX(-3px);}
 
 /* PAGE */
-.page{max-width:720px;margin:0 auto;padding:calc(var(--nav) + clamp(40px,7vh,72px)) clamp(20px,5vw,40px) clamp(60px,10vh,100px);}
+.page{max-width:720px;margin:0 auto;padding:calc(var(–nav) + clamp(40px,7vh,72px)) clamp(20px,5vw,40px) clamp(60px,10vh,100px);padding-bottom:max(80px,calc(80px + env(safe-area-inset-bottom)));}
 
 /* Page header */
-.page-kicker{font-size:9.5px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-hi);display:block;margin-bottom:12px;opacity:0;animation:fadeUp .7s .3s var(--ease) forwards;}
-.page-title{font-family:var(--ff-d);font-size:clamp(38px,7vw,72px);font-weight:300;line-height:.92;letter-spacing:-.022em;margin-bottom:10px;opacity:0;animation:fadeUp .8s .45s var(--ease) forwards;}
-.page-title em{font-style:italic;color:var(--ink-2);}
-.page-sub{font-size:clamp(13px,1.4vw,15px);font-weight:300;color:var(--ink-2);line-height:1.88;max-width:520px;margin-bottom:clamp(32px,5vh,52px);opacity:0;animation:fadeUp .7s .6s var(--ease) forwards;}
+.page-kicker{font-size:9.5px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(–amber-hi);display:block;margin-bottom:12px;opacity:0;animation:fadeUp .7s .3s var(–ease) forwards;}
+.page-title{font-family:var(–ff-d);font-size:clamp(38px,7vw,72px);font-weight:300;line-height:.92;letter-spacing:-.022em;margin-bottom:10px;opacity:0;animation:fadeUp .8s .45s var(–ease) forwards;}
+.page-title em{font-style:italic;color:var(–ink-2);}
+.page-sub{font-size:clamp(13px,1.4vw,15px);font-weight:300;color:var(–ink-2);line-height:1.88;max-width:520px;margin-bottom:clamp(32px,5vh,52px);opacity:0;animation:fadeUp .7s .6s var(–ease) forwards;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* FORM ELEMENTS */
 .fg{display:flex;flex-direction:column;gap:28px;}
 .f{display:flex;flex-direction:column;gap:6px;}
-.fl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);}
-.fh{font-size:11px;color:var(--ink-3);font-weight:300;line-height:1.6;}
-.inp,.sel,.ta{background:rgba(237,227,208,.04);border:1px solid var(--b);border-radius:10px;padding:0 14px;font:inherit;font-size:13.5px;color:var(--ink-2);outline:none;min-height:48px;transition:border-color .22s,background .22s,box-shadow .22s;width:100%;}
-.inp:focus,.sel:focus,.ta:focus{border-color:var(--amber);background:rgba(184,146,42,.04);box-shadow:0 0 0 3px rgba(184,146,42,.07);}
-.inp::placeholder,.ta::placeholder{color:var(--ink-4);}
+.fl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(–ink-3);}
+.fh{font-size:11px;color:var(–ink-3);font-weight:300;line-height:1.6;}
+.inp,.sel,.ta{background:rgba(237,227,208,.04);border:1px solid var(–b);border-radius:10px;padding:0 14px;font:inherit;font-size:16px;color:var(–ink-2);outline:none;min-height:48px;transition:border-color .22s,background .22s,box-shadow .22s;width:100%;}
+.inp:focus,.sel:focus,.ta:focus{border-color:var(–amber);background:rgba(184,146,42,.04);box-shadow:0 0 0 3px rgba(184,146,42,.07);}
+.inp::placeholder,.ta::placeholder{color:var(–ink-4);}
 .ta{min-height:110px;padding:13px 14px;resize:vertical;line-height:1.74;}
-.cc{font-size:10px;color:var(--ink-4);text-align:right;margin-top:3px;transition:color .2s;}
-.cc.w{color:var(--amber-hi);}
+.cc{font-size:10px;color:var(–ink-4);text-align:right;margin-top:3px;transition:color .2s;}
+.cc.w{color:var(–amber-hi);}
 
 /* SECTION CARDS */
 .rev-sections{display:flex;flex-direction:column;gap:16px;}
-.rev-section{background:var(--bg-card);border:1px solid var(--b);border-radius:18px;overflow:hidden;transition:border-color .3s,background .3s;}
-.rev-section.open{border-color:var(--amber-lo);background:var(--bg-warm);}
+.rev-section{background:var(–bg-card);border:1px solid var(–b);border-radius:18px;overflow:hidden;transition:border-color .3s,background .3s;}
+.rev-section.open{border-color:var(–amber-lo);background:var(–bg-warm);}
 .rev-sec-hdr{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;}
-.rev-sec-hdr:hover .rev-sec-title{color:var(--ink);}
-.rev-check{width:22px;height:22px;border-radius:6px;border:1px solid var(--b);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:12px;color:transparent;}
-.rev-section.open .rev-check{background:var(--amber-gl);border-color:var(--amber);color:var(--amber-hi);}
+.rev-sec-hdr:hover .rev-sec-title{color:var(–ink);}
+.rev-check{width:22px;height:22px;border-radius:6px;border:1px solid var(–b);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:12px;color:transparent;}
+.rev-section.open .rev-check{background:var(–amber-gl);border-color:var(–amber);color:var(–amber-hi);}
 .rev-sec-info{flex:1;}
-.rev-sec-title{font-size:14px;font-weight:300;color:var(--ink-2);transition:color .2s;margin-bottom:2px;}
-.rev-sec-desc{font-size:11px;color:var(--ink-4);font-weight:300;line-height:1.55;}
+.rev-sec-title{font-size:14px;font-weight:300;color:var(–ink-2);transition:color .2s;margin-bottom:2px;}
+.rev-sec-desc{font-size:11px;color:var(–ink-4);font-weight:300;line-height:1.55;}
 .rev-sec-body{display:none;padding:0 22px 22px;border-top:1px solid rgba(237,227,208,.04);}
 .rev-section.open .rev-sec-body{display:block;}
 .rev-sec-inner{padding-top:20px;display:flex;flex-direction:column;gap:14px;}
 
 /* Toggle pills */
 .tg{display:flex;gap:7px;flex-wrap:wrap;}
-.tb{font-size:11.5px;letter-spacing:.03em;padding:0 15px;min-height:38px;border-radius:100px;border:1px solid var(--b);color:var(--ink-3);background:rgba(237,227,208,.03);transition:all .22s var(--smooth);}
-.tb:hover{border-color:var(--b-hi);color:var(--ink-2);}
-.tb.on{border-color:var(--amber);background:var(--amber-gl);color:var(--amber-hi);}
+.tb{font-size:11.5px;letter-spacing:.03em;padding:0 15px;min-height:38px;border-radius:100px;border:1px solid var(–b);color:var(–ink-3);background:rgba(237,227,208,.03);transition:all .22s var(–smooth);}
+.tb:hover{border-color:var(–b-hi);color:var(–ink-2);}
+.tb.on{border-color:var(–amber);background:var(–amber-gl);color:var(–amber-hi);}
 
 /* Chips */
 .cg{display:flex;flex-wrap:wrap;gap:6px;}
-.chip{font-size:11.5px;font-weight:300;padding:6px 13px;border-radius:100px;border:1px solid var(--b);color:var(--ink-3);background:rgba(237,227,208,.03);transition:all .2s var(--smooth);}
-.chip:hover{border-color:var(--b-hi);color:var(--ink-2);}
-.chip.ca{border-color:var(--amber);background:var(--amber-gl);color:var(--amber-hi);}
-.chip.cs{border-color:var(--sage);background:rgba(74,122,98,.09);color:var(--sage-hi);}
+.chip{font-size:11.5px;font-weight:300;padding:6px 13px;border-radius:100px;border:1px solid var(–b);color:var(–ink-3);background:rgba(237,227,208,.03);transition:all .2s var(–smooth);}
+.chip:hover{border-color:var(–b-hi);color:var(–ink-2);}
+.chip.ca{border-color:var(–amber);background:var(–amber-gl);color:var(–amber-hi);}
+.chip.cs{border-color:var(–sage);background:rgba(74,122,98,.09);color:var(–sage-hi);}
 .chip.dim{opacity:.3;pointer-events:none;}
 .chip.ca.dim,.chip.cs.dim{opacity:1;pointer-events:auto;}
 
 /* Service blocks */
 .svc-list{display:flex;flex-direction:column;gap:10px;}
-.svc-blk{background:rgba(237,227,208,.03);border:1px solid var(--b);border-radius:12px;padding:14px 16px;}
+.svc-blk{background:rgba(237,227,208,.03);border:1px solid var(–b);border-radius:12px;padding:14px 16px;}
 .svc-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
-.svc-n{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-hi);}
-.svc-rm{font-size:11px;color:var(--ink-4);transition:color .2s;padding:3px 8px;border-radius:6px;}
-.svc-rm:hover{color:var(--blush);}
+.svc-n{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(–amber-hi);}
+.svc-rm{font-size:11px;color:var(–ink-4);transition:color .2s;padding:3px 8px;border-radius:6px;}
+.svc-rm:hover{color:var(–blush);}
 .svc-row{display:grid;grid-template-columns:1fr 88px 96px;gap:9px;}
 @media(max-width:520px){.svc-row{grid-template-columns:1fr 1fr;}}
-.add-svc{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--ink-3);padding:10px 0;transition:color .22s;}
-.add-svc::before{content:'+';font-size:16px;color:var(--amber);line-height:1;}
-.add-svc:hover{color:var(--amber-hi);}
+.add-svc{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(–ink-3);padding:10px 0;transition:color .22s;}
+.add-svc::before{content:’+’;font-size:16px;color:var(–amber);line-height:1;}
+.add-svc:hover{color:var(–amber-hi);}
 
 /* Palette */
 .pal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;}
 .pal-sw{display:flex;flex-direction:column;align-items:center;gap:6px;}
-.pal-circle{width:50px;height:50px;border-radius:50%;border:2px solid transparent;transition:all .28s var(--smooth);}
-.pal-sw.on .pal-circle{border-color:var(--ink-2);box-shadow:0 0 0 3px rgba(237,227,208,.1);}
+.pal-circle{width:50px;height:50px;border-radius:50%;border:2px solid transparent;transition:all .28s var(–smooth);}
+.pal-sw.on .pal-circle{border-color:var(–ink-2);box-shadow:0 0 0 3px rgba(237,227,208,.1);}
 .pal-sw:hover .pal-circle{transform:scale(1.08);}
-.pal-name{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);text-align:center;transition:color .25s;}
-.pal-sw.on .pal-name{color:var(--ink-2);}
+.pal-name{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(–ink-4);text-align:center;transition:color .25s;}
+.pal-sub{font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(–ink-4);text-align:center;opacity:.7;margin-top:1px;}
+.pal-sw.on .pal-name{color:var(–ink-2);}
 
 /* Photo upload */
-.photo-zone{display:flex;align-items:center;gap:16px;padding:16px 18px;border:1px dashed rgba(237,227,208,.1);border-radius:14px;background:rgba(237,227,208,.02);transition:all .28s var(--smooth);}
+.photo-zone{display:flex;align-items:center;gap:16px;padding:16px 18px;border:1px dashed rgba(237,227,208,.1);border-radius:14px;background:rgba(237,227,208,.02);transition:all .28s var(–smooth);}
 .photo-zone:hover{border-color:rgba(184,146,42,.35);background:rgba(184,146,42,.04);}
-.photo-ring{width:54px;height:54px;border-radius:50%;background:var(--bg-card);border:1px solid var(--b);display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:22px;color:var(--ink-3);flex-shrink:0;overflow:hidden;}
+.photo-ring{width:54px;height:54px;border-radius:50%;background:var(–bg-card);border:1px solid var(–b);display:flex;align-items:center;justify-content:center;font-family:var(–ff-d);font-size:22px;color:var(–ink-3);flex-shrink:0;overflow:hidden;}
 .photo-ring img{width:100%;height:100%;object-fit:cover;}
 .photo-in{display:none;}
 
 /* Switch */
 .sw{position:relative;width:36px;height:20px;flex-shrink:0;}
 .sw input{opacity:0;width:0;height:0;position:absolute;}
-.sw-tr{position:absolute;inset:0;border-radius:100px;background:var(--bg-warm);border:1px solid var(--b);cursor:pointer;transition:all .28s;}
-.sw input:checked~.sw-tr{background:var(--amber-lo);border-color:var(--amber);}
-.sw-th{position:absolute;top:3px;left:3px;width:12px;height:12px;border-radius:50%;background:var(--ink-3);transition:all .28s var(--spring);pointer-events:none;}
-.sw input:checked~.sw-tr .sw-th{transform:translateX(16px);background:var(--amber-hi);}
+.sw-tr{position:absolute;inset:0;border-radius:100px;background:var(–bg-warm);border:1px solid var(–b);cursor:pointer;transition:all .28s;}
+.sw input:checked~.sw-tr{background:var(–amber-lo);border-color:var(–amber);}
+.sw-th{position:absolute;top:3px;left:3px;width:12px;height:12px;border-radius:50%;background:var(–ink-3);transition:all .28s var(–spring);pointer-events:none;}
+.sw input:checked~.sw-tr .sw-th{transform:translateX(16px);background:var(–amber-hi);}
 
 /* Info rows */
-.info-row{background:rgba(237,227,208,.03);border:1px solid var(--b);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;}
+.info-row{background:rgba(237,227,208,.03);border:1px solid var(–b);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;}
 .ir-hdr{display:flex;align-items:center;justify-content:space-between;}
-.ir-lbl{font-size:13px;font-weight:300;color:var(--ink-2);}
+.ir-lbl{font-size:13px;font-weight:300;color:var(–ink-2);}
 .ir-det{margin-top:10px;}
 
 /* Contact options */
 .contact-opts{display:flex;flex-direction:column;gap:9px;}
-.contact-opt{background:rgba(237,227,208,.03);border:1px solid var(--b);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .25s;}
-.contact-opt:hover{border-color:var(--b-hi);}
-.contact-opt.on{border-color:var(--amber);background:rgba(184,146,42,.05);}
+.contact-opt{background:rgba(237,227,208,.03);border:1px solid var(–b);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all .25s;}
+.contact-opt:hover{border-color:var(–b-hi);}
+.contact-opt.on{border-color:var(–amber);background:rgba(184,146,42,.05);}
 .co-hdr{display:flex;align-items:center;gap:10px;}
-.co-radio{width:16px;height:16px;border-radius:50%;border:1px solid var(--b);flex-shrink:0;transition:all .22s;position:relative;}
-.contact-opt.on .co-radio{border-color:var(--amber);background:var(--amber);}
-.contact-opt.on .co-radio::after{content:'';position:absolute;inset:3px;border-radius:50%;background:#0A0806;}
-.co-name{font-size:13px;color:var(--ink-2);}
-.co-desc{font-size:11px;color:var(--ink-4);font-weight:300;line-height:1.5;margin-top:4px;padding-left:26px;}
+.co-radio{width:16px;height:16px;border-radius:50%;border:1px solid var(–b);flex-shrink:0;transition:all .22s;position:relative;}
+.contact-opt.on .co-radio{border-color:var(–amber);background:var(–amber);}
+.contact-opt.on .co-radio::after{content:’’;position:absolute;inset:3px;border-radius:50%;background:#0A0806;}
+.co-name{font-size:13px;color:var(–ink-2);}
+.co-desc{font-size:11px;color:var(–ink-4);font-weight:300;line-height:1.5;margin-top:4px;padding-left:26px;}
 .co-field{padding-left:26px;margin-top:10px;}
 
 /* Divider */
-.div{height:1px;background:var(--b);margin:4px 0;}
+.div{height:1px;background:var(–b);margin:4px 0;}
 
 /* LAYOUT VARIANTS */
-.layout-zone{background:var(--bg-card);border:1px solid var(--b);border-radius:18px;padding:clamp(22px,4vw,32px);margin-top:16px;}
-.layout-title{font-family:var(--ff-d);font-size:clamp(22px,3.5vw,32px);font-weight:300;letter-spacing:-.014em;margin-bottom:8px;}
-.layout-sub{font-size:13px;font-weight:300;color:var(--ink-3);line-height:1.72;margin-bottom:24px;max-width:480px;}
+.layout-zone{background:var(–bg-card);border:1px solid var(–b);border-radius:18px;padding:clamp(22px,4vw,32px);margin-top:16px;}
+.layout-title{font-family:var(–ff-d);font-size:clamp(22px,3.5vw,32px);font-weight:300;letter-spacing:-.014em;margin-bottom:8px;}
+.layout-sub{font-size:13px;font-weight:300;color:var(–ink-3);line-height:1.72;margin-bottom:24px;max-width:480px;}
 .layout-group{margin-bottom:24px;}
 .layout-group:last-child{margin-bottom:0;}
-.layout-group-label{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-hi);margin-bottom:12px;display:block;}
+.layout-group-label{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(–amber-hi);margin-bottom:12px;display:block;}
 .layout-opts{display:flex;gap:10px;flex-wrap:wrap;}
-.layout-opt{flex:1;min-width:120px;max-width:180px;background:rgba(237,227,208,.03);border:1px solid var(--b);border-radius:14px;padding:14px 14px 12px;cursor:pointer;transition:all .25s var(--smooth);display:flex;flex-direction:column;align-items:center;gap:9px;-webkit-tap-highlight-color:transparent;}
-.layout-opt:hover{border-color:var(--b-hi);background:rgba(237,227,208,.06);}
-.layout-opt.on{border-color:var(--amber);background:var(--amber-gl);}
+.layout-opt{flex:1;min-width:120px;max-width:180px;background:rgba(237,227,208,.03);border:1px solid var(–b);border-radius:14px;padding:14px 14px 12px;cursor:pointer;transition:all .25s var(–smooth);display:flex;flex-direction:column;align-items:center;gap:9px;-webkit-tap-highlight-color:transparent;}
+.layout-opt:hover{border-color:var(–b-hi);background:rgba(237,227,208,.06);}
+.layout-opt.on{border-color:var(–amber);background:var(–amber-gl);}
 .layout-diagram{width:100%;height:52px;border-radius:8px;background:rgba(237,227,208,.04);border:1px solid rgba(237,227,208,.07);display:flex;align-items:center;justify-content:center;gap:5px;padding:6px;flex-shrink:0;overflow:hidden;}
-.layout-opt-label{font-size:10.5px;font-weight:300;color:var(--ink-3);text-align:center;line-height:1.4;transition:color .22s;}
-.layout-opt.on .layout-opt-label{color:var(--amber-hi);}
+.layout-opt-label{font-size:10.5px;font-weight:300;color:var(–ink-3);text-align:center;line-height:1.4;transition:color .22s;}
+.layout-opt.on .layout-opt-label{color:var(–amber-hi);}
 /* Diagram elements */
 .d-circle{border-radius:50%;background:rgba(237,227,208,.2);flex-shrink:0;}
 .d-lines{display:flex;flex-direction:column;gap:3px;flex:1;}
@@ -183,31 +184,33 @@ body::after{content:'';position:fixed;inset:0;z-index:99;pointer-events:none;opa
 .d-btn{border-radius:100px;background:rgba(184,146,42,.35);height:6px;}
 
 /* ADD-ONS */
-.addons-zone{background:var(--bg-card);border:1px solid var(--b);border-radius:18px;padding:clamp(22px,4vw,32px);margin-top:8px;}
-.addons-title{font-family:var(--ff-d);font-size:clamp(22px,3.5vw,32px);font-weight:300;letter-spacing:-.014em;margin-bottom:8px;}
-.addons-sub{font-size:13px;font-weight:300;color:var(--ink-3);line-height:1.72;margin-bottom:20px;max-width:480px;}
+.addons-zone{background:var(–bg-card);border:1px solid var(–b);border-radius:18px;padding:clamp(22px,4vw,32px);margin-top:8px;}
+.addons-title{font-family:var(–ff-d);font-size:clamp(22px,3.5vw,32px);font-weight:300;letter-spacing:-.014em;margin-bottom:8px;}
+.addons-sub{font-size:13px;font-weight:300;color:var(–ink-3);line-height:1.72;margin-bottom:20px;max-width:480px;}
 .ao-list{display:flex;flex-direction:column;gap:10px;}
-.ao-row{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:rgba(237,227,208,.03);border:1px solid var(--b);border-radius:12px;transition:all .22s;gap:12px;}
-.ao-row:hover{border-color:var(--b-hi);}
-.ao-row.on{border-color:var(--amber-lo);background:rgba(184,146,42,.04);}
+.ao-row{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:rgba(237,227,208,.03);border:1px solid var(–b);border-radius:12px;transition:all .22s;gap:12px;}
+.ao-row:hover{border-color:var(–b-hi);}
+.ao-row.on{border-color:var(–amber-lo);background:rgba(184,146,42,.04);}
 .ao-info{flex:1;}
-.ao-name{font-size:13px;color:var(--ink-2);margin-bottom:3px;}
-.ao-desc{font-size:11px;color:var(--ink-4);font-weight:300;line-height:1.5;}
-.ao-price{font-family:var(--ff-d);font-size:18px;color:var(--ink-3);white-space:nowrap;flex-shrink:0;transition:color .22s;}
-.ao-row.on .ao-price{color:var(--amber-hi);}
-.ao-total{margin-top:16px;padding:16px 18px;background:rgba(237,227,208,.03);border:1px solid var(--b);border-radius:12px;display:flex;align-items:center;justify-content:space-between;}
-.ao-total-lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
-.ao-total-amt{font-family:var(--ff-d);font-size:28px;font-weight:300;color:var(--ink);transition:transform .25s var(--spring);}
+.ao-name{font-size:13px;color:var(–ink-2);margin-bottom:3px;}
+.ao-desc{font-size:11px;color:var(–ink-4);font-weight:300;line-height:1.5;}
+.ao-price{font-family:var(–ff-d);font-size:18px;color:var(–ink-3);white-space:nowrap;flex-shrink:0;transition:color .22s;}
+.ao-row.on .ao-price{color:var(–amber-hi);}
+.ao-total{margin-top:16px;padding:16px 18px;background:rgba(237,227,208,.03);border:1px solid var(–b);border-radius:12px;display:flex;align-items:center;justify-content:space-between;}
+.ao-total-lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(–ink-3);}
+.ao-total-amt{font-family:var(–ff-d);font-size:28px;font-weight:300;color:var(–ink);transition:transform .25s var(–spring);}
 
 /* Notes */
-.notes-zone{background:var(--bg-card);border:1px solid var(--b);border-radius:18px;padding:clamp(22px,4vw,32px);}
+.notes-zone{background:var(–bg-card);border:1px solid var(–b);border-radius:18px;padding:clamp(22px,4vw,32px);}
 
 /* SUBMIT */
 .submit-zone{text-align:center;padding:clamp(32px,5vh,48px) 0;}
-.scope-note{font-size:11px;color:var(--ink-4);font-weight:300;line-height:1.72;max-width:480px;margin:0 auto 28px;padding:14px 18px;background:rgba(237,227,208,.02);border:1px solid var(--b);border-radius:10px;}
-.scope-note strong{color:var(--ink-3);font-weight:400;}
-.btn-send{font-size:14px;font-weight:400;letter-spacing:.03em;background:var(--amber);color:#0A0806;padding:0 44px;border-radius:100px;display:inline-flex;align-items:center;gap:9px;min-height:58px;transition:all .28s var(--smooth);-webkit-tap-highlight-color:transparent;}
-.btn-send:hover{background:var(--amber-hi);transform:translateY(-2px);box-shadow:0 14px 40px rgba(184,146,42,.35);}
+.scope-note{font-size:11px;color:var(–ink-4);font-weight:300;line-height:1.72;max-width:480px;margin:0 auto 28px;padding:14px 18px;background:rgba(237,227,208,.02);border:1px solid var(–b);border-radius:10px;}
+.scope-note strong{color:var(–ink-3);font-weight:400;}
+.btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:400;letter-spacing:.04em;color:var(–amber-hi);padding:0 20px;min-height:44px;border:1px solid var(–amber-lo);border-radius:100px;background:var(–amber-gl);transition:all .22s;text-decoration:none;}
+.btn:hover{background:rgba(184,146,42,.14);border-color:var(–amber);}
+.btn-send{font-size:14px;font-weight:400;letter-spacing:.03em;background:var(–amber);color:#0A0806;padding:0 44px;border-radius:100px;display:inline-flex;align-items:center;gap:9px;min-height:58px;transition:all .28s var(–smooth);-webkit-tap-highlight-color:transparent;}
+.btn-send:hover{background:var(–amber-hi);transform:translateY(-2px);box-shadow:0 14px 40px rgba(184,146,42,.35);}
 .btn-send:active{transform:scale(.96)!important;}
 .btn-send:disabled{opacity:.5;pointer-events:none;}
 
@@ -218,105 +221,105 @@ body::after{content:'';position:fixed;inset:0;z-index:99;pointer-events:none;opa
 .success-wrap.show .s-orb{animation:orbIn .7s cubic-bezier(.34,1.56,.64,1) forwards,orbP 2.8s .7s ease-in-out infinite;}
 @keyframes orbIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
 @keyframes orbP{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.s-title{font-family:var(--ff-d);font-size:clamp(36px,6vw,56px);font-weight:300;letter-spacing:-.016em;margin-bottom:12px;opacity:0;}
+.s-title{font-family:var(–ff-d);font-size:clamp(36px,6vw,56px);font-weight:300;letter-spacing:-.016em;margin-bottom:12px;opacity:0;}
 .success-wrap.show .s-title{animation:sTIn .6s .18s cubic-bezier(.22,.68,0,1.2) both;}
 @keyframes sTIn{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
-.s-sub{font-size:14px;font-weight:300;color:var(--ink-2);line-height:1.88;max-width:380px;margin:0 auto 12px;opacity:0;}
-.success-wrap.show .s-sub{animation:sSubIn .5s .32s var(--ease) both;}
+.s-sub{font-size:14px;font-weight:300;color:var(–ink-2);line-height:1.88;max-width:380px;margin:0 auto 12px;opacity:0;}
+.success-wrap.show .s-sub{animation:sSubIn .5s .32s var(–ease) both;}
 @keyframes sSubIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.s-detail{font-size:12px;color:var(--ink-4);line-height:1.7;opacity:0;}
-.success-wrap.show .s-detail{animation:sSubIn .5s .44s var(--ease) both;}
+.s-detail{font-size:12px;color:var(–ink-4);line-height:1.7;opacity:0;}
+.success-wrap.show .s-detail{animation:sSubIn .5s .44s var(–ease) both;}
 
 /* Scroll reveal */
-[data-r]{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s);}
+[data-r]{opacity:0;transform:translateY(18px);transition:opacity .9s var(–ease) var(–d,0s),transform .9s var(–ease) var(–d,0s);}
 [data-r].on{opacity:1;transform:none;}
-:focus-visible{outline:2px solid var(--amber-hi);outline-offset:3px;border-radius:4px;}
+:focus-visible{outline:2px solid var(–amber-hi);outline-offset:3px;border-radius:4px;}
 @media(hover:none){.btn-send:hover{transform:none;box-shadow:none;}}
 .pressing{transform:scale(.93)!important;transition-duration:.08s!important;}
 /* ── RICH SITE CSS ── */
-body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--amber-hi),var(--amber));z-index:600;opacity:.8;}
-.hero-photo-wrap::before{content:'';position:absolute;width:130%;height:130%;border-radius:50%;background:radial-gradient(circle,var(--amber-gl) 0%,rgba(0,0,0,0) 68%);pointer-events:none;z-index:0;}
+body::before{content:’’;position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(–amber),var(–amber-hi),var(–amber));z-index:600;opacity:.8;}
+.hero-photo-wrap::before{content:’’;position:absolute;width:130%;height:130%;border-radius:50%;background:radial-gradient(circle,var(–amber-gl) 0%,rgba(0,0,0,0) 68%);pointer-events:none;z-index:0;}
 .hero-photo,.hero-init{position:relative;z-index:1;}
 .hero-text-wrap{animation:heroIn .9s .15s cubic-bezier(.22,.68,0,1.1) both;}
 @keyframes heroIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.hero-ornament{width:28px;height:1.5px;background:var(--amber);margin-bottom:clamp(12px,2vw,18px);opacity:.7;}
+.hero-ornament{width:28px;height:1.5px;background:var(–amber);margin-bottom:clamp(12px,2vw,18px);opacity:.7;}
 /* Avail card */
-.avail-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;background:var(--bg-card);border:1px solid var(--b);border-radius:14px;margin:clamp(16px,2.5vw,24px) 0;flex-wrap:wrap;}
+.avail-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;background:var(–bg-card);border:1px solid var(–b);border-radius:14px;margin:clamp(16px,2.5vw,24px) 0;flex-wrap:wrap;}
 .avail-left{display:flex;flex-direction:column;gap:5px;}
 .avail-pulse-wrap{display:flex;align-items:center;gap:9px;}
 .avail-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;animation:availPulse 2.4s ease-in-out infinite;}
-.avail-dot-green{background:var(--sage-hi);}
-.avail-dot-amber{background:var(--amber-hi);}
+.avail-dot-green{background:var(–sage-hi);}
+.avail-dot-amber{background:var(–amber-hi);}
 @keyframes availPulse{0%,100%{box-shadow:0 0 0 0 rgba(107,173,132,.4);}50%{box-shadow:0 0 0 6px rgba(107,173,132,0);}}
-.avail-status{font-size:13px;color:var(--ink-2);font-weight:300;}
-.avail-note{font-size:11px;color:var(--ink-4);font-weight:300;padding-left:17px;}
-.avail-cta{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-hi);padding:7px 16px;border:1px solid var(--amber-lo);border-radius:100px;white-space:nowrap;background:var(--amber-gl);transition:all .22s;flex-shrink:0;text-decoration:none;}
-.avail-cta:hover{border-color:var(--amber);}
+.avail-status{font-size:13px;color:var(–ink-2);font-weight:300;}
+.avail-note{font-size:11px;color:var(–ink-4);font-weight:300;padding-left:17px;}
+.avail-cta{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(–amber-hi);padding:7px 16px;border:1px solid var(–amber-lo);border-radius:100px;white-space:nowrap;background:var(–amber-gl);transition:all .22s;flex-shrink:0;text-decoration:none;}
+.avail-cta:hover{border-color:var(–amber);}
 /* Stats bar */
-.stat-bar{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:18px 20px;background:rgba(237,227,208,.02);border:1px solid var(--b);border-radius:12px;margin-bottom:clamp(16px,2.5vw,24px);}
+.stat-bar{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:18px 20px;background:rgba(237,227,208,.02);border:1px solid var(–b);border-radius:12px;margin-bottom:clamp(16px,2.5vw,24px);}
 .stat{display:flex;flex-direction:column;gap:4px;}
-.stat-n{font-family:var(--ff-d);font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--amber-hi);line-height:1;}
-.stat-l{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);}
-.stat-div{width:1px;height:36px;background:var(--b);flex-shrink:0;}
+.stat-n{font-family:var(–ff-d);font-size:clamp(20px,3vw,28px);font-weight:300;color:var(–amber-hi);line-height:1;}
+.stat-l{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(–ink-4);}
+.stat-div{width:1px;height:36px;background:var(–b);flex-shrink:0;}
 /* Pull quote */
-.pull-quote{position:relative;padding:clamp(24px,4vw,40px) clamp(24px,4vw,40px) clamp(24px,4vw,40px) clamp(32px,5vw,56px);margin:clamp(24px,4vh,40px) 0;border-left:2px solid var(--amber-lo);background:linear-gradient(135deg,var(--amber-gl),transparent 60%);border-radius:0 16px 16px 0;}
-.pull-quote::before{content:'"';position:absolute;top:-10px;left:clamp(12px,2vw,20px);font-family:var(--ff-d);font-size:clamp(72px,10vw,120px);line-height:1;color:rgba(184,146,42,.16);pointer-events:none;user-select:none;}
-.pull-quote blockquote{font-family:var(--ff-d);font-size:clamp(18px,2.2vw,24px);font-style:italic;font-weight:300;color:var(--ink-2);line-height:1.6;position:relative;z-index:1;}
-.pull-quote cite{display:block;margin-top:12px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber-hi);font-style:normal;}
+.pull-quote{position:relative;padding:clamp(24px,4vw,40px) clamp(24px,4vw,40px) clamp(24px,4vw,40px) clamp(32px,5vw,56px);margin:clamp(24px,4vh,40px) 0;border-left:2px solid var(–amber-lo);background:linear-gradient(135deg,var(–amber-gl),transparent 60%);border-radius:0 16px 16px 0;}
+.pull-quote::before{content:’”’;position:absolute;top:-10px;left:clamp(12px,2vw,20px);font-family:var(–ff-d);font-size:clamp(72px,10vw,120px);line-height:1;color:rgba(184,146,42,.16);pointer-events:none;user-select:none;}
+.pull-quote blockquote{font-family:var(–ff-d);font-size:clamp(18px,2.2vw,24px);font-style:italic;font-weight:300;color:var(–ink-2);line-height:1.6;position:relative;z-index:1;}
+.pull-quote cite{display:block;margin-top:12px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(–amber-hi);font-style:normal;}
 /* Credential band */
-.cred-band{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:16px 20px;background:rgba(237,227,208,.02);border:1px solid var(--b);border-radius:12px;margin:clamp(14px,2vh,20px) 0;}
+.cred-band{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:16px 20px;background:rgba(237,227,208,.02);border:1px solid var(–b);border-radius:12px;margin:clamp(14px,2vh,20px) 0;}
 .cred-item{display:flex;flex-direction:column;gap:3px;}
-.cred-label{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);}
-.cred-value{font-size:12px;font-weight:300;color:var(--ink-2);}
-.cred-div{width:1px;height:28px;background:var(--b);}
+.cred-label{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(–ink-4);}
+.cred-value{font-size:12px;font-weight:300;color:var(–ink-2);}
+.cred-div{width:1px;height:28px;background:var(–b);}
 /* Testimonial */
-.testimonial{padding:clamp(20px,3vw,30px);background:var(--bg-card);border:1px solid var(--b);border-radius:16px;margin:clamp(20px,3vh,32px) 0;position:relative;}
-.testimonial::before{content:'"';position:absolute;top:-8px;left:20px;font-family:var(--ff-d);font-size:60px;line-height:1;color:rgba(184,146,42,.15);pointer-events:none;}
-.t-text{font-family:var(--ff-d);font-size:clamp(15px,1.8vw,18px);font-style:italic;font-weight:300;color:var(--ink-2);line-height:1.72;margin-bottom:14px;}
+.testimonial{padding:clamp(20px,3vw,30px);background:var(–bg-card);border:1px solid var(–b);border-radius:16px;margin:clamp(20px,3vh,32px) 0;position:relative;}
+.testimonial::before{content:’”’;position:absolute;top:-8px;left:20px;font-family:var(–ff-d);font-size:60px;line-height:1;color:rgba(184,146,42,.15);pointer-events:none;}
+.t-text{font-family:var(–ff-d);font-size:clamp(15px,1.8vw,18px);font-style:italic;font-weight:300;color:var(–ink-2);line-height:1.72;margin-bottom:14px;}
 .t-meta{display:flex;align-items:center;gap:8px;}
-.t-dot{width:24px;height:1px;background:var(--acc,var(--amber));}
-.t-name{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);}
+.t-dot{width:24px;height:1px;background:var(–acc,var(–amber));}
+.t-name{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(–ink-4);}
 /* About page */
-.about-hero{min-height:60svh;display:grid;grid-template-columns:auto 1fr;gap:clamp(40px,8vw,88px);align-items:start;padding-top:calc(var(--nav) + clamp(40px,6vh,72px));}
+.about-hero{min-height:60svh;display:grid;grid-template-columns:auto 1fr;gap:clamp(40px,8vw,88px);align-items:start;padding-top:calc(var(–nav) + clamp(40px,6vh,72px));}
 @media(max-width:700px){.about-hero{grid-template-columns:1fr;text-align:center;}}
-.about-photo{width:clamp(100px,14vw,160px);height:clamp(100px,14vw,160px);border-radius:50%;object-fit:cover;border:1px solid var(--b-hi);}
-.about-init{width:clamp(100px,14vw,160px);height:clamp(100px,14vw,160px);border-radius:50%;background:var(--bg-card);border:1px solid var(--b-hi);display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:clamp(40px,6vw,72px);color:var(--sage-hi);}
-.about-body p{font-size:clamp(15px,1.6vw,17px);font-weight:300;color:var(--ink-2);line-height:1.96;margin-bottom:1.2em;}
+.about-photo{width:clamp(100px,14vw,160px);height:clamp(100px,14vw,160px);border-radius:50%;object-fit:cover;border:1px solid var(–b-hi);}
+.about-init{width:clamp(100px,14vw,160px);height:clamp(100px,14vw,160px);border-radius:50%;background:var(–bg-card);border:1px solid var(–b-hi);display:flex;align-items:center;justify-content:center;font-family:var(–ff-d);font-size:clamp(40px,6vw,72px);color:var(–sage-hi);}
+.about-body p{font-size:clamp(15px,1.6vw,17px);font-weight:300;color:var(–ink-2);line-height:1.96;margin-bottom:1.2em;}
 .approach-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px;}
 /* Services */
 .svcs-full{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:clamp(24px,4vh,40px) 0;}
-.svc-card-desc{font-size:12px;font-weight:300;color:var(--ink-4);line-height:1.6;margin-bottom:10px;}
-.insurance-note{background:var(--bg-card);border:1px solid var(--b);border-radius:16px;padding:clamp(20px,3vw,30px);margin-top:16px;}
-.ins-row{display:flex;align-items:center;gap:11px;font-size:13px;font-weight:300;color:var(--ink-2);padding:10px 0;border-bottom:1px solid var(--b);}
+.svc-card-desc{font-size:12px;font-weight:300;color:var(–ink-4);line-height:1.6;margin-bottom:10px;}
+.insurance-note{background:var(–bg-card);border:1px solid var(–b);border-radius:16px;padding:clamp(20px,3vw,30px);margin-top:16px;}
+.ins-row{display:flex;align-items:center;gap:11px;font-size:13px;font-weight:300;color:var(–ink-2);padding:10px 0;border-bottom:1px solid var(–b);}
 .ins-row:last-child{border-bottom:none;}
-.ins-row::before{content:'';width:14px;height:1px;background:var(--acc,var(--amber));flex-shrink:0;}
-.gfe-note{margin-top:24px;padding:16px 20px;background:rgba(237,227,208,.02);border:1px solid var(--b);border-radius:12px;font-size:11.5px;color:var(--ink-4);line-height:1.7;}
+.ins-row::before{content:’’;width:14px;height:1px;background:var(–acc,var(–amber));flex-shrink:0;}
+.gfe-note{margin-top:24px;padding:16px 20px;background:rgba(237,227,208,.02);border:1px solid var(–b);border-radius:12px;font-size:11.5px;color:var(–ink-4);line-height:1.7;}
 /* FAQ */
 .faq-item{border-bottom:1px solid rgba(237,227,208,.052);}
-.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--ff-b);font-size:clamp(13px,1.4vw,15px);font-weight:300;color:var(--ink-2);transition:color .2s;}
-.faq-q:hover{color:var(--ink);}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left;font-family:var(–ff-b);font-size:clamp(13px,1.4vw,15px);font-weight:300;color:var(–ink-2);transition:color .2s;}
+.faq-q:hover{color:var(–ink);}
 .faq-icon{width:16px;height:16px;flex-shrink:0;position:relative;}
-.faq-icon::before,.faq-icon::after{content:'';position:absolute;background:var(--ink-3);border-radius:1px;transition:all .32s;}
+.faq-icon::before,.faq-icon::after{content:’’;position:absolute;background:var(–ink-3);border-radius:1px;transition:all .32s;}
 .faq-icon::before{width:10px;height:1px;top:50%;left:50%;transform:translate(-50%,-50%);}
 .faq-icon::after{width:1px;height:10px;top:50%;left:50%;transform:translate(-50%,-50%);}
 .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
-.faq-item.open .faq-q{color:var(--ink);}
-.faq-item.open .faq-icon::before{background:var(--acc,var(--amber));}
-.faq-a{display:none;padding:0 0 20px;font-size:clamp(13px,1.4vw,14.5px);font-weight:300;color:var(--ink-3);line-height:1.88;max-width:600px;}
+.faq-item.open .faq-q{color:var(–ink);}
+.faq-item.open .faq-icon::before{background:var(–acc,var(–amber));}
+.faq-a{display:none;padding:0 0 20px;font-size:clamp(13px,1.4vw,14.5px);font-weight:300;color:var(–ink-3);line-height:1.88;max-width:600px;}
 .faq-item.open .faq-a{display:block;animation:faqIn .28s ease forwards;}
 @keyframes faqIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 /* Contact page */
-.contact-hero{min-height:80svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav) + 40px) clamp(20px,6vw,80px) 80px;}
-.contact-big-btn{display:inline-flex;align-items:center;gap:11px;font-family:var(--ff-d);font-size:clamp(20px,3vw,32px);font-weight:300;letter-spacing:-.014em;background:var(--acc,var(--amber));color:#0A0806;padding:0 clamp(28px,5vw,52px);border-radius:100px;min-height:clamp(56px,7vh,72px);transition:all .3s var(--smooth);margin:clamp(20px,3vh,32px) 0;}
+.contact-hero{min-height:80svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(–nav) + 40px) clamp(20px,6vw,80px) 80px;}
+.contact-big-btn{display:inline-flex;align-items:center;gap:11px;font-family:var(–ff-d);font-size:clamp(20px,3vw,32px);font-weight:300;letter-spacing:-.014em;background:var(–acc,var(–amber));color:#0A0806;padding:0 clamp(28px,5vw,52px);border-radius:100px;min-height:clamp(56px,7vh,72px);transition:all .3s var(–smooth);margin:clamp(20px,3vh,32px) 0;}
 .contact-big-btn:hover{filter:brightness(1.1);transform:translateY(-3px);box-shadow:0 18px 52px rgba(0,0,0,.4);}
 .contact-details{display:flex;flex-direction:column;gap:10px;margin-top:clamp(20px,3vh,32px);}
-.contact-detail{display:flex;align-items:center;gap:9px;justify-content:center;font-size:14px;font-weight:300;color:var(--ink-2);}
-.contact-detail::before{content:'';width:14px;height:1px;background:var(--acc,var(--amber));flex-shrink:0;}
-.location-card{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:16px 20px;background:var(--bg-card);border:1px solid var(--b);border-radius:14px;margin:clamp(16px,2.5vh,24px) 0;}
+.contact-detail{display:flex;align-items:center;gap:9px;justify-content:center;font-size:14px;font-weight:300;color:var(–ink-2);}
+.contact-detail::before{content:’’;width:14px;height:1px;background:var(–acc,var(–amber));flex-shrink:0;}
+.location-card{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:16px 20px;background:var(–bg-card);border:1px solid var(–b);border-radius:14px;margin:clamp(16px,2.5vh,24px) 0;}
 .loc-item{display:flex;flex-direction:column;gap:3px;}
-.loc-label{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);}
-.loc-value{font-size:12px;font-weight:300;color:var(--ink-2);}
-.loc-div{width:1px;height:28px;background:var(--b);}
+.loc-label{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(–ink-4);}
+.loc-value{font-size:12px;font-weight:300;color:var(–ink-2);}
+.loc-div{width:1px;height:28px;background:var(–b);}
 /* Crisis note */
 .crisis-note{font-size:9.5px;color:rgba(237,227,208,.3);font-weight:300;line-height:1.7;text-align:center;padding:12px clamp(20px,5vw,60px) 20px;border-top:1px solid rgba(237,227,208,.025);}
 .crisis-note a{color:rgba(237,227,208,.38);text-decoration:underline;text-underline-offset:2px;transition:color .2s;}
@@ -324,44 +327,49 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;backgroun
 .process{display:flex;flex-direction:column;margin-top:clamp(16px,2.5vh,24px);}
 .process-step{display:flex;gap:16px;align-items:flex-start;}
 .process-line{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
-.process-dot{width:28px;height:28px;border-radius:50%;background:var(--acc-gl);border:1px solid var(--acc-lo);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--acc-hi);font-weight:400;}
+.process-dot{width:28px;height:28px;border-radius:50%;background:var(–acc-gl);border:1px solid var(–acc-lo);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(–acc-hi);font-weight:400;}
 .process-connector{width:1px;height:24px;background:rgba(237,227,208,.05);margin:4px 0;}
 .process-content{padding-top:4px;padding-bottom:20px;}
-.process-title{font-family:var(--ff-d);font-size:16px;font-weight:300;margin-bottom:4px;color:var(--ink-2);}
-.process-desc{font-size:12px;color:var(--ink-4);font-weight:300;line-height:1.7;}
+.process-title{font-family:var(–ff-d);font-size:16px;font-weight:300;margin-bottom:4px;color:var(–ink-2);}
+.process-desc{font-size:12px;color:var(–ink-4);font-weight:300;line-height:1.7;}
 /* ── REVISE PAGE EXTRA ── */
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 @media(max-width:520px){.fr{grid-template-columns:1fr;}}
-.div{height:1px;background:var(--b);margin:6px 0;}
-.opt{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-4);margin-left:5px;}
-.cc{font-size:10px;color:var(--ink-4);text-align:right;margin-top:3px;transition:color .2s;}
-.cc.w{color:var(--amber-hi);}
+.div{height:1px;background:var(–b);margin:6px 0;}
+.opt{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(–ink-4);margin-left:5px;}
+.cc{font-size:10px;color:var(–ink-4);text-align:right;margin-top:3px;transition:color .2s;}
+.cc.w{color:var(–amber-hi);}
 </style>
+
 </head>
 <body>
 
 <div id="spb" aria-hidden="true"></div>
 
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" aria-label="Main navigation">
   <div class="nav-i">
     <div class="nav-brand">
       <a href="/clinical" class="logo">Wellovie <span>Clinical</span></a>
       <span class="logo-sub">Revision Request</span>
     </div>
-    <a href="/clinical" class="nav-back">
-      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11.5 7h-9M6 3.5L2.5 7 6 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Wellovie Clinical
-    </a>
+    <div class="nav-r">
+      <a href="/clinical" class="nav-back">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11.5 7h-9M6 3.5L2.5 7 6 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back
+      </a>
+    </div>
   </div>
 </nav>
 
 <main class="page" id="mainForm">
 
-  <span class="page-kicker">One included revision round</span>
+<span class="page-kicker">One included revision round</span>
+
   <h1 class="page-title">Request your<br><em>changes.</em></h1>
   <p class="page-sub">Your wizard data is loaded below. Change only what you want — everything else stays exactly as you built it. Preview, then download your updated site.</p>
 
   <!-- ── IDENTIFICATION ── -->
+
   <div class="fg" data-r>
     <div class="f">
       <label class="fl" for="rName">Your name</label>
@@ -376,637 +384,643 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;backgroun
   </div>
 
   <!-- ── REVISION SECTIONS ── -->
+
   <div class="rev-sections" data-r style="--d:.1s">
 
-    <!-- 1. Bio & text -->
-    <div class="rev-section" id="secBio">
-      <div class="rev-sec-hdr" data-sec="bio">
-        <div class="rev-check">✓</div>
-        <div class="rev-sec-info">
-          <div class="rev-sec-title">Bio &amp; written content</div>
-          <div class="rev-sec-desc">Your bio, first session description, and who you work best with</div>
-        </div>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+```
+<!-- 1. Bio & text -->
+<div class="rev-section" id="secBio">
+  <div class="rev-sec-hdr" data-sec="bio">
+    <div class="rev-check">✓</div>
+    <div class="rev-sec-info">
+      <div class="rev-sec-title">Bio &amp; written content</div>
+      <div class="rev-sec-desc">Your bio, first session description, and who you work best with</div>
+    </div>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="rev-sec-body">
+    <div class="rev-sec-inner">
+      <div class="f">
+        <label class="fl" for="rBio">Bio</label>
+        <textarea class="ta" id="rBio" placeholder="Paste your current bio and make changes, or write a new one." maxlength="600" rows="4"></textarea>
+        <div class="cc" id="bioCc">0 / 600</div>
       </div>
-      <div class="rev-sec-body">
-        <div class="rev-sec-inner">
-          <div class="f">
-            <label class="fl" for="rBio">Bio</label>
-            <textarea class="ta" id="rBio" placeholder="Paste your current bio and make changes, or write a new one." maxlength="600" rows="4"></textarea>
-            <div class="cc" id="bioCc">0 / 600</div>
-          </div>
-          <div class="f">
-            <label class="fl" for="rFirst">First session description</label>
-            <textarea class="ta" id="rFirst" placeholder="What can a new client expect in their first session with you?" maxlength="400" rows="3"></textarea>
-            <div class="cc" id="firstCc">0 / 400</div>
-          </div>
-          <div class="f">
-            <label class="fl" for="rWho">Who you work best with</label>
-            <input class="inp" id="rWho" type="text" placeholder="e.g. Adults navigating anxiety and major life changes" maxlength="120"/>
-          </div>
-          <div class="f">
-            <label class="fl" for="rTagline">Hero tagline <span class="opt">optional</span></label>
-            <input class="inp" id="rTagline" type="text" placeholder="You don't have to figure this out alone." maxlength="80"/>
-            <span class="fh">One emotional hook line above your name on the home page. Leave blank to skip.</span>
-          </div>
-          <div class="f">
-            <label class="fl" for="rTestimonial">Client testimonial <span class="opt">optional</span></label>
-            <textarea class="ta" id="rTestimonial" placeholder="A short quote from a past client offered voluntarily — no name shown." maxlength="280" rows="3"></textarea>
-            <div class="cc" id="testimonialCc">0 / 280</div>
-          </div>
-          <div class="div"></div>
-          <div class="fr">
-            <div class="f">
-              <label class="fl" for="rAvailNote">Wait time <span class="opt">optional</span></label>
-              <input class="inp" id="rAvailNote" type="text" placeholder="e.g. typically within 1–2 weeks" maxlength="60"/>
-            </div>
-            <div class="f">
-              <label class="fl" for="rYears">Years in practice <span class="opt">optional</span></label>
-              <input class="inp" id="rYears" type="text" placeholder="8" maxlength="4"/>
-            </div>
-          </div>
-          <div class="fr">
-            <div class="f">
-              <label class="fl" for="rLangs">Languages <span class="opt">optional</span></label>
-              <input class="inp" id="rLangs" type="text" placeholder="English, Spanish" maxlength="60"/>
-            </div>
-            <div class="f">
-              <label class="fl" for="rNeigh">Neighborhood <span class="opt">optional</span></label>
-              <input class="inp" id="rNeigh" type="text" placeholder="e.g. Upper West Side" maxlength="60"/>
-            </div>
-          </div>
-          <div class="f">
-            <label class="fl" for="rCancel">Cancellation policy <span class="opt">optional</span></label>
-            <input class="inp" id="rCancel" type="text" placeholder="e.g. 24 hours notice required. Late cancellations charged the full fee." maxlength="160"/>
-          </div>
-          <div class="f">
-            <label class="fl" for="rOffice">Office environment <span class="opt">optional, in-person only</span></label>
-            <input class="inp" id="rOffice" type="text" placeholder="e.g. A quiet, private office in the West Village — easy to reach by subway" maxlength="120"/>
-          </div>
+      <div class="f">
+        <label class="fl" for="rFirst">First session description</label>
+        <textarea class="ta" id="rFirst" placeholder="What can a new client expect in their first session with you?" maxlength="400" rows="3"></textarea>
+        <div class="cc" id="firstCc">0 / 400</div>
+      </div>
+      <div class="f">
+        <label class="fl" for="rWho">Who you work best with</label>
+        <input class="inp" id="rWho" type="text" placeholder="e.g. Adults navigating anxiety and major life changes" maxlength="120"/>
+      </div>
+      <div class="f">
+        <label class="fl" for="rTagline">Hero tagline <span class="opt">optional</span></label>
+        <input class="inp" id="rTagline" type="text" placeholder="You don't have to figure this out alone." maxlength="80"/>
+        <span class="fh">One emotional hook line above your name on the home page. Leave blank to skip.</span>
+      </div>
+      <div class="f">
+        <label class="fl" for="rTestimonial">Client testimonial <span class="opt">optional</span></label>
+        <textarea class="ta" id="rTestimonial" placeholder="A short quote from a past client offered voluntarily — no name shown." maxlength="280" rows="3"></textarea>
+        <div class="cc" id="testimonialCc">0 / 280</div>
+      </div>
+      <div class="div"></div>
+      <div class="fr">
+        <div class="f">
+          <label class="fl" for="rAvailNote">Wait time <span class="opt">optional</span></label>
+          <input class="inp" id="rAvailNote" type="text" placeholder="e.g. typically within 1–2 weeks" maxlength="60"/>
+        </div>
+        <div class="f">
+          <label class="fl" for="rYears">Years in practice <span class="opt">optional</span></label>
+          <input class="inp" id="rYears" type="text" placeholder="8" maxlength="4"/>
+        </div>
+      </div>
+      <div class="fr">
+        <div class="f">
+          <label class="fl" for="rLangs">Languages <span class="opt">optional</span></label>
+          <input class="inp" id="rLangs" type="text" placeholder="English, Spanish" maxlength="60"/>
+        </div>
+        <div class="f">
+          <label class="fl" for="rNeigh">Neighborhood <span class="opt">optional</span></label>
+          <input class="inp" id="rNeigh" type="text" placeholder="e.g. Upper West Side" maxlength="60"/>
+        </div>
+      </div>
+      <div class="f">
+        <label class="fl" for="rCancel">Cancellation policy <span class="opt">optional</span></label>
+        <input class="inp" id="rCancel" type="text" placeholder="e.g. 24 hours notice required. Late cancellations charged the full fee." maxlength="160"/>
+      </div>
+      <div class="f">
+        <label class="fl" for="rOffice">Office environment <span class="opt">optional, in-person only</span></label>
+        <input class="inp" id="rOffice" type="text" placeholder="e.g. A quiet, private office in the West Village — easy to reach by subway" maxlength="120"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Specialties & approach -->
+<div class="rev-section" id="secSpec">
+  <div class="rev-sec-hdr" data-sec="spec">
+    <div class="rev-check">✓</div>
+    <div class="rev-sec-info">
+      <div class="rev-sec-title">Specialties &amp; approach</div>
+      <div class="rev-sec-desc">The chips shown on your site — what you work with and how</div>
+    </div>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="rev-sec-body">
+    <div class="rev-sec-inner">
+      <div class="f">
+        <label class="fl">Specialties <span style="font-size:9px;color:var(--ink-4);margin-left:4px">pick up to 6</span></label>
+        <div class="cg" id="rSpec" data-max="6" data-col="a">
+          <button type="button" class="chip" data-v="Anxiety">Anxiety</button>
+          <button type="button" class="chip" data-v="Depression">Depression</button>
+          <button type="button" class="chip" data-v="Trauma / PTSD">Trauma / PTSD</button>
+          <button type="button" class="chip" data-v="OCD">OCD</button>
+          <button type="button" class="chip" data-v="Relationships">Relationships</button>
+          <button type="button" class="chip" data-v="Couples">Couples</button>
+          <button type="button" class="chip" data-v="Grief">Grief</button>
+          <button type="button" class="chip" data-v="Life Transitions">Life Transitions</button>
+          <button type="button" class="chip" data-v="Identity">Identity</button>
+          <button type="button" class="chip" data-v="LGBTQ+">LGBTQ+</button>
+          <button type="button" class="chip" data-v="Eating Disorders">Eating Disorders</button>
+          <button type="button" class="chip" data-v="Chronic Illness">Chronic Illness</button>
+          <button type="button" class="chip" data-v="Burnout">Burnout</button>
+          <button type="button" class="chip" data-v="ADHD">ADHD</button>
+          <button type="button" class="chip" data-v="Autism">Autism</button>
+          <button type="button" class="chip" data-v="Parenting">Parenting</button>
+          <button type="button" class="chip" data-v="Teens">Teens</button>
+          <button type="button" class="chip" data-v="Young Adults">Young Adults</button>
+          <button type="button" class="chip" data-v="Older Adults">Older Adults</button>
+          <button type="button" class="chip" data-v="Substance Use">Substance Use</button>
+          <button type="button" class="chip" data-v="Anger">Anger</button>
+          <button type="button" class="chip" data-v="Bipolar">Bipolar</button>
+          <button type="button" class="chip" data-v="Personality Disorders">Personality Disorders</button>
+          <button type="button" class="chip" data-v="Existential / Meaning">Existential / Meaning</button>
+        </div>
+      </div>
+      <div class="f">
+        <label class="fl">Therapy approach</label>
+        <div class="cg" id="rApp" data-col="s">
+          <button type="button" class="chip" data-v="CBT">CBT</button>
+          <button type="button" class="chip" data-v="DBT">DBT</button>
+          <button type="button" class="chip" data-v="ACT">ACT</button>
+          <button type="button" class="chip" data-v="Psychodynamic">Psychodynamic</button>
+          <button type="button" class="chip" data-v="Somatic">Somatic</button>
+          <button type="button" class="chip" data-v="EMDR">EMDR</button>
+          <button type="button" class="chip" data-v="IFS">IFS</button>
+          <button type="button" class="chip" data-v="Attachment-based">Attachment-based</button>
+          <button type="button" class="chip" data-v="Narrative">Narrative</button>
+          <button type="button" class="chip" data-v="Gottman">Gottman</button>
+          <button type="button" class="chip" data-v="Schema">Schema</button>
+          <button type="button" class="chip" data-v="Mindfulness-based">Mindfulness-based</button>
+          <button type="button" class="chip" data-v="Integrative">Integrative</button>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- 2. Specialties & approach -->
-    <div class="rev-section" id="secSpec">
-      <div class="rev-sec-hdr" data-sec="spec">
-        <div class="rev-check">✓</div>
-        <div class="rev-sec-info">
-          <div class="rev-sec-title">Specialties &amp; approach</div>
-          <div class="rev-sec-desc">The chips shown on your site — what you work with and how</div>
+<!-- 3. Services & fees -->
+<div class="rev-section" id="secSvc">
+  <div class="rev-sec-hdr" data-sec="svc">
+    <div class="rev-check">✓</div>
+    <div class="rev-sec-info">
+      <div class="rev-sec-title">Services &amp; fees</div>
+      <div class="rev-sec-desc">Service names, session lengths, or pricing</div>
+    </div>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="rev-sec-body">
+    <div class="rev-sec-inner">
+      <div class="svc-list" id="rSvcList">
+        <div class="svc-blk" data-n="1">
+          <div class="svc-hdr"><span class="svc-n">Service 1</span></div>
+          <div class="svc-row">
+            <div class="f"><label class="fl">Name</label><input class="inp sv-nm" type="text" placeholder="Individual Therapy" maxlength="32"/></div>
+            <div class="f"><label class="fl">Length</label><select class="sel sv-dur"><option>50 min</option><option>45 min</option><option>55 min</option><option>60 min</option><option>75 min</option><option>90 min</option></select></div>
+            <div class="f"><label class="fl">Fee</label><input class="inp sv-fee" type="text" placeholder="$175" maxlength="12"/></div>
+          </div>
         </div>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="rev-sec-body">
-        <div class="rev-sec-inner">
-          <div class="f">
-            <label class="fl">Specialties <span style="font-size:9px;color:var(--ink-4);margin-left:4px">pick up to 6</span></label>
-            <div class="cg" id="rSpec" data-max="6" data-col="a">
-              <button type="button" class="chip" data-v="Anxiety">Anxiety</button>
-              <button type="button" class="chip" data-v="Depression">Depression</button>
-              <button type="button" class="chip" data-v="Trauma / PTSD">Trauma / PTSD</button>
-              <button type="button" class="chip" data-v="OCD">OCD</button>
-              <button type="button" class="chip" data-v="Relationships">Relationships</button>
-              <button type="button" class="chip" data-v="Couples">Couples</button>
-              <button type="button" class="chip" data-v="Grief">Grief</button>
-              <button type="button" class="chip" data-v="Life Transitions">Life Transitions</button>
-              <button type="button" class="chip" data-v="Identity">Identity</button>
-              <button type="button" class="chip" data-v="LGBTQ+">LGBTQ+</button>
-              <button type="button" class="chip" data-v="Eating Disorders">Eating Disorders</button>
-              <button type="button" class="chip" data-v="Chronic Illness">Chronic Illness</button>
-              <button type="button" class="chip" data-v="Burnout">Burnout</button>
-              <button type="button" class="chip" data-v="ADHD">ADHD</button>
-              <button type="button" class="chip" data-v="Autism">Autism</button>
-              <button type="button" class="chip" data-v="Parenting">Parenting</button>
-              <button type="button" class="chip" data-v="Teens">Teens</button>
-              <button type="button" class="chip" data-v="Young Adults">Young Adults</button>
-              <button type="button" class="chip" data-v="Older Adults">Older Adults</button>
-              <button type="button" class="chip" data-v="Substance Use">Substance Use</button>
-              <button type="button" class="chip" data-v="Anger">Anger</button>
-              <button type="button" class="chip" data-v="Bipolar">Bipolar</button>
-              <button type="button" class="chip" data-v="Personality Disorders">Personality Disorders</button>
-              <button type="button" class="chip" data-v="Existential / Meaning">Existential / Meaning</button>
-            </div>
+      <button type="button" class="add-svc" id="rAddSvc">Add a service <span style="font-size:9px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.08em;margin-left:4px">max 4</span></button>
+      <div class="div"></div>
+      <div class="info-row"><div class="ir-hdr"><div class="ir-lbl">Accept insurance?</div><label class="sw"><input type="checkbox" id="rIns"/><div class="sw-tr"><div class="sw-th"></div></div></label></div><div class="ir-det" id="rInsDet" style="display:none"><input class="inp" id="rInsurers" type="text" placeholder="e.g. Aetna, Blue Cross, Cigna" style="margin-top:8px"/></div></div>
+      <div class="info-row"><div class="ir-hdr"><div class="ir-lbl">Offer a sliding scale?</div><label class="sw"><input type="checkbox" id="rSlide"/><div class="sw-tr"><div class="sw-th"></div></div></label></div></div>
+      <div class="info-row"><div class="ir-hdr"><div class="ir-lbl">Provide superbills?</div><label class="sw"><input type="checkbox" id="rSbill"/><div class="sw-tr"><div class="sw-th"></div></div></label></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Photo -->
+<div class="rev-section" id="secPhoto">
+  <div class="rev-sec-hdr" data-sec="photo">
+    <div class="rev-check">✓</div>
+    <div class="rev-sec-info">
+      <div class="rev-sec-title">Profile photo</div>
+      <div class="rev-sec-desc">Upload a new profile photo to replace the current one</div>
+    </div>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="rev-sec-body">
+    <div class="rev-sec-inner">
+      <div id="rPhotoWrap">
+        <div class="photo-zone" id="rPhotoZone" role="button" tabindex="0">
+          <div class="photo-ring" id="rPhotoRing"><span style="color:var(--sage-hi)">↑</span></div>
+          <div>
+            <div style="font-size:13px;color:var(--ink-2);margin-bottom:3px;">Upload new photo</div>
+            <div style="font-size:11px;color:var(--ink-4);font-weight:300;">JPG or PNG · Replaces your current photo</div>
           </div>
-          <div class="f">
-            <label class="fl">Therapy approach</label>
-            <div class="cg" id="rApp" data-col="s">
-              <button type="button" class="chip" data-v="CBT">CBT</button>
-              <button type="button" class="chip" data-v="DBT">DBT</button>
-              <button type="button" class="chip" data-v="ACT">ACT</button>
-              <button type="button" class="chip" data-v="Psychodynamic">Psychodynamic</button>
-              <button type="button" class="chip" data-v="Somatic">Somatic</button>
-              <button type="button" class="chip" data-v="EMDR">EMDR</button>
-              <button type="button" class="chip" data-v="IFS">IFS</button>
-              <button type="button" class="chip" data-v="Attachment-based">Attachment-based</button>
-              <button type="button" class="chip" data-v="Narrative">Narrative</button>
-              <button type="button" class="chip" data-v="Gottman">Gottman</button>
-              <button type="button" class="chip" data-v="Schema">Schema</button>
-              <button type="button" class="chip" data-v="Mindfulness-based">Mindfulness-based</button>
-              <button type="button" class="chip" data-v="Integrative">Integrative</button>
-            </div>
-          </div>
+          <input class="photo-in" id="rPhoto" type="file" accept="image/*"/>
+        </div>
+        <div id="rPhotoUploaded" style="display:none;background:rgba(237,227,208,.03);border:1px solid var(--b);border-radius:14px;padding:14px 16px;align-items:center;gap:14px;">
+          <div style="width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;border:1px solid var(--b-hi);"><img id="rPhotoThumb" src="" alt="" style="width:100%;height:100%;object-fit:cover;"/></div>
+          <div style="flex:1;"><div style="font-size:13px;color:var(--sage-hi);margin-bottom:3px;">✓ New photo ready</div><div style="font-size:11px;color:var(--ink-4);font-weight:300;">This will replace your current photo</div></div>
+          <button type="button" id="rPhotoRemove" style="font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-4);padding:5px 12px;border:1px solid var(--b);border-radius:100px;">Remove</button>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- 3. Services & fees -->
-    <div class="rev-section" id="secSvc">
-      <div class="rev-sec-hdr" data-sec="svc">
-        <div class="rev-check">✓</div>
-        <div class="rev-sec-info">
-          <div class="rev-sec-title">Services &amp; fees</div>
-          <div class="rev-sec-desc">Service names, session lengths, or pricing</div>
+<!-- 5. Palette -->
+<div class="rev-section" id="secPal">
+  <div class="rev-sec-hdr" data-sec="pal">
+    <div class="rev-check">✓</div>
+    <div class="rev-sec-info">
+      <div class="rev-sec-title">Color palette</div>
+      <div class="rev-sec-desc">Switch your entire site to a different color scheme</div>
+    </div>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="rev-sec-body">
+    <div class="rev-sec-inner">
+      <p style="font-size:11px;color:var(--ink-3);font-weight:300;line-height:1.6;margin-bottom:4px;">Each palette changes everything — background, text warmth, accents, and buttons across all four pages.</p>
+      <div class="pal-grid" id="rPalGrid">
+        <div class="pal-sw" data-pal="ember"><div class="pal-circle" style="background:linear-gradient(160deg,#0E0C09 0%,#0E0C09 45%,#B8922A 45%,#B8922A 72%,#D4AD52 72%)"></div><span class="pal-name">Ember</span></div>
+        <div class="pal-sw" data-pal="stone"><div class="pal-circle" style="background:linear-gradient(160deg,#0D0B0A 0%,#0D0B0A 45%,#A67C6D 45%,#A67C6D 72%,#C09080 72%)"></div><span class="pal-name">Stone</span></div>
+        <div class="pal-sw" data-pal="forest"><div class="pal-circle" style="background:linear-gradient(160deg,#070C08 0%,#070C08 45%,#4A7A62 45%,#4A7A62 72%,#6BAD84 72%)"></div><span class="pal-name">Forest</span></div>
+        <div class="pal-sw" data-pal="ocean"><div class="pal-circle" style="background:linear-gradient(160deg,#070A10 0%,#070A10 45%,#3A7A8C 45%,#3A7A8C 72%,#56A8BF 72%)"></div><span class="pal-name">Ocean</span></div>
+        <div class="pal-sw" data-pal="dusk"><div class="pal-circle" style="background:linear-gradient(160deg,#0C080F 0%,#0C080F 45%,#8A6AAD 45%,#8A6AAD 72%,#A889CC 72%)"></div><span class="pal-name">Dusk</span></div>
+      <div class="pal-sw" data-pal="parchment">
+          <div class="pal-circle" style="background:linear-gradient(160deg,#FAF6EF 0%,#FAF6EF 45%,#8B6914 45%,#8B6914 72%,#6B4F0E 72%);border:1px solid rgba(139,105,20,.2)"></div>
+          <span class="pal-name">Parchment</span>
+          <span class="pal-sub">Warm light</span>
         </div>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="pal-sw" data-pal="slate">
+          <div class="pal-circle" style="background:linear-gradient(160deg,#F2F4F7 0%,#F2F4F7 45%,#1E6B84 45%,#1E6B84 72%,#155668 72%);border:1px solid rgba(30,107,132,.2)"></div>
+          <span class="pal-name">Slate</span>
+          <span class="pal-sub">Cool light</span>
+        </div>
       </div>
-      <div class="rev-sec-body">
-        <div class="rev-sec-inner">
-          <div class="svc-list" id="rSvcList">
-            <div class="svc-blk" data-n="1">
-              <div class="svc-hdr"><span class="svc-n">Service 1</span></div>
-              <div class="svc-row">
-                <div class="f"><label class="fl">Name</label><input class="inp sv-nm" type="text" placeholder="Individual Therapy" maxlength="32"/></div>
-                <div class="f"><label class="fl">Length</label><select class="sel sv-dur"><option>50 min</option><option>45 min</option><option>55 min</option><option>60 min</option><option>75 min</option><option>90 min</option></select></div>
-                <div class="f"><label class="fl">Fee</label><input class="inp sv-fee" type="text" placeholder="$175" maxlength="12"/></div>
-              </div>
-            </div>
-          </div>
-          <button type="button" class="add-svc" id="rAddSvc">Add a service <span style="font-size:9px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.08em;margin-left:4px">max 4</span></button>
-          <div class="div"></div>
-          <div class="info-row"><div class="ir-hdr"><div class="ir-lbl">Accept insurance?</div><label class="sw"><input type="checkbox" id="rIns"/><div class="sw-tr"><div class="sw-th"></div></div></label></div><div class="ir-det" id="rInsDet" style="display:none"><input class="inp" id="rInsurers" type="text" placeholder="e.g. Aetna, Blue Cross, Cigna" style="margin-top:8px"/></div></div>
-          <div class="info-row"><div class="ir-hdr"><div class="ir-lbl">Offer a sliding scale?</div><label class="sw"><input type="checkbox" id="rSlide"/><div class="sw-tr"><div class="sw-th"></div></div></label></div></div>
-          <div class="info-row"><div class="ir-hdr"><div class="ir-lbl">Provide superbills?</div><label class="sw"><input type="checkbox" id="rSbill"/><div class="sw-tr"><div class="sw-th"></div></div></label></div></div>
+  </div>
+
+  <!-- Logo Style -->
+  <div style="padding:0 20px 16px;">
+    <label class="fl" style="display:block;margin-bottom:10px;">Logo style</label>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;" id="revLogoPicker">
+      <button type="button" class="rev-logo-btn" data-style="wordmark"
+        style="flex:1;min-width:90px;padding:12px 8px;background:rgba(184,146,42,.08);border:1px solid var(--amber);border-radius:var(--r-lg);cursor:pointer;transition:all .22s;text-align:center;">
+        <div style="font-family:var(--ff-d);font-size:14px;font-weight:300;color:var(--ink-2);margin-bottom:4px;">Name</div>
+        <div style="width:60%;height:1px;background:var(--amber-lo);margin:0 auto 4px;"></div>
+        <div style="font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-hi);">Wordmark</div>
+      </button>
+      <button type="button" class="rev-logo-btn" data-style="mark-name"
+        style="flex:1;min-width:90px;padding:12px 8px;background:rgba(237,227,208,.02);border:1px solid var(--b);border-radius:var(--r-lg);cursor:pointer;transition:all .22s;text-align:center;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:4px;">
+          <div style="width:20px;height:20px;background:var(--amber-lo);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:12px;font-style:italic;color:var(--amber-hi);">Y</div>
+          <div style="font-family:var(--ff-d);font-size:11px;font-weight:300;color:var(--ink-2);">Name</div>
+        </div>
+        <div style="font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);">Mark + Name</div>
+      </button>
+      <button type="button" class="rev-logo-btn" data-style="monogram"
+        style="flex:1;min-width:90px;padding:12px 8px;background:rgba(237,227,208,.02);border:1px solid var(--b);border-radius:var(--r-lg);cursor:pointer;transition:all .22s;text-align:center;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:4px;">
+          <div style="width:22px;height:22px;border-radius:50%;border:1px solid var(--amber-lo);display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:10px;font-style:italic;color:var(--amber-hi);">YN</div>
+          <div style="font-family:var(--ff-d);font-size:11px;font-weight:300;color:var(--ink-2);">Name</div>
+        </div>
+        <div style="font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);">Monogram</div>
+      </button>
+    </div>
+    <span class="fh" style="display:block;margin-top:8px;">logo.svg and favicon.svg generated automatically — included in your zip.</span>
+  </div>
+
+  <!-- Analytics -->
+  <div style="padding:0 20px 20px;">
+    <label class="fl" style="display:block;margin-bottom:6px;">Analytics ID <span class="opt">optional</span></label>
+    <input class="inp" id="rAnalytics" type="text" placeholder="G-XXXXXXXXXX or your Plausible domain" maxlength="60" style="font-family:var(--ff-m);font-size:16px;"/>
+    <span class="fh" style="display:block;margin-top:5px;">GA4 Measurement ID or Plausible domain — see who visits your site after launch.</span>
+  </div>
+
+</div>
+
+<!-- 6. Contact method -->
+<div class="rev-section" id="secContact">
+  <div class="rev-sec-hdr" data-sec="contact">
+    <div class="rev-check">✓</div>
+    <div class="rev-sec-info">
+      <div class="rev-sec-title">Contact method</div>
+      <div class="rev-sec-desc">Booking link, email, or phone — how clients reach you</div>
+    </div>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="rev-sec-body">
+    <div class="rev-sec-inner">
+      <div class="contact-opts" id="rContactOpts">
+        <div class="contact-opt on" data-cv="booking">
+          <div class="co-hdr"><div class="co-radio"></div><span class="co-name">Booking or client portal link</span></div>
+          <div class="co-desc">Clients go directly to your secure portal. No forms, no PHI on your site.</div>
+          <div class="co-field" id="rBookField"><input class="inp" id="rBookUrl" type="url" placeholder="https://your-link-here.com" maxlength="120"/></div>
+        </div>
+        <div class="contact-opt" data-cv="email">
+          <div class="co-hdr"><div class="co-radio"></div><span class="co-name">Email only</span></div>
+          <div class="co-desc">Clients reach you directly at your email address.</div>
+        </div>
+        <div class="contact-opt" data-cv="phone-email">
+          <div class="co-hdr"><div class="co-radio"></div><span class="co-name">Phone + email</span></div>
+          <div class="co-desc">Display both phone and email for initial contact.</div>
         </div>
       </div>
     </div>
-
-    <!-- 4. Photo -->
-    <div class="rev-section" id="secPhoto">
-      <div class="rev-sec-hdr" data-sec="photo">
-        <div class="rev-check">✓</div>
-        <div class="rev-sec-info">
-          <div class="rev-sec-title">Profile photo</div>
-          <div class="rev-sec-desc">Upload a new profile photo to replace the current one</div>
-        </div>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="rev-sec-body">
-        <div class="rev-sec-inner">
-          <div id="rPhotoWrap">
-            <div class="photo-zone" id="rPhotoZone" role="button" tabindex="0">
-              <div class="photo-ring" id="rPhotoRing"><span style="color:var(--sage-hi)">↑</span></div>
-              <div>
-                <div style="font-size:13px;color:var(--ink-2);margin-bottom:3px;">Upload new photo</div>
-                <div style="font-size:11px;color:var(--ink-4);font-weight:300;">JPG or PNG · Replaces your current photo</div>
-              </div>
-              <input class="photo-in" id="rPhoto" type="file" accept="image/*"/>
-            </div>
-            <div id="rPhotoUploaded" style="display:none;background:rgba(237,227,208,.03);border:1px solid var(--b);border-radius:14px;padding:14px 16px;align-items:center;gap:14px;">
-              <div style="width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;border:1px solid var(--b-hi);"><img id="rPhotoThumb" src="" alt="" style="width:100%;height:100%;object-fit:cover;"/></div>
-              <div style="flex:1;"><div style="font-size:13px;color:var(--sage-hi);margin-bottom:3px;">✓ New photo ready</div><div style="font-size:11px;color:var(--ink-4);font-weight:300;">This will replace your current photo</div></div>
-              <button type="button" id="rPhotoRemove" style="font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-4);padding:5px 12px;border:1px solid var(--b);border-radius:100px;">Remove</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. Palette -->
-    <div class="rev-section" id="secPal">
-      <div class="rev-sec-hdr" data-sec="pal">
-        <div class="rev-check">✓</div>
-        <div class="rev-sec-info">
-          <div class="rev-sec-title">Color palette</div>
-          <div class="rev-sec-desc">Switch your entire site to a different color scheme</div>
-        </div>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="rev-sec-body">
-        <div class="rev-sec-inner">
-          <p style="font-size:11px;color:var(--ink-3);font-weight:300;line-height:1.6;margin-bottom:4px;">Each palette changes everything — background, text warmth, accents, and buttons across all four pages.</p>
-          <div class="pal-grid" id="rPalGrid">
-            <div class="pal-sw" data-pal="ember"><div class="pal-circle" style="background:linear-gradient(160deg,#0E0C09 0%,#0E0C09 45%,#B8922A 45%,#B8922A 72%,#D4AD52 72%)"></div><span class="pal-name">Ember</span></div>
-            <div class="pal-sw" data-pal="stone"><div class="pal-circle" style="background:linear-gradient(160deg,#0D0B0A 0%,#0D0B0A 45%,#A67C6D 45%,#A67C6D 72%,#C09080 72%)"></div><span class="pal-name">Stone</span></div>
-            <div class="pal-sw" data-pal="forest"><div class="pal-circle" style="background:linear-gradient(160deg,#070C08 0%,#070C08 45%,#4A7A62 45%,#4A7A62 72%,#6BAD84 72%)"></div><span class="pal-name">Forest</span></div>
-            <div class="pal-sw" data-pal="ocean"><div class="pal-circle" style="background:linear-gradient(160deg,#070A10 0%,#070A10 45%,#3A7A8C 45%,#3A7A8C 72%,#56A8BF 72%)"></div><span class="pal-name">Ocean</span></div>
-            <div class="pal-sw" data-pal="dusk"><div class="pal-circle" style="background:linear-gradient(160deg,#0C080F 0%,#0C080F 45%,#8A6AAD 45%,#8A6AAD 72%,#A889CC 72%)"></div><span class="pal-name">Dusk</span></div>
-          </div>
-            <div class="pal-sw" data-pal="parchment">
-              <div class="pal-circle" style="background:linear-gradient(160deg,#FAF6EF 0%,#FAF6EF 45%,#8B6914 45%,#8B6914 72%,#6B4F0E 72%);border:1px solid rgba(139,105,20,.2)"></div>
-              <span class="pal-name">Parchment</span>
-              <span class="pal-sub">Warm light</span>
-            </div>
-            <div class="pal-sw" data-pal="slate">
-              <div class="pal-circle" style="background:linear-gradient(160deg,#F2F4F7 0%,#F2F4F7 45%,#1E6B84 45%,#1E6B84 72%,#155668 72%);border:1px solid rgba(30,107,132,.2)"></div>
-              <span class="pal-name">Slate</span>
-              <span class="pal-sub">Cool light</span>
-            </div>
-        </div>
-      </div>
-
-      <!-- Logo Style -->
-      <div style="padding:0 20px 16px;">
-        <label class="fl" style="display:block;margin-bottom:10px;">Logo style</label>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;" id="revLogoPicker">
-          <button type="button" class="rev-logo-btn" data-style="wordmark"
-            style="flex:1;min-width:90px;padding:12px 8px;background:rgba(184,146,42,.08);border:1px solid var(--amber);border-radius:var(--r-lg);cursor:pointer;transition:all .22s;text-align:center;">
-            <div style="font-family:var(--ff-d);font-size:14px;font-weight:300;color:var(--ink-2);margin-bottom:4px;">Name</div>
-            <div style="width:60%;height:1px;background:var(--amber-lo);margin:0 auto 4px;"></div>
-            <div style="font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-hi);">Wordmark</div>
-          </button>
-          <button type="button" class="rev-logo-btn" data-style="mark-name"
-            style="flex:1;min-width:90px;padding:12px 8px;background:rgba(237,227,208,.02);border:1px solid var(--b);border-radius:var(--r-lg);cursor:pointer;transition:all .22s;text-align:center;">
-            <div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:4px;">
-              <div style="width:20px;height:20px;background:var(--amber-lo);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:12px;font-style:italic;color:var(--amber-hi);">Y</div>
-              <div style="font-family:var(--ff-d);font-size:11px;font-weight:300;color:var(--ink-2);">Name</div>
-            </div>
-            <div style="font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);">Mark + Name</div>
-          </button>
-          <button type="button" class="rev-logo-btn" data-style="monogram"
-            style="flex:1;min-width:90px;padding:12px 8px;background:rgba(237,227,208,.02);border:1px solid var(--b);border-radius:var(--r-lg);cursor:pointer;transition:all .22s;text-align:center;">
-            <div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:4px;">
-              <div style="width:22px;height:22px;border-radius:50%;border:1px solid var(--amber-lo);display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-size:10px;font-style:italic;color:var(--amber-hi);">YN</div>
-              <div style="font-family:var(--ff-d);font-size:11px;font-weight:300;color:var(--ink-2);">Name</div>
-            </div>
-            <div style="font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);">Monogram</div>
-          </button>
-        </div>
-        <span class="fh" style="display:block;margin-top:8px;">logo.svg and favicon.svg generated automatically — included in your zip.</span>
-      </div>
-
-      <!-- Analytics -->
-      <div style="padding:0 20px 20px;">
-        <label class="fl" style="display:block;margin-bottom:6px;">Analytics ID <span class="opt">optional</span></label>
-        <input class="inp" id="rAnalytics" type="text" placeholder="G-XXXXXXXXXX or your Plausible domain" maxlength="60" style="font-family:var(--ff-m);font-size:13px;"/>
-        <span class="fh" style="display:block;margin-top:5px;">GA4 Measurement ID or Plausible domain — see who visits your site after launch.</span>
-      </div>
-
-    </div>
-
-    <!-- 6. Contact method -->
-    <div class="rev-section" id="secContact">
-      <div class="rev-sec-hdr" data-sec="contact">
-        <div class="rev-check">✓</div>
-        <div class="rev-sec-info">
-          <div class="rev-sec-title">Contact method</div>
-          <div class="rev-sec-desc">Booking link, email, or phone — how clients reach you</div>
-        </div>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;color:var(--ink-4);transition:transform .3s"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="rev-sec-body">
-        <div class="rev-sec-inner">
-          <div class="contact-opts" id="rContactOpts">
-            <div class="contact-opt on" data-cv="booking">
-              <div class="co-hdr"><div class="co-radio"></div><span class="co-name">Booking or client portal link</span></div>
-              <div class="co-desc">Clients go directly to your secure portal. No forms, no PHI on your site.</div>
-              <div class="co-field" id="rBookField"><input class="inp" id="rBookUrl" type="url" placeholder="https://your-link-here.com" maxlength="120"/></div>
-            </div>
-            <div class="contact-opt" data-cv="email">
-              <div class="co-hdr"><div class="co-radio"></div><span class="co-name">Email only</span></div>
-              <div class="co-desc">Clients reach you directly at your email address.</div>
-            </div>
-            <div class="contact-opt" data-cv="phone-email">
-              <div class="co-hdr"><div class="co-radio"></div><span class="co-name">Phone + email</span></div>
-              <div class="co-desc">Display both phone and email for initial contact.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
+```
 
   </div><!-- /rev-sections -->
 
   <!-- ── LAYOUT VARIANTS ── -->
+
   <div class="layout-zone" data-r style="--d:.15s;margin-top:28px;">
     <h2 class="layout-title">Layout <em>preferences.</em></h2>
     <p class="layout-sub">Pick the option that feels most like you. These change how your site is organized — not the words, just the structure.</p>
 
-    <!-- Hero layout -->
-    <div class="layout-group">
-      <span class="layout-group-label">Hero layout — your photo &amp; name</span>
-      <div class="layout-opts" id="lyHero">
-        <div class="layout-opt on" data-v="photo-left">
-          <div class="layout-diagram">
-            <div class="d-circle" style="width:28px;height:28px;"></div>
-            <div class="d-lines">
-              <div class="d-line" style="width:90%"></div>
-              <div class="d-line" style="width:70%"></div>
-              <div class="d-line" style="width:50%"></div>
-            </div>
-          </div>
-          <span class="layout-opt-label">Photo left,<br>text right</span>
-        </div>
-        <div class="layout-opt" data-v="photo-center">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;">
-            <div class="d-circle" style="width:22px;height:22px;"></div>
-            <div class="d-line" style="width:70%"></div>
-            <div class="d-line" style="width:50%"></div>
-          </div>
-          <span class="layout-opt-label">Photo centered<br>above text</span>
-        </div>
-        <div class="layout-opt" data-v="text-only">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;">
-            <div class="d-line" style="width:80%"></div>
-            <div class="d-line" style="width:60%"></div>
-            <div class="d-btn" style="width:40%"></div>
-          </div>
-          <span class="layout-opt-label">Text only,<br>no hero photo</span>
+```
+<!-- Hero layout -->
+<div class="layout-group">
+  <span class="layout-group-label">Hero layout — your photo &amp; name</span>
+  <div class="layout-opts" id="lyHero">
+    <div class="layout-opt on" data-v="photo-left">
+      <div class="layout-diagram">
+        <div class="d-circle" style="width:28px;height:28px;"></div>
+        <div class="d-lines">
+          <div class="d-line" style="width:90%"></div>
+          <div class="d-line" style="width:70%"></div>
+          <div class="d-line" style="width:50%"></div>
         </div>
       </div>
+      <span class="layout-opt-label">Photo left,<br>text right</span>
     </div>
+    <div class="layout-opt" data-v="photo-center">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;">
+        <div class="d-circle" style="width:22px;height:22px;"></div>
+        <div class="d-line" style="width:70%"></div>
+        <div class="d-line" style="width:50%"></div>
+      </div>
+      <span class="layout-opt-label">Photo centered<br>above text</span>
+    </div>
+    <div class="layout-opt" data-v="text-only">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;">
+        <div class="d-line" style="width:80%"></div>
+        <div class="d-line" style="width:60%"></div>
+        <div class="d-btn" style="width:40%"></div>
+      </div>
+      <span class="layout-opt-label">Text only,<br>no hero photo</span>
+    </div>
+  </div>
+</div>
 
-    <!-- About photo size -->
-    <div class="layout-group">
-      <span class="layout-group-label">About page — photo size</span>
-      <div class="layout-opts" id="lyAboutPhoto">
-        <div class="layout-opt on" data-v="large">
-          <div class="layout-diagram">
-            <div class="d-circle" style="width:34px;height:34px;flex-shrink:0;"></div>
-            <div class="d-lines">
-              <div class="d-line" style="width:90%"></div>
-              <div class="d-line" style="width:75%"></div>
-            </div>
-          </div>
-          <span class="layout-opt-label">Large circle<br>portrait</span>
-        </div>
-        <div class="layout-opt" data-v="small">
-          <div class="layout-diagram">
-            <div class="d-circle" style="width:20px;height:20px;flex-shrink:0;"></div>
-            <div class="d-lines">
-              <div class="d-line" style="width:90%"></div>
-              <div class="d-line" style="width:75%"></div>
-              <div class="d-line" style="width:55%"></div>
-            </div>
-          </div>
-          <span class="layout-opt-label">Small portrait<br>beside bio</span>
-        </div>
-        <div class="layout-opt" data-v="none">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;">
-            <div class="d-line" style="width:85%"></div>
-            <div class="d-line" style="width:70%"></div>
-            <div class="d-line" style="width:55%"></div>
-          </div>
-          <span class="layout-opt-label">No photo<br>on About</span>
+<!-- About photo size -->
+<div class="layout-group">
+  <span class="layout-group-label">About page — photo size</span>
+  <div class="layout-opts" id="lyAboutPhoto">
+    <div class="layout-opt on" data-v="large">
+      <div class="layout-diagram">
+        <div class="d-circle" style="width:34px;height:34px;flex-shrink:0;"></div>
+        <div class="d-lines">
+          <div class="d-line" style="width:90%"></div>
+          <div class="d-line" style="width:75%"></div>
         </div>
       </div>
+      <span class="layout-opt-label">Large circle<br>portrait</span>
     </div>
+    <div class="layout-opt" data-v="small">
+      <div class="layout-diagram">
+        <div class="d-circle" style="width:20px;height:20px;flex-shrink:0;"></div>
+        <div class="d-lines">
+          <div class="d-line" style="width:90%"></div>
+          <div class="d-line" style="width:75%"></div>
+          <div class="d-line" style="width:55%"></div>
+        </div>
+      </div>
+      <span class="layout-opt-label">Small portrait<br>beside bio</span>
+    </div>
+    <div class="layout-opt" data-v="none">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;">
+        <div class="d-line" style="width:85%"></div>
+        <div class="d-line" style="width:70%"></div>
+        <div class="d-line" style="width:55%"></div>
+      </div>
+      <span class="layout-opt-label">No photo<br>on About</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Home page order -->
-    <div class="layout-group">
-      <span class="layout-group-label">Home page — section order</span>
-      <div class="layout-opts" id="lyHomeOrder">
-        <div class="layout-opt on" data-v="bio-first">
-          <div class="layout-diagram" style="flex-direction:column;gap:3px;">
-            <div class="d-line" style="width:85%"></div>
-            <div class="d-line" style="width:65%"></div>
-            <div class="d-block" style="width:100%;height:10px;margin-top:2px;"></div>
-          </div>
-          <span class="layout-opt-label">Bio excerpt<br>then services</span>
-        </div>
-        <div class="layout-opt" data-v="services-first">
-          <div class="layout-diagram" style="flex-direction:column;gap:3px;">
-            <div class="d-block" style="width:100%;height:10px;"></div>
-            <div class="d-line" style="width:85%;margin-top:2px;"></div>
-            <div class="d-line" style="width:65%"></div>
-          </div>
-          <span class="layout-opt-label">Services first,<br>bio below</span>
-        </div>
-        <div class="layout-opt" data-v="services-only">
-          <div class="layout-diagram" style="flex-direction:column;gap:3px;">
-            <div class="d-block" style="width:100%;height:14px;"></div>
-            <div class="d-btn" style="width:40%;margin-top:2px;"></div>
-          </div>
-          <span class="layout-opt-label">Services only,<br>no bio excerpt</span>
-        </div>
+<!-- Home page order -->
+<div class="layout-group">
+  <span class="layout-group-label">Home page — section order</span>
+  <div class="layout-opts" id="lyHomeOrder">
+    <div class="layout-opt on" data-v="bio-first">
+      <div class="layout-diagram" style="flex-direction:column;gap:3px;">
+        <div class="d-line" style="width:85%"></div>
+        <div class="d-line" style="width:65%"></div>
+        <div class="d-block" style="width:100%;height:10px;margin-top:2px;"></div>
       </div>
+      <span class="layout-opt-label">Bio excerpt<br>then services</span>
     </div>
+    <div class="layout-opt" data-v="services-first">
+      <div class="layout-diagram" style="flex-direction:column;gap:3px;">
+        <div class="d-block" style="width:100%;height:10px;"></div>
+        <div class="d-line" style="width:85%;margin-top:2px;"></div>
+        <div class="d-line" style="width:65%"></div>
+      </div>
+      <span class="layout-opt-label">Services first,<br>bio below</span>
+    </div>
+    <div class="layout-opt" data-v="services-only">
+      <div class="layout-diagram" style="flex-direction:column;gap:3px;">
+        <div class="d-block" style="width:100%;height:14px;"></div>
+        <div class="d-btn" style="width:40%;margin-top:2px;"></div>
+      </div>
+      <span class="layout-opt-label">Services only,<br>no bio excerpt</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Services display -->
-    <div class="layout-group">
-      <span class="layout-group-label">Services — how fees are shown</span>
-      <div class="layout-opts" id="lyServices">
-        <div class="layout-opt on" data-v="cards-with-price">
-          <div class="layout-diagram" style="gap:4px;">
-            <div class="d-block" style="flex:1;height:36px;display:flex;flex-direction:column;justify-content:space-between;padding:4px 5px;">
-              <div class="d-line" style="width:80%"></div>
-              <div class="d-line" style="width:50%;background:rgba(184,146,42,.4)"></div>
-            </div>
-            <div class="d-block" style="flex:1;height:36px;display:flex;flex-direction:column;justify-content:space-between;padding:4px 5px;">
-              <div class="d-line" style="width:80%"></div>
-              <div class="d-line" style="width:50%;background:rgba(184,146,42,.4)"></div>
-            </div>
-          </div>
-          <span class="layout-opt-label">Cards with<br>price shown</span>
+<!-- Services display -->
+<div class="layout-group">
+  <span class="layout-group-label">Services — how fees are shown</span>
+  <div class="layout-opts" id="lyServices">
+    <div class="layout-opt on" data-v="cards-with-price">
+      <div class="layout-diagram" style="gap:4px;">
+        <div class="d-block" style="flex:1;height:36px;display:flex;flex-direction:column;justify-content:space-between;padding:4px 5px;">
+          <div class="d-line" style="width:80%"></div>
+          <div class="d-line" style="width:50%;background:rgba(184,146,42,.4)"></div>
         </div>
-        <div class="layout-opt" data-v="cards-no-price">
-          <div class="layout-diagram" style="gap:4px;">
-            <div class="d-block" style="flex:1;height:36px;display:flex;flex-direction:column;justify-content:center;padding:4px 5px;gap:4px;">
-              <div class="d-line" style="width:80%"></div>
-              <div class="d-line" style="width:55%"></div>
-            </div>
-            <div class="d-block" style="flex:1;height:36px;display:flex;flex-direction:column;justify-content:center;padding:4px 5px;gap:4px;">
-              <div class="d-line" style="width:80%"></div>
-              <div class="d-line" style="width:55%"></div>
-            </div>
-          </div>
-          <span class="layout-opt-label">Cards, fees<br>on request</span>
-        </div>
-        <div class="layout-opt" data-v="list">
-          <div class="layout-diagram" style="flex-direction:column;gap:5px;padding:6px 8px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
-              <div class="d-line" style="width:60%"></div>
-              <div class="d-line" style="width:20%;background:rgba(184,146,42,.4)"></div>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
-              <div class="d-line" style="width:55%"></div>
-              <div class="d-line" style="width:20%;background:rgba(184,146,42,.4)"></div>
-            </div>
-          </div>
-          <span class="layout-opt-label">Simple list,<br>no cards</span>
+        <div class="d-block" style="flex:1;height:36px;display:flex;flex-direction:column;justify-content:space-between;padding:4px 5px;">
+          <div class="d-line" style="width:80%"></div>
+          <div class="d-line" style="width:50%;background:rgba(184,146,42,.4)"></div>
         </div>
       </div>
+      <span class="layout-opt-label">Cards with<br>price shown</span>
     </div>
+    <div class="layout-opt" data-v="cards-no-price">
+      <div class="layout-diagram" style="gap:4px;">
+        <div class="d-block" style="flex:1;height:36px;display:flex;flex-direction:column;justify-content:center;padding:4px 5px;gap:4px;">
+          <div class="d-line" style="width:80%"></div>
+          <div class="d-line" style="width:55%"></div>
+        </div>
+        <div class="d-block" style="flex:1;height:36px;display:flex;flex-direction:column;justify-content:center;padding:4px 5px;gap:4px;">
+          <div class="d-line" style="width:80%"></div>
+          <div class="d-line" style="width:55%"></div>
+        </div>
+      </div>
+      <span class="layout-opt-label">Cards, fees<br>on request</span>
+    </div>
+    <div class="layout-opt" data-v="list">
+      <div class="layout-diagram" style="flex-direction:column;gap:5px;padding:6px 8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+          <div class="d-line" style="width:60%"></div>
+          <div class="d-line" style="width:20%;background:rgba(184,146,42,.4)"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+          <div class="d-line" style="width:55%"></div>
+          <div class="d-line" style="width:20%;background:rgba(184,146,42,.4)"></div>
+        </div>
+      </div>
+      <span class="layout-opt-label">Simple list,<br>no cards</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Headline style -->
-    <div class="layout-group">
-      <span class="layout-group-label">Hero headline</span>
-      <div class="layout-opts" id="lyHeadline">
-        <div class="layout-opt on" data-v="name">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;">
-            <div class="d-line" style="width:85%;height:5px;border-radius:3px;"></div>
-            <div class="d-line" style="width:60%"></div>
-          </div>
-          <span class="layout-opt-label">Your name<br>as headline</span>
-        </div>
-        <div class="layout-opt" data-v="specialty">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;">
-            <div class="d-line" style="width:90%;height:4px;border-radius:2px;"></div>
-            <div class="d-line" style="width:75%;height:4px;border-radius:2px;"></div>
-          </div>
-          <span class="layout-opt-label">Specialty as<br>headline</span>
-        </div>
-        <div class="layout-opt" data-v="tagline">
-          <div class="layout-diagram" style="flex-direction:column;gap:5px;padding:4px 8px;">
-            <div class="d-line" style="width:95%;height:4px;border-radius:2px;"></div>
-            <div class="d-line" style="width:70%;height:3px;border-radius:2px;"></div>
-          </div>
-          <span class="layout-opt-label">Custom tagline<br>(add in notes)</span>
-        </div>
+<!-- Headline style -->
+<div class="layout-group">
+  <span class="layout-group-label">Hero headline</span>
+  <div class="layout-opts" id="lyHeadline">
+    <div class="layout-opt on" data-v="name">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;">
+        <div class="d-line" style="width:85%;height:5px;border-radius:3px;"></div>
+        <div class="d-line" style="width:60%"></div>
       </div>
+      <span class="layout-opt-label">Your name<br>as headline</span>
     </div>
+    <div class="layout-opt" data-v="specialty">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;">
+        <div class="d-line" style="width:90%;height:4px;border-radius:2px;"></div>
+        <div class="d-line" style="width:75%;height:4px;border-radius:2px;"></div>
+      </div>
+      <span class="layout-opt-label">Specialty as<br>headline</span>
+    </div>
+    <div class="layout-opt" data-v="tagline">
+      <div class="layout-diagram" style="flex-direction:column;gap:5px;padding:4px 8px;">
+        <div class="d-line" style="width:95%;height:4px;border-radius:2px;"></div>
+        <div class="d-line" style="width:70%;height:3px;border-radius:2px;"></div>
+      </div>
+      <span class="layout-opt-label">Custom tagline<br>(add in notes)</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Accepting status -->
-    <div class="layout-group">
-      <span class="layout-group-label">Accepting clients badge</span>
-      <div class="layout-opts" id="lyAccBadge">
-        <div class="layout-opt on" data-v="show">
-          <div class="layout-diagram">
-            <div style="background:rgba(107,173,132,.25);border:1px solid rgba(107,173,132,.3);border-radius:100px;padding:3px 8px;font-size:7px;color:rgba(107,173,132,.9);white-space:nowrap;">Accepting clients</div>
-          </div>
-          <span class="layout-opt-label">Show badge<br>prominently</span>
-        </div>
-        <div class="layout-opt" data-v="hide">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;">
-            <div class="d-line" style="width:80%"></div>
-            <div class="d-line" style="width:60%"></div>
-          </div>
-          <span class="layout-opt-label">Hide badge<br>entirely</span>
-        </div>
+<!-- Accepting status -->
+<div class="layout-group">
+  <span class="layout-group-label">Accepting clients badge</span>
+  <div class="layout-opts" id="lyAccBadge">
+    <div class="layout-opt on" data-v="show">
+      <div class="layout-diagram">
+        <div style="background:rgba(107,173,132,.25);border:1px solid rgba(107,173,132,.3);border-radius:100px;padding:3px 8px;font-size:7px;color:rgba(107,173,132,.9);white-space:nowrap;">Accepting clients</div>
       </div>
+      <span class="layout-opt-label">Show badge<br>prominently</span>
     </div>
+    <div class="layout-opt" data-v="hide">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;">
+        <div class="d-line" style="width:80%"></div>
+        <div class="d-line" style="width:60%"></div>
+      </div>
+      <span class="layout-opt-label">Hide badge<br>entirely</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Nav credential -->
-    <div class="layout-group">
-      <span class="layout-group-label">Navigation bar</span>
-      <div class="layout-opts" id="lyNav">
-        <div class="layout-opt on" data-v="name-only">
-          <div class="layout-diagram" style="justify-content:space-between;padding:6px 10px;">
-            <div class="d-line" style="width:35%"></div>
-            <div style="display:flex;gap:4px;">
-              <div class="d-line" style="width:14px"></div>
-              <div class="d-line" style="width:14px"></div>
-            </div>
-          </div>
-          <span class="layout-opt-label">Name only<br>in nav</span>
-        </div>
-        <div class="layout-opt" data-v="name-cred">
-          <div class="layout-diagram" style="justify-content:space-between;padding:6px 10px;">
-            <div style="display:flex;flex-direction:column;gap:2px;">
-              <div class="d-line" style="width:36px"></div>
-              <div class="d-line" style="width:24px;height:2px;background:rgba(184,146,42,.35)"></div>
-            </div>
-            <div style="display:flex;gap:4px;">
-              <div class="d-line" style="width:14px"></div>
-              <div class="d-line" style="width:14px"></div>
-            </div>
-          </div>
-          <span class="layout-opt-label">Name + credential<br>tagline in nav</span>
+<!-- Nav credential -->
+<div class="layout-group">
+  <span class="layout-group-label">Navigation bar</span>
+  <div class="layout-opts" id="lyNav">
+    <div class="layout-opt on" data-v="name-only">
+      <div class="layout-diagram" style="justify-content:space-between;padding:6px 10px;">
+        <div class="d-line" style="width:35%"></div>
+        <div style="display:flex;gap:4px;">
+          <div class="d-line" style="width:14px"></div>
+          <div class="d-line" style="width:14px"></div>
         </div>
       </div>
+      <span class="layout-opt-label">Name only<br>in nav</span>
     </div>
+    <div class="layout-opt" data-v="name-cred">
+      <div class="layout-diagram" style="justify-content:space-between;padding:6px 10px;">
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          <div class="d-line" style="width:36px"></div>
+          <div class="d-line" style="width:24px;height:2px;background:rgba(184,146,42,.35)"></div>
+        </div>
+        <div style="display:flex;gap:4px;">
+          <div class="d-line" style="width:14px"></div>
+          <div class="d-line" style="width:14px"></div>
+        </div>
+      </div>
+      <span class="layout-opt-label">Name + credential<br>tagline in nav</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Button style -->
-    <div class="layout-group">
-      <span class="layout-group-label">Button style</span>
-      <div class="layout-opts" id="lyBtn">
-        <div class="layout-opt on" data-v="filled">
-          <div class="layout-diagram">
-            <div style="background:rgba(184,146,42,.5);border-radius:100px;padding:5px 14px;font-size:8px;color:rgba(0,0,0,.8);white-space:nowrap;">Book now</div>
-          </div>
-          <span class="layout-opt-label">Solid filled<br>buttons</span>
-        </div>
-        <div class="layout-opt" data-v="outline">
-          <div class="layout-diagram">
-            <div style="border:1px solid rgba(184,146,42,.5);border-radius:100px;padding:5px 14px;font-size:8px;color:rgba(184,146,42,.8);white-space:nowrap;">Book now</div>
-          </div>
-          <span class="layout-opt-label">Outline ghost<br>buttons</span>
-        </div>
+<!-- Button style -->
+<div class="layout-group">
+  <span class="layout-group-label">Button style</span>
+  <div class="layout-opts" id="lyBtn">
+    <div class="layout-opt on" data-v="filled">
+      <div class="layout-diagram">
+        <div style="background:rgba(184,146,42,.5);border-radius:100px;padding:5px 14px;font-size:8px;color:rgba(0,0,0,.8);white-space:nowrap;">Book now</div>
       </div>
+      <span class="layout-opt-label">Solid filled<br>buttons</span>
     </div>
+    <div class="layout-opt" data-v="outline">
+      <div class="layout-diagram">
+        <div style="border:1px solid rgba(184,146,42,.5);border-radius:100px;padding:5px 14px;font-size:8px;color:rgba(184,146,42,.8);white-space:nowrap;">Book now</div>
+      </div>
+      <span class="layout-opt-label">Outline ghost<br>buttons</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Footer style -->
-    <div class="layout-group" style="margin-bottom:0">
-      <span class="layout-group-label">Footer</span>
-      <div class="layout-opts" id="lyFooter">
-        <div class="layout-opt on" data-v="minimal">
-          <div class="layout-diagram" style="flex-direction:column;gap:5px;padding:6px 10px;">
-            <div style="display:flex;justify-content:space-between;width:100%;">
-              <div class="d-line" style="width:30%"></div>
-              <div style="display:flex;gap:3px;"><div class="d-line" style="width:10px"></div><div class="d-line" style="width:10px"></div></div>
-            </div>
-          </div>
-          <span class="layout-opt-label">Minimal — name<br>and links only</span>
-        </div>
-        <div class="layout-opt" data-v="detailed">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;padding:6px 10px;">
-            <div class="d-line" style="width:40%"></div>
-            <div class="d-line" style="width:60%"></div>
-            <div class="d-line" style="width:30%"></div>
-          </div>
-          <span class="layout-opt-label">Detailed — name,<br>credential, city</span>
+<!-- Footer style -->
+<div class="layout-group" style="margin-bottom:0">
+  <span class="layout-group-label">Footer</span>
+  <div class="layout-opts" id="lyFooter">
+    <div class="layout-opt on" data-v="minimal">
+      <div class="layout-diagram" style="flex-direction:column;gap:5px;padding:6px 10px;">
+        <div style="display:flex;justify-content:space-between;width:100%;">
+          <div class="d-line" style="width:30%"></div>
+          <div style="display:flex;gap:3px;"><div class="d-line" style="width:10px"></div><div class="d-line" style="width:10px"></div></div>
         </div>
       </div>
+      <span class="layout-opt-label">Minimal — name<br>and links only</span>
     </div>
+    <div class="layout-opt" data-v="detailed">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;padding:6px 10px;">
+        <div class="d-line" style="width:40%"></div>
+        <div class="d-line" style="width:60%"></div>
+        <div class="d-line" style="width:30%"></div>
+      </div>
+      <span class="layout-opt-label">Detailed — name,<br>credential, city</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Testimonial visibility -->
-    <div class="layout-group">
-      <span class="layout-group-label">Client testimonial block</span>
-      <div class="layout-opts" id="lyTestimonial">
-        <div class="layout-opt on" data-v="show">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;padding:6px 10px;">
-            <div style="background:rgba(184,146,42,.12);border:1px solid rgba(184,146,42,.2);border-radius:4px;padding:4px 6px;width:100%;"><div class="d-line" style="width:90%"></div><div class="d-line" style="width:70%;margin-top:3px;"></div></div>
-          </div>
-          <span class="layout-opt-label">Show testimonial<br>on About page</span>
-        </div>
-        <div class="layout-opt" data-v="hide">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;"><div class="d-line" style="width:80%"></div><div class="d-line" style="width:60%"></div></div>
-          <span class="layout-opt-label">No testimonial<br>block</span>
-        </div>
+<!-- Testimonial visibility -->
+<div class="layout-group">
+  <span class="layout-group-label">Client testimonial block</span>
+  <div class="layout-opts" id="lyTestimonial">
+    <div class="layout-opt on" data-v="show">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;padding:6px 10px;">
+        <div style="background:rgba(184,146,42,.12);border:1px solid rgba(184,146,42,.2);border-radius:4px;padding:4px 6px;width:100%;"><div class="d-line" style="width:90%"></div><div class="d-line" style="width:70%;margin-top:3px;"></div></div>
       </div>
+      <span class="layout-opt-label">Show testimonial<br>on About page</span>
     </div>
+    <div class="layout-opt" data-v="hide">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;"><div class="d-line" style="width:80%"></div><div class="d-line" style="width:60%"></div></div>
+      <span class="layout-opt-label">No testimonial<br>block</span>
+    </div>
+  </div>
+</div>
 
-    <!-- Credential band -->
-    <div class="layout-group">
-      <span class="layout-group-label">Credential band on About</span>
-      <div class="layout-opts" id="lyCredBand">
-        <div class="layout-opt on" data-v="show">
-          <div class="layout-diagram" style="gap:6px;padding:6px 8px;">
-            <div style="display:flex;flex-direction:column;gap:2px;flex:1;"><div class="d-line" style="width:40%;height:2px;background:rgba(184,146,42,.35)"></div><div class="d-line" style="width:60%"></div></div>
-            <div style="width:1px;height:24px;background:rgba(237,227,208,.07);"></div>
-            <div style="display:flex;flex-direction:column;gap:2px;flex:1;"><div class="d-line" style="width:40%;height:2px;background:rgba(184,146,42,.35)"></div><div class="d-line" style="width:60%"></div></div>
-          </div>
-          <span class="layout-opt-label">Show license &amp;<br>years strip</span>
-        </div>
-        <div class="layout-opt" data-v="hide">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;"><div class="d-line" style="width:85%"></div><div class="d-line" style="width:65%"></div></div>
-          <span class="layout-opt-label">Hide credential<br>band</span>
-        </div>
+<!-- Credential band -->
+<div class="layout-group">
+  <span class="layout-group-label">Credential band on About</span>
+  <div class="layout-opts" id="lyCredBand">
+    <div class="layout-opt on" data-v="show">
+      <div class="layout-diagram" style="gap:6px;padding:6px 8px;">
+        <div style="display:flex;flex-direction:column;gap:2px;flex:1;"><div class="d-line" style="width:40%;height:2px;background:rgba(184,146,42,.35)"></div><div class="d-line" style="width:60%"></div></div>
+        <div style="width:1px;height:24px;background:rgba(237,227,208,.07);"></div>
+        <div style="display:flex;flex-direction:column;gap:2px;flex:1;"><div class="d-line" style="width:40%;height:2px;background:rgba(184,146,42,.35)"></div><div class="d-line" style="width:60%"></div></div>
       </div>
+      <span class="layout-opt-label">Show license &amp;<br>years strip</span>
     </div>
+    <div class="layout-opt" data-v="hide">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;"><div class="d-line" style="width:85%"></div><div class="d-line" style="width:65%"></div></div>
+      <span class="layout-opt-label">Hide credential<br>band</span>
+    </div>
+  </div>
+</div>
 
-    <!-- First session roadmap -->
-    <div class="layout-group" style="margin-bottom:0">
-      <span class="layout-group-label">First session roadmap</span>
-      <div class="layout-opts" id="lyRoadmap">
-        <div class="layout-opt on" data-v="show">
-          <div class="layout-diagram" style="flex-direction:column;gap:5px;padding:6px 10px;">
-            <div style="display:flex;gap:6px;align-items:center;"><div style="width:10px;height:10px;border-radius:50%;background:rgba(184,146,42,.25);border:1px solid rgba(184,146,42,.3);flex-shrink:0;"></div><div class="d-line" style="width:70%"></div></div>
-            <div style="width:1px;height:6px;background:rgba(237,227,208,.06);margin-left:5px;"></div>
-            <div style="display:flex;gap:6px;align-items:center;"><div style="width:10px;height:10px;border-radius:50%;background:rgba(184,146,42,.25);border:1px solid rgba(184,146,42,.3);flex-shrink:0;"></div><div class="d-line" style="width:55%"></div></div>
-          </div>
-          <span class="layout-opt-label">Show 3-step<br>process roadmap</span>
-        </div>
-        <div class="layout-opt" data-v="hide">
-          <div class="layout-diagram" style="flex-direction:column;gap:4px;"><div class="d-line" style="width:90%"></div><div class="d-line" style="width:75%"></div><div class="d-line" style="width:55%"></div></div>
-          <span class="layout-opt-label">Text only,<br>no roadmap</span>
-        </div>
+<!-- First session roadmap -->
+<div class="layout-group" style="margin-bottom:0">
+  <span class="layout-group-label">First session roadmap</span>
+  <div class="layout-opts" id="lyRoadmap">
+    <div class="layout-opt on" data-v="show">
+      <div class="layout-diagram" style="flex-direction:column;gap:5px;padding:6px 10px;">
+        <div style="display:flex;gap:6px;align-items:center;"><div style="width:10px;height:10px;border-radius:50%;background:rgba(184,146,42,.25);border:1px solid rgba(184,146,42,.3);flex-shrink:0;"></div><div class="d-line" style="width:70%"></div></div>
+        <div style="width:1px;height:6px;background:rgba(237,227,208,.06);margin-left:5px;"></div>
+        <div style="display:flex;gap:6px;align-items:center;"><div style="width:10px;height:10px;border-radius:50%;background:rgba(184,146,42,.25);border:1px solid rgba(184,146,42,.3);flex-shrink:0;"></div><div class="d-line" style="width:55%"></div></div>
       </div>
+      <span class="layout-opt-label">Show 3-step<br>process roadmap</span>
     </div>
+    <div class="layout-opt" data-v="hide">
+      <div class="layout-diagram" style="flex-direction:column;gap:4px;"><div class="d-line" style="width:90%"></div><div class="d-line" style="width:75%"></div><div class="d-line" style="width:55%"></div></div>
+      <span class="layout-opt-label">Text only,<br>no roadmap</span>
+    </div>
+  </div>
+</div>
+```
 
   </div><!-- /layout-zone -->
 
   <!-- ── CUSTOMIZATION CONTACT ── -->
+
   <div style="background:var(--bg-card);border:1px solid var(--b);border-radius:18px;padding:clamp(24px,4vw,36px);margin-top:28px;" data-r style="--d:.18s">
     <p style="font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-hi);margin-bottom:14px;">Want something more?</p>
     <h2 style="font-family:var(--ff-d);font-size:clamp(22px,3.5vw,32px);font-weight:300;letter-spacing:-.014em;margin-bottom:12px;">Custom additions &amp; upgrades</h2>
@@ -1030,6 +1044,7 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;backgroun
   </div>
 
   <!-- ── SUBMIT ── -->
+
   <div class="submit-zone" data-r style="--d:.3s">
     <div class="scope-note">
       <strong>Your updated site downloads instantly.</strong> Check your Downloads folder for the new zip, then drag it to Netlify Drop — your revised site is live in minutes. Free forever.
@@ -1042,6 +1057,7 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;backgroun
   </div>
 
   <!-- ── SUCCESS ── -->
+
   <div class="success-wrap" id="successWrap">
     <div class="s-orb">✦</div>
     <h2 class="s-title">Your updated<br><em>site is ready.</em></h2>
@@ -2135,12 +2151,17 @@ function buildPreviewState(){
       let html=fn(d);
       const css=genCSS(d.palette);
       let full=html.replace('<link rel="stylesheet" href="style.css"/>',`<style>${css}</style>`);
-      if(d.photo)full=full.replace(/src="assets\/photo\.[^"]+"/g,`src="${d.photo}"`);
-      return full;
-    }
 
-    const routerShell=`<!DOCTYPE html><html><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+```
+  if(d.photo)full=full.replace(/src="assets\/photo\.[^"]+"/g,`src="${d.photo}"`);
+  return full;
+}
+
+const routerShell=`<!DOCTYPE html><html><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+```
+
 <style>*{margin:0;padding:0;box-sizing:border-box;}html,body{height:100%;overflow:hidden;}#rr{height:100%;overflow:auto;}</style>
+
 </head><body><div id="rr"></div>
 <script>
   const root=document.getElementById('rr');
@@ -2157,89 +2178,93 @@ function buildPreviewState(){
   });
 <\/script></body></html>`;
 
-    const overlay=document.createElement('div');
-    overlay.style.cssText='position:fixed;inset:0;z-index:9000;background:#0A0806;display:flex;flex-direction:column;';
-    const bar=document.createElement('div');
-    bar.style.cssText='height:56px;background:#0C0907;border-bottom:1px solid rgba(237,227,208,.07);display:flex;align-items:center;padding:0 20px;gap:12px;flex-shrink:0;';
-    const pageNav=document.createElement('div');pageNav.style.cssText='display:flex;align-items:center;gap:4px;';
-    const devNav=document.createElement('div');devNav.style.cssText='display:flex;align-items:center;gap:2px;border-left:1px solid rgba(237,227,208,.07);padding-left:14px;margin-left:6px;';
-    devNav.innerHTML=`<button id="rvDesk" style="width:34px;height:34px;border-radius:8px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;background:rgba(184,146,42,.12);"><svg width="16" height="14" viewBox="0 0 18 14" fill="none"><rect x="1" y="1" width="16" height="10" rx="1.5" stroke="#D4AD52" stroke-width="1.4"/><path d="M6 13h6M9 11v2" stroke="#D4AD52" stroke-width="1.4" stroke-linecap="round"/></svg></button><button id="rvMob" style="width:34px;height:34px;border-radius:8px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;background:transparent;opacity:.45;"><svg width="11" height="16" viewBox="0 0 11 18" fill="none"><rect x="1" y="1" width="9" height="16" rx="2" stroke="rgba(237,227,208,.35)" stroke-width="1.4"/><circle cx="5.5" cy="14.5" r=".8" fill="rgba(237,227,208,.35)"/></svg></button>`;
-    const closeBtn=document.createElement('button');
-    closeBtn.style.cssText='font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(237,227,208,.35);padding:7px 16px;border:1px solid rgba(237,227,208,.1);border-radius:100px;background:none;cursor:pointer;white-space:nowrap;font-family:"DM Sans",sans-serif;margin-left:auto;';
-    closeBtn.textContent='Close ✕';
-    bar.appendChild(pageNav);bar.appendChild(devNav);bar.appendChild(closeBtn);
-    const frameWrap=document.createElement('div');
-    frameWrap.style.cssText='flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#080705;padding:16px;';
-    const outerFrame=document.createElement('iframe');
-    outerFrame.setAttribute('sandbox','allow-scripts allow-same-origin');
-    outerFrame.style.cssText='width:100%;height:100%;border:none;border-radius:6px;box-shadow:0 24px 80px rgba(0,0,0,.7);transition:width .4s cubic-bezier(.25,.46,.45,.94),height .4s,border-radius .4s;';
-    outerFrame.srcdoc=routerShell;
-    frameWrap.appendChild(outerFrame);
-    overlay.appendChild(bar);overlay.appendChild(frameWrap);
-    document.body.appendChild(overlay);document.body.style.overflow='hidden';
+```
+const overlay=document.createElement('div');
+overlay.style.cssText='position:fixed;inset:0;z-index:9000;background:#0A0806;display:flex;flex-direction:column;';
+const bar=document.createElement('div');
+bar.style.cssText='height:56px;background:#0C0907;border-bottom:1px solid rgba(237,227,208,.07);display:flex;align-items:center;padding:0 20px;gap:12px;flex-shrink:0;';
+const pageNav=document.createElement('div');pageNav.style.cssText='display:flex;align-items:center;gap:4px;';
+const devNav=document.createElement('div');devNav.style.cssText='display:flex;align-items:center;gap:2px;border-left:1px solid rgba(237,227,208,.07);padding-left:14px;margin-left:6px;';
+devNav.innerHTML=`<button id="rvDesk" style="width:34px;height:34px;border-radius:8px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;background:rgba(184,146,42,.12);"><svg width="16" height="14" viewBox="0 0 18 14" fill="none"><rect x="1" y="1" width="16" height="10" rx="1.5" stroke="#D4AD52" stroke-width="1.4"/><path d="M6 13h6M9 11v2" stroke="#D4AD52" stroke-width="1.4" stroke-linecap="round"/></svg></button><button id="rvMob" style="width:34px;height:34px;border-radius:8px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;background:transparent;opacity:.45;"><svg width="11" height="16" viewBox="0 0 11 18" fill="none"><rect x="1" y="1" width="9" height="16" rx="2" stroke="rgba(237,227,208,.35)" stroke-width="1.4"/><circle cx="5.5" cy="14.5" r=".8" fill="rgba(237,227,208,.35)"/></svg></button>`;
+const closeBtn=document.createElement('button');
+closeBtn.style.cssText='font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(237,227,208,.35);padding:7px 16px;border:1px solid rgba(237,227,208,.1);border-radius:100px;background:none;cursor:pointer;white-space:nowrap;font-family:"DM Sans",sans-serif;margin-left:auto;';
+closeBtn.textContent='Close ✕';
+bar.appendChild(pageNav);bar.appendChild(devNav);bar.appendChild(closeBtn);
+const frameWrap=document.createElement('div');
+frameWrap.style.cssText='flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#080705;padding:16px;';
+const outerFrame=document.createElement('iframe');
+outerFrame.setAttribute('sandbox','allow-scripts allow-same-origin');
+outerFrame.style.cssText='width:100%;height:100%;border:none;border-radius:6px;box-shadow:0 24px 80px rgba(0,0,0,.7);transition:width .4s cubic-bezier(.25,.46,.45,.94),height .4s,border-radius .4s;';
+outerFrame.srcdoc=routerShell;
+frameWrap.appendChild(outerFrame);
+overlay.appendChild(bar);overlay.appendChild(frameWrap);
+document.body.appendChild(overlay);document.body.style.overflow='hidden';
 
-    let activePage='home',activeBtn=null,routerReady=false;
+let activePage='home',activeBtn=null,routerReady=false;
 
-    outerFrame.addEventListener('load',()=>{routerReady=true;sendPage(activePage);});
+outerFrame.addEventListener('load',()=>{routerReady=true;sendPage(activePage);});
 
-    function sendPage(key){
-      if(!routerReady)return;
-      const html=pages[key].build();
-      const intercept=`<script>
-        document.addEventListener('click',function(e){
-          const a=e.target.closest('a[href]');if(!a)return;
-          const h=a.getAttribute('href');
-          if(h==='index.html'||h==='/'){e.preventDefault();parent.postMessage({type:'navigate',page:'home'},'*');}
-          else if(h==='about.html'){e.preventDefault();parent.postMessage({type:'navigate',page:'about'},'*');}
-          else if(h==='services.html'){e.preventDefault();parent.postMessage({type:'navigate',page:'services'},'*');}
-          else if(h==='contact.html'){e.preventDefault();parent.postMessage({type:'navigate',page:'contact'},'*');}
-          else if(h&&!h.startsWith('#')&&!h.startsWith('mailto:')&&!h.startsWith('tel:')&&!h.startsWith('http')){e.preventDefault();}
-        },{capture:true});
-        document.addEventListener('DOMContentLoaded',function(){
-          document.querySelectorAll('.faq-item').forEach(function(item){var q=item.querySelector('.faq-q');if(q)q.addEventListener('click',function(){var open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});if(!open)item.classList.add('open');});});
-          var nav=document.getElementById('nav');if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('s',scrollY>10);},{passive:true});
-          var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08});
-          document.querySelectorAll('[data-r]').forEach(function(el){ro.observe(el);});
-        });
-      <\/script>`;
-      outerFrame.contentWindow.postMessage({type:'load-page',html:html.replace('</body>',intercept+'</body>')},'*');
-    }
-
-    function onMsg(e){if(e.data&&e.data.type==='page-change'&&pages[e.data.page]){setPage(e.data.page);}}
-    window.addEventListener('message',onMsg);
-
-    Object.entries(pages).forEach(([key,page])=>{
-      const b=document.createElement('button');
-      b.textContent=page.label;b.dataset.page=key;
-      b.style.cssText='font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:rgba(237,227,208,.35);padding:0 14px;height:36px;border-radius:8px;border:none;cursor:pointer;background:transparent;font-family:"DM Sans",sans-serif;white-space:nowrap;transition:all .22s;';
-      b.addEventListener('click',()=>setPage(key));
-      pageNav.appendChild(b);
-      if(key==='home'){setTabActive(b);activeBtn=b;}
+function sendPage(key){
+  if(!routerReady)return;
+  const html=pages[key].build();
+  const intercept=`<script>
+    document.addEventListener('click',function(e){
+      const a=e.target.closest('a[href]');if(!a)return;
+      const h=a.getAttribute('href');
+      if(h==='index.html'||h==='/'){e.preventDefault();parent.postMessage({type:'navigate',page:'home'},'*');}
+      else if(h==='about.html'){e.preventDefault();parent.postMessage({type:'navigate',page:'about'},'*');}
+      else if(h==='services.html'){e.preventDefault();parent.postMessage({type:'navigate',page:'services'},'*');}
+      else if(h==='contact.html'){e.preventDefault();parent.postMessage({type:'navigate',page:'contact'},'*');}
+      else if(h&&!h.startsWith('#')&&!h.startsWith('mailto:')&&!h.startsWith('tel:')&&!h.startsWith('http')){e.preventDefault();}
+    },{capture:true});
+    document.addEventListener('DOMContentLoaded',function(){
+      document.querySelectorAll('.faq-item').forEach(function(item){var q=item.querySelector('.faq-q');if(q)q.addEventListener('click',function(){var open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});if(!open)item.classList.add('open');});});
+      var nav=document.getElementById('nav');if(nav)window.addEventListener('scroll',function(){nav.classList.toggle('s',scrollY>10);},{passive:true});
+      var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08});
+      document.querySelectorAll('[data-r]').forEach(function(el){ro.observe(el);});
     });
+  <\/script>`;
+  outerFrame.contentWindow.postMessage({type:'load-page',html:html.replace('</body>',intercept+'</body>')},'*');
+}
 
-    function setTabActive(b){
-      pageNav.querySelectorAll('button').forEach(x=>{x.style.color='rgba(237,227,208,.35)';x.style.background='transparent';});
-      b.style.color='var(--amber-hi)';b.style.background='rgba(184,146,42,.1)';activeBtn=b;
-    }
-    function setPage(key){
-      activePage=key;
-      const b=pageNav.querySelector(`[data-page="${key}"]`);if(b)setTabActive(b);
-      sendPage(key);
-    }
+function onMsg(e){if(e.data&&e.data.type==='page-change'&&pages[e.data.page]){setPage(e.data.page);}}
+window.addEventListener('message',onMsg);
 
-    const deskBtn=overlay.querySelector('#rvDesk'),mobBtn=overlay.querySelector('#rvMob');
-    function setDevice(mob){
-      if(mob){outerFrame.style.width='390px';outerFrame.style.height='844px';outerFrame.style.borderRadius='40px';outerFrame.style.border='12px solid #1A1408';deskBtn.style.opacity='.45';deskBtn.style.background='transparent';mobBtn.style.background='rgba(184,146,42,.12)';mobBtn.style.opacity='1';}
-      else{outerFrame.style.width='100%';outerFrame.style.height='100%';outerFrame.style.borderRadius='6px';outerFrame.style.border='none';deskBtn.style.background='rgba(184,146,42,.12)';deskBtn.style.opacity='1';mobBtn.style.background='transparent';mobBtn.style.opacity='.45';}
-    }
-    deskBtn.addEventListener('click',()=>setDevice(false));
-    mobBtn.addEventListener('click',()=>setDevice(true));
+Object.entries(pages).forEach(([key,page])=>{
+  const b=document.createElement('button');
+  b.textContent=page.label;b.dataset.page=key;
+  b.style.cssText='font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:rgba(237,227,208,.35);padding:0 14px;height:36px;border-radius:8px;border:none;cursor:pointer;background:transparent;font-family:"DM Sans",sans-serif;white-space:nowrap;transition:all .22s;';
+  b.addEventListener('click',()=>setPage(key));
+  pageNav.appendChild(b);
+  if(key==='home'){setTabActive(b);activeBtn=b;}
+});
 
-    function close(){window.removeEventListener('message',onMsg);if(overlay.parentNode)document.body.removeChild(overlay);document.body.style.overflow='';}
-    closeBtn.addEventListener('click',close);
-    document.addEventListener('keydown',function esc(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',esc);}});
-  });
+function setTabActive(b){
+  pageNav.querySelectorAll('button').forEach(x=>{x.style.color='rgba(237,227,208,.35)';x.style.background='transparent';});
+  b.style.color='var(--amber-hi)';b.style.background='rgba(184,146,42,.1)';activeBtn=b;
+}
+function setPage(key){
+  activePage=key;
+  const b=pageNav.querySelector(`[data-page="${key}"]`);if(b)setTabActive(b);
+  sendPage(key);
+}
+
+const deskBtn=overlay.querySelector('#rvDesk'),mobBtn=overlay.querySelector('#rvMob');
+function setDevice(mob){
+  if(mob){outerFrame.style.width='390px';outerFrame.style.height='844px';outerFrame.style.borderRadius='40px';outerFrame.style.border='12px solid #1A1408';deskBtn.style.opacity='.45';deskBtn.style.background='transparent';mobBtn.style.background='rgba(184,146,42,.12)';mobBtn.style.opacity='1';}
+  else{outerFrame.style.width='100%';outerFrame.style.height='100%';outerFrame.style.borderRadius='6px';outerFrame.style.border='none';deskBtn.style.background='rgba(184,146,42,.12)';deskBtn.style.opacity='1';mobBtn.style.background='transparent';mobBtn.style.opacity='.45';}
+}
+deskBtn.addEventListener('click',()=>setDevice(false));
+mobBtn.addEventListener('click',()=>setDevice(true));
+
+function close(){window.removeEventListener('message',onMsg);if(overlay.parentNode)document.body.removeChild(overlay);document.body.style.overflow='';}
+closeBtn.addEventListener('click',close);
+document.addEventListener('keydown',function esc(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',esc);}});
+```
+
+});
 })();
 </script>
+
 </body>
 </html>
