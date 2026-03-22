@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Wellovie — Write Your Copy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0C0907;--bg-1:#0F0B07;--bg-card:#161109;--bg-warm:#191208;
+  --ink:#EDE3D0;--ink-2:#B0A894;--ink-3:#8C826E;--ink-4:#2B2520;
+  --acc:#B8922A;--acc-hi:#D4AD52;--acc-lo:#342709;--acc-gl:rgba(184,146,42,.09);
+  --sage:#4A7A62;--sage-hi:#6BAD84;--sage-lo:#162C1F;
+  --b:rgba(237,227,208,.054);--b-hi:rgba(237,227,208,.1);
+  --ff-d:'Cormorant Garamond',Georgia,serif;
+  --ff-b:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(.0,.0,.2,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --smooth:cubic-bezier(.25,.46,.45,.94);
+  --r:14px;--r-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--ff-b);line-height:1;
+  min-height:100vh;
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.011;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size:220px;
+}
+
+/* ── Layout ── */
+.shell{display:grid;grid-template-columns:280px 1fr;min-height:100vh;padding-bottom:env(safe-area-inset-bottom);}
+@media(max-width:760px){.shell{grid-template-columns:1fr;}}
+
+/* ── Sidebar ── */
+.sidebar{
+  background:var(--bg-1);border-right:1px solid var(--b);
+  padding:32px 24px;padding-left:max(24px,calc(24px + env(safe-area-inset-left)));
+  display:flex;flex-direction:column;gap:0;
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+}
+@media(max-width:760px){.sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--b);padding:20px 20px 16px;}}
+.logo{font-family:var(--ff-d);font-size:19px;font-weight:400;letter-spacing:.055em;line-height:1;color:var(--ink);margin-bottom:28px;transition:opacity .2s;}
+.logo-sub{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber-hi);line-height:1;display:block;margin-top:2px;}
+
+.logo span{font-size:12px;letter-spacing:.14em;font-family:var(--ff-b);text-transform:uppercase;color:var(--amber-hi);margin-left:8px;vertical-align:middle;}
+.sidebar-title{font-family:var(--ff-d);font-size:clamp(22px,3vw,28px);font-weight:300;line-height:1.1;letter-spacing:-.01em;margin-bottom:8px;}
+.sidebar-title em{font-style:italic;color:var(--ink-2);}
+.sidebar-sub{font-size:12px;font-weight:300;color:var(--ink-3);line-height:1.7;margin-bottom:28px;}
+.ctx-card{
+  background:var(--bg-card);border:1px solid var(--b);border-radius:var(--r-sm);
+  padding:14px;margin-bottom:24px;display:flex;flex-direction:column;gap:8px;
+}
+.ctx-row{display:flex;align-items:center;gap:8px;font-size:11px;}
+.ctx-dot{width:5px;height:5px;border-radius:50%;background:var(--acc);flex-shrink:0;}
+.ctx-label{color:var(--ink-4);}
+.ctx-value{color:var(--ink-2);font-weight:300;}
+.ctx-none{color:var(--ink-4);font-style:italic;}
+
+.step-nav{display:flex;flex-direction:column;gap:2px;flex:1;}
+@media(max-width:760px){.step-nav{flex-direction:row;flex-wrap:wrap;gap:6px;}}
+.step-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:var(--r-sm);
+  cursor:pointer;transition:all .18s;border:1px solid transparent;
+  -webkit-tap-highlight-color:transparent;
+}
+.step-item:hover{background:rgba(237,227,208,.03);border-color:var(--b);}
+.step-item.active{background:var(--acc-gl);border-color:var(--acc-lo);}
+.step-item.done{background:rgba(74,122,98,.07);border-color:var(--sage-lo);}
+.step-num{
+  width:22px;height:22px;border-radius:50%;border:1px solid var(--b);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--ink-4);flex-shrink:0;transition:all .2s;
+}
+.step-item.active .step-num{border-color:var(--acc);background:var(--acc-gl);color:var(--acc-hi);}
+.step-item.done .step-num{border-color:var(--sage-lo);background:rgba(74,122,98,.12);color:var(--sage-hi);font-size:11px;}
+.step-info{}
+.step-name{font-size:12px;font-weight:300;color:var(--ink-2);transition:color .18s;}
+.step-item.active .step-name{color:var(--ink);}
+.step-item.done .step-name{color:var(--sage-hi);}
+.step-dest{font-size:10px;color:var(--ink-4);}
+.step-item.done .step-dest{color:rgba(74,122,98,.6);}
+
+.sidebar-footer{margin-top:auto;padding-top:20px;}
+.btn-back{
+  width:100%;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-3);padding:11px 16px;border:1px solid var(--b);
+  border-radius:100px;background:none;cursor:pointer;font-family:inherit;
+  transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.btn-back:hover{color:var(--ink-2);border-color:var(--b-hi);}
+
+/* ── Main area ── */
+.main{padding:40px 48px 80px;display:flex;flex-direction:column;gap:0;}
+@media(max-width:760px){.main{padding:24px 20px 60px;}}
+
+/* Steps */
+.step-panel{display:none;}
+.step-panel.active{display:flex;flex-direction:column;gap:28px;}
+
+/* Step header */
+.sph{margin-bottom:4px;}
+.sph-kicker{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc-hi);display:block;margin-bottom:10px;}
+.sph-title{font-family:var(--ff-d);font-size:clamp(28px,4vw,44px);font-weight:300;line-height:.96;letter-spacing:-.02em;margin-bottom:8px;}
+.sph-title em{font-style:italic;color:var(--ink-2);}
+.sph-sub{font-size:13px;font-weight:300;color:var(--ink-3);line-height:1.72;}
+
+/* Chat container */
+.chat-card{
+  background:var(--bg-card);border:1px solid var(--b);border-radius:var(--r);
+  overflow:hidden;
+}
+.chat-hdr{
+  padding:12px 18px;border-bottom:1px solid var(--b);
+  display:flex;align-items:center;gap:10px;background:var(--bg-warm);
+}
+.chat-orb{
+  width:26px;height:26px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,146,42,.35),rgba(184,146,42,.07) 60%,transparent);
+  display:flex;align-items:center;justify-content:center;font-size:11px;
+  border:1px solid var(--acc-lo);flex-shrink:0;
+}
+.chat-hdr-info{flex:1;}
+.chat-hdr-title{font-size:12px;font-weight:400;color:var(--ink-2);}
+.chat-hdr-sub{font-size:10px;color:var(--ink-4);font-weight:300;}
+.chat-pills{display:flex;gap:4px;}
+.chat-pill{width:16px;height:3px;border-radius:2px;background:var(--ink-4);transition:background .25s;}
+.chat-pill.active{background:var(--acc-hi);}
+.chat-pill.done{background:var(--acc);}
+
+.chat-msgs{padding:16px 18px 10px;display:flex;flex-direction:column;gap:12px;min-height:120px;}
+.msg{display:flex;gap:9px;align-items:flex-start;animation:msgIn .32s var(--ease) both;}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg.user{flex-direction:row-reverse;}
+.msg-av{
+  width:22px;height:22px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;
+}
+.msg.bot .msg-av{background:var(--acc-gl);border:1px solid var(--acc-lo);color:var(--acc-hi);}
+.msg.user .msg-av{background:rgba(237,227,208,.05);border:1px solid var(--b);color:var(--ink-3);}
+.msg-bub{
+  padding:9px 13px;font-size:13px;font-weight:300;line-height:1.72;max-width:84%;
+}
+.msg.bot .msg-bub{
+  background:rgba(237,227,208,.04);border:1px solid var(--b);
+  border-radius:2px 12px 12px 12px;color:var(--ink-2);
+}
+.msg.user .msg-bub{
+  background:var(--acc-gl);border:1px solid var(--acc-lo);
+  border-radius:12px 2px 12px 12px;color:var(--ink-2);
+}
+.msg-bub strong{color:var(--ink);font-weight:400;}
+.typing{display:flex;gap:9px;align-items:center;animation:msgIn .25s var(--ease) both;}
+.t-dots{padding:9px 13px;background:rgba(237,227,208,.04);border:1px solid var(--b);border-radius:2px 12px 12px 12px;display:flex;gap:3px;}
+.t-dot{width:4px;height:4px;border-radius:50%;background:var(--ink-4);animation:tdp .9s ease-in-out infinite;}
+.t-dot:nth-child(2){animation-delay:.14s}.t-dot:nth-child(3){animation-delay:.28s}
+@keyframes tdp{0%,100%{background:var(--ink-4);transform:scale(1)}50%{background:var(--acc);transform:scale(1.35)}}
+
+.chat-sugs{
+  display:flex;flex-wrap:wrap;gap:5px;
+  padding:8px 18px 10px;border-top:1px solid var(--b);
+  background:rgba(237,227,208,.012);
+}
+.chat-sugs.hidden{display:none;}
+.sug-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);width:100%;margin-bottom:2px;}
+.sug{
+  font-size:11px;font-weight:300;color:var(--ink-3);padding:4px 11px;
+  border:1px solid var(--b);border-radius:100px;background:none;
+  cursor:pointer;font-family:inherit;transition:all .16s;
+}
+.sug:hover{border-color:var(--acc-lo);color:var(--acc-hi);background:var(--acc-gl);}
+
+.chat-inp-row{
+  border-top:1px solid var(--b);padding:11px 14px;
+  display:flex;gap:8px;align-items:center;background:var(--bg-warm);
+}
+.chat-inp{
+  flex:1;background:rgba(237,227,208,.04);border:1px solid var(--b);
+  border-radius:var(--r-sm);padding:9px 12px;
+  font:300 16px/1.5 var(--ff-b);color:var(--ink-2);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.chat-inp:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(184,146,42,.07);}
+.chat-inp::placeholder{color:var(--ink-4);}
+.chat-inp:disabled{opacity:.3;cursor:not-allowed;}
+.chat-send{
+  width:34px;height:34px;border-radius:50%;background:var(--acc);
+  color:#0A0806;border:none;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s var(--spring);flex-shrink:0;
+}
+.chat-send:hover{background:var(--acc-hi);transform:scale(1.08);}
+.chat-send:active{transform:scale(.92);}
+.chat-send:disabled{opacity:.25;pointer-events:none;}
+.chat-skip{
+  font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-4);border:none;background:none;cursor:pointer;
+  font-family:inherit;transition:color .16s;white-space:nowrap;flex-shrink:0;
+}
+.chat-skip:hover{color:var(--ink-3);}
+
+/* Output options */
+.out-section{
+  display:none;flex-direction:column;gap:10px;
+  padding:16px 18px;border-top:1px solid var(--b);
+  animation:msgIn .35s var(--ease) both;
+}
+.out-section.show{display:flex;}
+.out-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc-hi);margin-bottom:2px;}
+.out-opt{
+  padding:12px 15px;background:rgba(237,227,208,.03);border:1px solid var(--b);
+  border-radius:var(--r-sm);cursor:pointer;text-align:left;
+  font:300 13px/1.68 var(--ff-b);color:var(--ink-2);
+  display:flex;align-items:flex-start;gap:10px;
+  transition:all .18s;font-family:inherit;
+  animation:msgIn .3s var(--ease) both;
+}
+.out-opt:nth-child(2){animation-delay:.04s}
+.out-opt:nth-child(3){animation-delay:.08s}
+.out-opt:nth-child(4){animation-delay:.12s}
+.out-opt::before{content:'→';color:var(--ink-4);font-size:11px;flex-shrink:0;margin-top:2px;transition:all .18s;}
+.out-opt:hover{border-color:var(--acc-lo);background:var(--acc-gl);}
+.out-opt:hover::before{color:var(--acc-hi);transform:translateX(3px);}
+.out-opt.selected{border-color:var(--acc);background:var(--acc-gl);}
+.out-opt.selected::before{content:'✓';color:var(--acc-hi);}
+.out-opt.italic-style{font-family:var(--ff-d);font-size:15px;font-style:italic;font-weight:300;line-height:1.62;}
+
+.out-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:2px;}
+.btn-use{
+  font-size:11.5px;font-weight:400;letter-spacing:.04em;
+  background:var(--acc);color:#0A0806;padding:0 20px;
+  border-radius:100px;display:inline-flex;align-items:center;gap:6px;
+  min-height:38px;cursor:pointer;border:none;font-family:inherit;
+  transition:all .22s var(--smooth);white-space:nowrap;
+}
+.btn-use:hover{background:var(--acc-hi);transform:translateY(-1px);box-shadow:0 6px 18px rgba(184,146,42,.25);}
+.btn-use.saved{background:var(--sage);}
+.btn-regen{
+  font-size:10.5px;color:var(--ink-3);padding:0 14px;min-height:38px;
+  border:1px solid var(--b);border-radius:100px;display:inline-flex;
+  align-items:center;gap:4px;cursor:pointer;background:none;font-family:inherit;transition:all .18s;
+}
+.btn-regen:hover{color:var(--ink-2);border-color:var(--b-hi);}
+
+/* Radio opts (cancellation) */
+.radio-opts{display:flex;flex-direction:column;gap:7px;}
+.radio-opt{
+  display:flex;gap:11px;align-items:flex-start;padding:12px 14px;
+  background:rgba(237,227,208,.03);border:1px solid var(--b);
+  border-radius:var(--r-sm);cursor:pointer;transition:all .18s;
+  -webkit-tap-highlight-color:transparent;
+}
+.radio-opt:hover{border-color:var(--b-hi);}
+.radio-opt.selected{border-color:var(--acc);background:var(--acc-gl);}
+.radio-circle{
+  width:14px;height:14px;border-radius:50%;border:1px solid var(--b);
+  flex-shrink:0;margin-top:3px;transition:all .18s;position:relative;
+}
+.radio-opt.selected .radio-circle{border-color:var(--acc);background:var(--acc);}
+.radio-opt.selected .radio-circle::after{
+  content:'';position:absolute;inset:3px;border-radius:50%;background:#0A0806;
+}
+.radio-text{font-size:12.5px;font-weight:300;color:var(--ink-2);line-height:1.65;}
+.radio-text strong{font-weight:400;color:var(--ink);}
+.radio-opt.selected .radio-text{color:var(--ink);}
+
+/* Service desc list */
+.svc-list{display:flex;flex-direction:column;gap:0;}
+.svc-item{padding:16px 18px;border-bottom:1px solid var(--b);}
+.svc-item:last-child{border-bottom:none;}
+.svc-item-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.svc-item-name{font-size:13px;font-weight:400;color:var(--ink-2);}
+.svc-item-meta{font-size:11px;color:var(--ink-4);}
+.svc-item-opts{display:flex;flex-direction:column;gap:6px;}
+.svc-opt{
+  padding:9px 12px;background:rgba(237,227,208,.03);border:1px solid var(--b);
+  border-radius:var(--r-sm);cursor:pointer;text-align:left;
+  font:300 12px/1.65 var(--ff-b);color:var(--ink-2);
+  display:flex;align-items:flex-start;gap:8px;transition:all .16s;font-family:inherit;
+}
+.svc-opt::before{content:'→';color:var(--ink-4);font-size:10px;flex-shrink:0;margin-top:2px;transition:all .16s;}
+.svc-opt:hover{border-color:var(--acc-lo);background:var(--acc-gl);}
+.svc-opt:hover::before{color:var(--acc-hi);transform:translateX(2px);}
+.svc-opt.selected{border-color:var(--acc);background:var(--acc-gl);}
+.svc-opt.selected::before{content:'✓';color:var(--acc-hi);}
+.svc-opt.none-opt{font-style:italic;color:var(--ink-4);}
+
+/* Who section input style */
+.free-field{
+  display:flex;flex-direction:column;gap:10px;
+  background:var(--bg-card);border:1px solid var(--b);border-radius:var(--r);
+  padding:18px;
+}
+.free-field-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
+.free-ta{
+  background:rgba(237,227,208,.04);border:1px solid var(--b);border-radius:var(--r-sm);
+  padding:11px 13px;font:300 13.5px/1.72 var(--ff-b);color:var(--ink-2);outline:none;
+  resize:vertical;min-height:72px;transition:border-color .2s,box-shadow .2s;
+  font-family:var(--ff-d);font-style:italic;
+}
+.free-ta:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(184,146,42,.07);}
+.free-ta::placeholder{color:var(--ink-4);font-style:italic;}
+
+/* Finish panel */
+.finish-panel{
+  display:none;flex-direction:column;gap:20px;align-items:center;text-align:center;
+  padding:36px 24px;background:var(--acc-gl);border:1px solid var(--acc-lo);border-radius:var(--r);
+  animation:msgIn .5s var(--ease) both;
+}
+.finish-panel.show{display:flex;}
+.finish-orb{
+  width:52px;height:52px;border-radius:50%;
+  background:radial-gradient(circle,rgba(184,146,42,.5),rgba(184,146,42,.1) 60%,transparent);
+  border:1px solid var(--acc-lo);display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.finish-title{font-family:var(--ff-d);font-size:clamp(26px,4vw,36px);font-weight:300;letter-spacing:-.01em;}
+.finish-title em{font-style:italic;color:var(--acc-hi);}
+.finish-sub{font-size:13px;font-weight:300;color:var(--ink-3);line-height:1.75;max-width:380px;}
+.finish-fields{
+  display:flex;flex-direction:column;gap:6px;text-align:left;width:100%;max-width:400px;
+}
+.finish-field{
+  display:flex;align-items:center;gap:9px;font-size:12px;font-weight:300;
+  color:var(--sage-hi);padding:8px 12px;background:rgba(74,122,98,.07);
+  border:1px solid var(--sage-lo);border-radius:var(--r-sm);
+}
+.finish-field::before{content:'✓';font-size:11px;flex-shrink:0;}
+.finish-field.skip{color:var(--ink-4);background:rgba(237,227,208,.02);border-color:var(--b);}
+.finish-field.skip::before{content:'–';}
+.btn-finish{
+  font-size:13px;font-weight:400;letter-spacing:.04em;background:var(--acc);color:#0A0806;
+  padding:0 36px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;
+  min-height:52px;cursor:pointer;border:none;font-family:inherit;
+  transition:all .28s var(--smooth);
+}
+.btn-finish:hover{background:var(--acc-hi);transform:translateY(-2px);box-shadow:0 10px 28px rgba(184,146,42,.28);}
+
+/* No-data state */
+.no-data{
+  text-align:center;padding:48px 24px;display:flex;flex-direction:column;
+  align-items:center;gap:16px;
+}
+.no-data-icon{font-size:32px;opacity:.3;}
+.no-data-title{font-family:var(--ff-d);font-size:24px;font-weight:300;color:var(--ink-2);}
+.no-data-sub{font-size:13px;font-weight:300;color:var(--ink-3);line-height:1.7;max-width:340px;}
+.btn-go-wizard{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--acc-hi);
+  padding:10px 22px;border:1px solid var(--acc-lo);border-radius:100px;background:var(--acc-gl);
+  cursor:pointer;font-family:inherit;transition:all .2s;
+}
+.btn-go-wizard:hover{background:rgba(184,146,42,.14);}  --nav: 60px;
+
+
+.vscript{display:flex;flex-direction:column;gap:0;}
+.vscript-row{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--b);}
+.vscript-row:last-child{border-bottom:none;}
+.vscript-time{font-size:10px;letter-spacing:.06em;color:var(--amber-hi);font-weight:400;white-space:nowrap;padding-top:3px;min-width:90px;font-family:var(--ff-m,'monospace');}
+.vscript-body{flex:1;}
+.vscript-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);margin-bottom:5px;}
+.vscript-text{font-size:14px;font-weight:300;color:var(--ink-2);line-height:1.7;font-family:var(--ff-d);}
+
+
+.vscript-text[contenteditable]{
+  outline:none;cursor:text;border-radius:4px;
+  transition:background .2s,box-shadow .2s;
+  padding:2px 4px;margin:-2px -4px;
+}
+.vscript-text[contenteditable]:focus{
+  background:rgba(184,146,42,.06);
+  box-shadow:0 0 0 2px var(--amber-lo);
+}
+.vscript-tip{
+  font-size:11px;font-weight:300;color:var(--ink-4);
+  font-style:italic;padding:10px 18px 0;
+}
+.vscript-record-tips{
+  padding:16px 18px 0;
+  border-top:1px solid var(--b);
+  margin-top:16px;
+}
+.vrt-title{
+  font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber-hi);margin-bottom:10px;
+}
+.vrt-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:6px;
+}
+.vrt-item{
+  font-size:11.5px;font-weight:300;color:var(--ink-4);
+  line-height:1.55;display:flex;gap:7px;align-items:flex-start;
+}
+.vrt-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--amber-hi);flex-shrink:0;margin-top:5px;
+}
+
+/* ── Unified editable blocks ── */
+.unified-block{width:100%;background:rgba(237,227,208,.04);border:1px solid var(--b);border-radius:var(--r-sm);padding:20px 22px;outline:none;cursor:text;white-space:pre-wrap;word-break:break-word;transition:border-color .2s,box-shadow .2s,background .2s;animation:msgIn .35s var(--ease) both;display:block;}
+.unified-block:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(184,146,42,.07);background:rgba(237,227,208,.055);}
+.unified-block.bio-block{font-family:var(--ff-b);font-size:13.5px;font-weight:300;line-height:1.85;color:var(--ink-2);min-height:110px;}
+.unified-block.opening-block{font-family:var(--ff-d);font-size:20px;font-style:italic;font-weight:300;line-height:1.62;color:var(--ink-2);text-align:center;min-height:72px;}
+.unified-block.who-block{font-family:var(--ff-d);font-size:17px;font-style:italic;font-weight:300;line-height:1.7;color:var(--ink-2);min-height:60px;}
+.unified-block.office-block{font-family:var(--ff-d);font-size:15px;font-style:italic;font-weight:300;line-height:1.72;color:var(--ink-2);min-height:52px;}
+.unified-block-hint{font-size:10px;color:var(--ink-4);font-style:italic;font-weight:300;margin-top:7px;line-height:1.5;}
+.regen-badge{font-size:9.5px;color:var(--ink-4);font-weight:300;letter-spacing:.04em;transition:opacity .2s;}
+
+/* ── warnDiscard modal ── */
+.discard-overlay{position:fixed;inset:0;z-index:1000;background:rgba(12,9,7,.72);display:flex;align-items:center;justify-content:center;padding:24px;animation:overlayIn .18s var(--ease) both;}
+@keyframes overlayIn{from{opacity:0}to{opacity:1}}
+.discard-card{background:var(--bg-card);border:1px solid var(--b-hi);border-radius:var(--r);padding:24px 24px 20px;max-width:340px;width:100%;display:flex;flex-direction:column;gap:16px;animation:discardIn .22s var(--spring) both;box-shadow:0 24px 64px rgba(0,0,0,.5);}
+@keyframes discardIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+.discard-icon{width:32px;height:32px;border-radius:50%;background:rgba(184,146,42,.12);border:1px solid var(--acc-lo);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.discard-msg{font-size:13px;font-weight:300;color:var(--ink-2);line-height:1.72;}
+.discard-msg strong{font-weight:400;color:var(--ink);display:block;margin-bottom:4px;font-size:13.5px;}
+.discard-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;}
+.discard-keep{font-size:11.5px;font-weight:400;color:var(--ink-3);padding:0 16px;min-height:36px;border:1px solid var(--b);border-radius:100px;background:none;cursor:pointer;font-family:var(--ff-b);transition:all .16s;}
+.discard-keep:hover{color:var(--ink-2);border-color:var(--b-hi);}
+.discard-confirm{font-size:11.5px;font-weight:400;color:#0A0806;padding:0 18px;min-height:36px;border:none;border-radius:100px;background:var(--acc);cursor:pointer;font-family:var(--ff-b);transition:all .18s var(--smooth);}
+.discard-confirm:hover{background:var(--acc-hi);transform:translateY(-1px);}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.shake{animation:shake .25s ease both;}
+
+/* ── Cancel tone picker ── */
+.cancel-tone-row{display:flex;gap:6px;padding:16px 18px 14px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--b);}
+.cancel-tone-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);margin-right:2px;flex-shrink:0;}
+.cancel-tone-btn{font-size:11px;font-weight:300;color:var(--ink-3);padding:5px 14px;border:1px solid var(--b);border-radius:100px;background:none;cursor:pointer;font-family:var(--ff-b);transition:all .16s;line-height:1;min-height:28px;}
+.cancel-tone-btn:hover:not(.active){border-color:var(--b-hi);color:var(--ink-2);}
+.cancel-tone-btn.active{border-color:var(--acc-lo);color:var(--acc-hi);background:var(--acc-gl);}
+.cancel-preview-wrap{padding:14px 18px 4px;}
+.cancel-preview{font-family:var(--ff-d);font-size:14.5px;font-style:italic;font-weight:300;line-height:1.88;color:var(--ink-2);background:rgba(237,227,208,.04);border:1px solid var(--b);border-radius:var(--r-sm);padding:16px 18px;outline:none;cursor:text;min-height:88px;width:100%;display:block;transition:border-color .2s,box-shadow .2s,background .2s;}
+.cancel-preview:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(184,146,42,.07);background:rgba(237,227,208,.055);}
+.cancel-preview-hint{font-size:10px;color:var(--ink-4);font-style:italic;font-weight:300;margin-top:7px;line-height:1.6;padding-bottom:14px;}
+
+/* ── Service inline editable ── */
+.svc-inline-item{padding:18px 18px 14px;border-bottom:1px solid var(--b);animation:msgIn .28s var(--ease) both;}
+.svc-inline-item:last-child{border-bottom:none;}
+.svc-inline-hdr{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:9px;gap:12px;}
+.svc-inline-name{font-size:13px;font-weight:400;color:var(--ink-2);}
+.svc-inline-meta{font-size:10px;color:var(--ink-4);white-space:nowrap;flex-shrink:0;}
+.svc-inline-desc{font-family:var(--ff-d);font-size:14px;font-style:italic;font-weight:300;line-height:1.78;color:var(--ink-2);background:rgba(237,227,208,.04);border:1px solid var(--b);border-radius:var(--r-sm);padding:10px 13px;outline:none;cursor:text;min-height:48px;width:100%;display:block;transition:border-color .2s,box-shadow .2s,background .2s;}
+.svc-inline-desc:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(184,146,42,.07);background:rgba(237,227,208,.055);}
+.svc-inline-footer{display:flex;align-items:center;justify-content:space-between;margin-top:7px;}
+.svc-inline-hint{font-size:10px;color:var(--ink-4);font-style:italic;font-weight:300;}
+.svc-inline-reset{font-size:10px;color:var(--ink-4);background:none;border:none;cursor:pointer;font-family:var(--ff-b);padding:0;transition:color .16s;display:inline-flex;align-items:center;gap:3px;}
+.svc-inline-reset:hover{color:var(--acc-hi);}
+.svc-inline-none-toggle{font-size:10.5px;font-weight:300;color:var(--ink-4);background:none;border:1px solid var(--b);border-radius:100px;padding:3px 11px;cursor:pointer;font-family:var(--ff-b);transition:all .16s;line-height:1;min-height:24px;}
+.svc-inline-none-toggle:hover{border-color:var(--b-hi);color:var(--ink-3);}
+.svc-inline-none-toggle.active{border-color:var(--ink-4);color:var(--ink-3);background:rgba(237,227,208,.04);}
+
+</style>
+</head>
+<body>
+<div class="shell" id="shell">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <a href="/clinical" class="logo">Wellovie <span>Clinical</span></a>
+    <span class="logo-sub">Copy Writer</span>
+    <h1 class="sidebar-title">Write your<br><em>copy.</em></h1>
+    <p class="sidebar-sub">Answer a few questions.<br>We build the words for you.</p>
+
+    <div class="ctx-card" id="ctxCard">
+      <div class="ctx-row"><div class="ctx-dot"></div><span class="ctx-label">Writing for</span><span class="ctx-value" id="ctxName">—</span></div>
+      <div class="ctx-row"><div class="ctx-dot" style="background:var(--sage-hi)"></div><span class="ctx-label">Speciality</span><span class="ctx-value" id="ctxSpec">—</span></div>
+      <div class="ctx-row"><div class="ctx-dot" style="background:var(--acc-lo)"></div><span class="ctx-label">Tone</span><span class="ctx-value" id="ctxTone">—</span></div>
+    </div>
+
+    <nav class="step-nav" id="stepNav">
+      <div class="step-item active" data-step="bio" onclick="goStep('bio')">
+        <div class="step-num" id="snum-bio">1</div>
+        <div class="step-info"><div class="step-name">Your bio</div><div class="step-dest">About page</div></div>
+      </div>
+      <div class="step-item" data-step="opening" onclick="goStep('opening')">
+        <div class="step-num" id="snum-opening">2</div>
+        <div class="step-info"><div class="step-name">Opening line</div><div class="step-dest">Homepage hero</div></div>
+      </div>
+      <div class="step-item" data-step="who" onclick="goStep('who')">
+        <div class="step-num" id="snum-who">3</div>
+        <div class="step-info"><div class="step-name">Who you work with</div><div class="step-dest">About page</div></div>
+      </div>
+      <div class="step-item" data-step="office" onclick="goStep('office')">
+        <div class="step-num" id="snum-office">4</div>
+        <div class="step-info"><div class="step-name">Your space</div><div class="step-dest">About page</div></div>
+      </div>
+      <div class="step-item" data-step="svcs" onclick="goStep('svcs')">
+        <div class="step-num" id="snum-svcs">5</div>
+        <div class="step-info"><div class="step-name">Service descriptions</div><div class="step-dest">Services page</div></div>
+      </div>
+      <div class="step-item" data-step="cancel" onclick="goStep('cancel')">
+        <div class="step-num" id="snum-cancel">6</div>
+        <div class="step-info"><div class="step-name">Cancellation policy</div><div class="step-dest">Services FAQ</div></div>
+      </div>
+      <div class="step-item" data-step="video" onclick="goStep('video')">
+        <div class="step-num" id="snum-video">7</div>
+        <div class="step-info"><div class="step-name">Video script</div><div class="step-dest">Optional · About page</div></div>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="btn-back" onclick="goBackToWizard()">← Back to wizard</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main" id="mainArea"></main>
+
+</div>
+
+<script>
+'use strict';
+const LS_KEY = 'wellovie_wizard_v2';
+let D = null; // loaded from localStorage
+const saved = {}; // fields written back
+const doneSteps = new Set();
+let bioV = 0, bioAnswers = {};
+let currentStep = 'bio';
+const STEPS = ['bio','opening','who','office','svcs','cancel','video'];
+
+/* ══ Load wizard state ══ */
+function loadState() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch(e) { return null; }
+}
+
+function saveBack(fields) {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    const existing = raw ? JSON.parse(raw) : {};
+    const merged = Object.assign({}, existing, fields, { savedAt: Date.now() });
+    localStorage.setItem(LS_KEY, JSON.stringify(merged));
+  } catch(e) {}
+}
+
+/* ══ Helpers ══ */
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
+function low(s) { return s ? s.charAt(0).toLowerCase() + s.slice(1) : ''; }
+function sent(s) { if(!s)return ''; const t=cap(s.trim()); return t.match(/[.!?]$/) ? t : t+'.'; }
+const CLICHES = [
+  [/\bon a journey\b/gi,'working through something'],[/\bjourney\b/gi,'process'],
+  [/\bsafe space\b/gi,'a space where you can be honest'],[/\bempow[a-z]+\b/gi,'help'],
+  [/\bpassionate about\b/gi,'committed to'],[/\bholistic\b/gi,'whole-person'],
+  [/\bdive deep\b/gi,'go deeper'],[/  +/g,' '],
+];
+function dc(s) { let t=s||''; CLICHES.forEach(([p,r])=>t=t.replace(p,r)); return t.replace(/\s+\./g,'.').replace(/  +/g,' ').trim(); }
+
+/* ══ warnDiscard modal ══ */
+function warnDiscard(msg, onConfirm, triggerBtn) {
+  if (triggerBtn) { triggerBtn.classList.add('shake'); setTimeout(() => triggerBtn.classList.remove('shake'), 300); }
+  const overlay = document.createElement('div');
+  overlay.className = 'discard-overlay';
+  overlay.innerHTML = '<div class="discard-card" role="dialog" aria-modal="true"><div style="display:flex;align-items:center;gap:10px;"><div class="discard-icon">✎</div><div class="discard-msg"><strong>Discard your edits?</strong>' + msg + '</div></div><div class="discard-actions"><button class="discard-keep" id="dc-keep">Keep editing</button><button class="discard-confirm" id="dc-confirm">Yes, replace</button></div></div>';
+  document.body.appendChild(overlay);
+  const confirmBtn=overlay.querySelector('#dc-confirm'); const keepBtn=overlay.querySelector('#dc-keep');
+  const close=()=>overlay.remove();
+  confirmBtn.addEventListener('click',()=>{close();onConfirm();});
+  keepBtn.addEventListener('click',close);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close();});
+  function onKey(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',onKey);}if(e.key==='Enter'){close();onConfirm();document.removeEventListener('keydown',onKey);}}
+  document.addEventListener('keydown',onKey);
+  setTimeout(()=>keepBtn.focus(),50);
+}
+
+
+/* ══ Navigation ══ */
+function goStep(step) {
+  currentStep = step;
+  document.querySelectorAll('.step-item').forEach(el => el.classList.toggle('active', el.dataset.step === step));
+  document.querySelectorAll('.step-panel').forEach(el => el.classList.toggle('active', el.id === 'panel-'+step));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function markStepDone(step) {
+  doneSteps.add(step);
+  const num = document.getElementById('snum-'+step);
+  if(num) num.textContent = '✓';
+  const item = document.querySelector(`.step-item[data-step="${step}"]`);
+  if(item) { item.classList.add('done'); item.classList.remove('active'); }
+  // Auto-advance to next incomplete step
+  const nextStep = STEPS.find(s => !doneSteps.has(s));
+  if(nextStep) {
+    setTimeout(() => goStep(nextStep), 700);
+  } else {
+    setTimeout(() => goStep('finish'), 700);
+  }
+}
+
+function goBackToWizard() {
+  if(Object.keys(saved).length > 0) {
+    saveBack(saved);
+  }
+  if(window.opener && !window.opener.closed) {
+    window.opener.focus();
+    window.close();
+  } else {
+    window.location.href = '/clinical/build';
+  }
+}
+
+/* ══ Mini chat engine ══ */
+function makeChat(panelEl, { questions, onAllAnswered, autoStart = true }) {
+  const msgsEl = panelEl.querySelector('.chat-msgs');
+  const sugsEl = panelEl.querySelector('.chat-sugs');
+  const inpEl  = panelEl.querySelector('.chat-inp');
+  const sendEl = panelEl.querySelector('.chat-send');
+  const skipEl = panelEl.querySelector('.chat-skip');
+  const pillsEl= panelEl.querySelector('.chat-pills');
+  let qIdx = 0;
+  const answers = {};
+
+  function scrollMsgs() { msgsEl.scrollTop = msgsEl.scrollHeight; }
+
+  function addMsg(html, who, delay=0) {
+    return new Promise(res => setTimeout(() => {
+      const div = document.createElement('div');
+      div.className = 'msg ' + (who==='user'?'user':'bot');
+      div.innerHTML = `<div class="msg-av">${who==='user'?'You':'✦'}</div><div class="msg-bub">${html}</div>`;
+      msgsEl.appendChild(div); scrollMsgs(); res();
+    }, delay));
+  }
+
+  function showTyping(ms=800) {
+    return new Promise(res => {
+      const div = document.createElement('div'); div.className='typing'; div.id='typ-'+Date.now();
+      div.innerHTML=`<div class="msg-av">✦</div><div class="t-dots"><div class="t-dot"></div><div class="t-dot"></div><div class="t-dot"></div></div>`;
+      msgsEl.appendChild(div); scrollMsgs();
+      setTimeout(()=>{ div.remove(); res(); }, ms);
+    });
+  }
+
+  function showSugs(items) {
+    sugsEl.innerHTML = '';
+    if(!items||!items.length){ sugsEl.classList.add('hidden'); return; }
+    sugsEl.classList.remove('hidden');
+    const lbl = document.createElement('div'); lbl.className='sug-label'; lbl.textContent='Or pick one:'; sugsEl.appendChild(lbl);
+    items.forEach(s => {
+      const btn = document.createElement('button'); btn.className='sug'; btn.textContent=s;
+      btn.addEventListener('click', ()=>{ inpEl.value=s; submit(); }); sugsEl.appendChild(btn);
+    });
+  }
+
+  function updatePills() {
+    if(!pillsEl) return;
+    pillsEl.innerHTML='';
+    questions.forEach((_,i) => {
+      const p = document.createElement('div'); p.className='chat-pill';
+      if(i < qIdx) p.classList.add('done'); else if(i === qIdx) p.classList.add('active');
+      pillsEl.appendChild(p);
+    });
+  }
+
+  async function submit(skip=false) {
+    const val = skip ? '' : inpEl.value.trim();
+    if(!val && !skip) return;
+    sugsEl.innerHTML=''; sugsEl.classList.add('hidden');
+    inpEl.value=''; inpEl.disabled=true; sendEl.disabled=true;
+    if(skipEl) skipEl.style.visibility='hidden';
+    if(!skip && val) await addMsg(val, 'user');
+    const q = questions[qIdx];
+    answers['a'+(qIdx+1)] = val;
+    qIdx++;
+    updatePills();
+    if(qIdx < questions.length) {
+      await showTyping(700);
+      const acks=['Good.','Got it.','Perfect.','That helps.'];
+      const ack = val ? acks[Math.floor(Math.random()*acks.length)] : '';
+      const nq = questions[qIdx];
+      await addMsg(`${ack?ack+' ':''}${nq.q}`, 'bot');
+      inpEl.placeholder = nq.placeholder||'Type your answer…';
+      if(!nq.required) skipEl && (skipEl.style.visibility='');
+      else if(skipEl) skipEl.style.visibility='hidden';
+      inpEl.disabled=false; sendEl.disabled=false;
+      showSugs(nq.suggestions);
+      inpEl.focus();
+    } else {
+      await showTyping(900);
+      await addMsg('Perfect — building your options now.', 'bot');
+      onAllAnswered(answers);
+    }
+  }
+
+  sendEl.addEventListener('click', ()=>submit(false));
+  inpEl.addEventListener('keydown', e=>{ if(e.key==='Enter'){e.preventDefault();submit(false);} });
+  if(skipEl) skipEl.addEventListener('click', ()=>submit(true));
+
+  if(autoStart) {
+    inpEl.disabled=true; sendEl.disabled=true;
+    setTimeout(async()=>{
+      updatePills();
+      await showTyping(600);
+      const q = questions[0];
+      await addMsg(q.q, 'bot');
+      inpEl.placeholder = q.placeholder||'Type your answer…';
+      if(!q.required) skipEl && (skipEl.style.visibility='');
+      showSugs(q.suggestions);
+      inpEl.disabled=false; sendEl.disabled=false; inpEl.focus();
+    }, 400);
+  }
+  return answers;
+}
+
+/* ══ Copy builders ══ */
+function detectTheme(a1='') {
+  const t=a1.toLowerCase();
+  if(/anxi|worry|overthink|panic|racing|can.t stop/.test(t))return 'anxiety';
+  if(/exhaust|burnt|burnout|running on empty|tired/.test(t))return 'exhaustion';
+  if(/stuck|frozen|same pattern|loop/.test(t))return 'stuck';
+  if(/relation|partner|marriage|couple/.test(t))return 'relationship';
+  if(/grief|loss|death|divorce|ended/.test(t))return 'grief';
+  if(/who am i|lost myself|identity|purpose/.test(t))return 'identity';
+  if(/depress|empty|numb|hopeless/.test(t))return 'depression';
+  if(/trauma|ptsd|childhood|abuse|past/.test(t))return 'trauma';
+  return 'general';
+}
+
+function buildBio(ans, tone, D, v) {
+  v = v || 0;
+  var fn = (D.name||'').split(',')[0].trim().split(' ')[0] || 'Your Name';
+  var full = (D.name||'').split(',')[0].trim();
+  var cred = D.lic || 'therapist';
+  var city = D.city || 'your area';
+  var spec = (D.specs||[]).slice(0,2).join(' and ').toLowerCase() || 'anxiety and related concerns';
+  var app = D.approach || [];
+  var years = D.years || '';
+  var a1 = ans.a1 ? low(ans.a1).replace(/\.$/, '') : '';
+  var a2 = ans.a2 ? low(ans.a2).replace(/\.$/, '') : '';
+  var a3 = ans.a3 ? low(ans.a3).replace(/^(i'?m|i am)\s*/i, '').replace(/\.$/, '') : '';
+  var appMap = {
+    'CBT':'practical, skills-focused work','Somatic':'body-aware approaches',
+    'EMDR':'EMDR','IFS':'Internal Family Systems','ACT':'acceptance-based work',
+    'Psychodynamic':'exploring how the past shapes the present',
+    'Attachment-based':'attachment-based approaches',
+    'Mindfulness-based':'mindfulness practice','Integrative':'an integrative approach'
+  };
+  var appLine = app.length ? (appMap[app[0]] || app[0].toLowerCase()) : '';
+  var pA1 = a1 || 'carrying something they are ready to put down';
+  var pA2 = a2 || 'feel genuinely different';
+  var yrsLine = years ? (fn + ' has been doing this for ' + years + ' years.') : '';
+  var a3line = a3 ? ('Something clients notice early: ' + fn + ' ' + a3 + '.') : (appLine ? 'Drawing on ' + appLine + '.' : '');
+
+  var calm = [
+    'The people who find me are usually ' + pA1 + '. ' +
+    fn + ' is a ' + cred + ' in ' + city + ' specializing in ' + spec + '. ' +
+    'In our work together, we move toward a place where you ' + pA2 + '. ' +
+    a3line + ' ' + (yrsLine || 'I am genuinely glad you found your way here.'),
+
+    'If you have found your way here, you are probably ' + pA1 + '. ' +
+    'I am ' + fn + ', a ' + cred + ' in ' + city + '. I specialize in ' + spec +
+    ' — not as a category, but as the specific exhausting way it shows up in real lives. ' +
+    'By the time we finish, clients typically ' + pA2 + '. ' +
+    (a3 ? 'One thing that surprises people: I ' + a3 + '. ' : '') +
+    (yrsLine || ''),
+  ];
+  var direct = [
+    'I am ' + fn + ', a ' + cred + ' in ' + city + ' specializing in ' + spec + '. ' +
+    'My clients come in ' + pA1 + '. They leave having ' + pA2 + '. ' +
+    (a3 ? 'My approach: I ' + a3 + '.' : appLine ? 'I work through ' + appLine + '.' : 'Sessions are focused and honest.') +
+    ' If that is what you have been looking for, let us connect.',
+
+    full + ', ' + cred + ' — ' + city + '. ' +
+    'I work with adults who are ' + pA1 + ' and prepared to do something about it. ' +
+    'The goal is not insight for its own sake — it is ' + pA2 + '. ' +
+    (a3 ? 'What you will notice quickly: I ' + a3 + '. ' : '') +
+    (years ? years + ' years of this work. ' : '') +
+    'If you want a therapist who is direct and invested, let us connect.',
+  ];
+  var relational = [
+    'I became a therapist because I believe most people have never had anyone truly listen to them — not really. ' +
+    'I am ' + fn + ', and my clients usually come in ' + pA1 + '. ' +
+    'In our work, we pay attention to what is underneath until you ' + pA2 + '. ' +
+    (a3 ? 'One thing people tell me they did not expect: I ' + a3 + '. ' : '') +
+    'Therapy with me is a place to say the thing you have never said out loud.',
+
+    'Most people who find me are ' + pA1 + ', and they have been doing it longer than they should have to. ' +
+    'I am ' + fn + ', a ' + cred + ' in ' + city + '. ' +
+    'The work we do is not about coping — it is about understanding yourself well enough that you ' + pA2 + '. ' +
+    (a3 ? 'Something I hear sometimes: "I did not expect you to ' + a3 + '." ' : '') +
+    'That is the kind of therapy I practice.',
+  ];
+  var trusted = [
+    full + ' is a ' + cred + ' based in ' + city + ', specializing in ' + spec + '. ' +
+    'Clients typically present with ' + (a1 || spec + '-related concerns') + '. ' +
+    (appLine ? 'Drawing on ' + appLine + ', treatment focuses on ' : 'Treatment focuses on ') +
+    (a2 || 'evidence-based, sustainable change') + '. ' +
+    (years ? 'With ' + years + ' years of clinical experience, ' : '') +
+    "sessions are structured, rigorous, and responsive to each client's individual needs." +
+    (a3 ? ' A distinguishing feature: ' + a3 + '.' : ''),
+
+    full + ', ' + cred + ', provides evidence-based therapy for ' + spec + ' in ' + city +
+    (D.fmt === 'hybrid' ? ' and online' : '') + '. ' +
+    (years ? 'Over ' + years + ' years, ' : '') +
+    'the approach is built around what research shows works: ' + (appLine || 'targeted, evidence-based methods') + '. ' +
+    (a2 ? 'Clients report ' + a2 + '. ' : '') +
+    (a3 ? 'A consistent feature: ' + a3 + '.' : ''),
+  ];
+
+  var sets = {calm:calm, direct:direct, relational:relational, trusted:trusted};
+  var set = sets[tone] || calm;
+  return dc(set[v % set.length].replace(/\s+/g, ' ').trim());
+}
+
+function buildOpeningLines(ans, tone, D) {
+  const a1 = ans.a1||'';
+  const spec = (D.specs||[])[0]?.toLowerCase()||'this';
+  const raw = a1.trim();
+  const hasRaw = raw.length > 5;
+  const r = hasRaw ? low(raw) : null;
+
+  const sets = {
+    calm: hasRaw ? [
+      `Most people who find me describe it the same way: ${r}. That's exactly where we start.`,
+      `If you've been feeling like you ${r} — you're not alone, and you don't have to stay there.`,
+      `You don't have to have it figured out to begin. You just have to be tired enough of ${r}.`,
+    ] : [
+      `You don't have to have it figured out to begin.`,
+      `There's nothing wrong with you. You're just carrying too much.`,
+      `It's okay to not be okay. Let's start there.`,
+    ],
+    direct: hasRaw ? [
+      `${cap(r)}. That's the starting point. Let's change it.`,
+      `You're here because you ${r}. That's honest. Let's work with it.`,
+      `You already know something has to change. You wouldn't be reading this otherwise.`,
+    ] : [
+      `You already know something has to change.`,
+      `There's a difference between managing and actually getting better.`,
+      `Real, lasting change is possible. It takes the right approach.`,
+    ],
+    relational: hasRaw ? [
+      `"${cap(r)}." I hear this more than almost anything else. It's where we start.`,
+      `If ${r} sounds familiar — that's not a character flaw. It's a signal.`,
+      `The thing you've been calling a flaw is usually the most important thing we talk about.`,
+    ] : [
+      `Most people have never had anyone truly listen to them. That's where we start.`,
+      `The thing you've never said out loud is usually the most important thing.`,
+      `You are not the problem. You are a person carrying a problem. There's a difference.`,
+    ],
+    trusted: hasRaw ? [
+      `Clients typically present with ${r} — a pattern that responds well to focused, evidence-based work.`,
+      `Evidence-based therapy for ${spec} — grounded, structured, and tailored to you.`,
+      `Skilled, focused treatment for adults who are ready to understand their patterns.`,
+    ] : [
+      `Evidence-based therapy for ${spec} — grounded, structured, effective.`,
+      `Therapy built around you, not a generic protocol.`,
+      `Skilled, focused treatment for adults ready to change their patterns.`,
+    ],
+  };
+  return (sets[tone]||sets.calm).map(dc);
+}
+
+function buildWhoLines(raw, tone, D) {
+  const spec = (D.specs||[]).slice(0,2).join(' and ').toLowerCase()||'anxiety and related challenges';
+  const hasRaw = raw && raw.length > 6;
+  const r = hasRaw ? low(raw).replace(/\.$/,'') : null;
+
+  const sets = {
+    calm: hasRaw ? [
+      `I work best with ${r} — people who are ready to stop managing and start actually feeling different.`,
+      `My clients are usually ${r}. The common thread: they're ready for something to change.`,
+      `${cap(r)} — that's who I show up best for.`,
+    ] : [
+      `Adults navigating ${spec} who are ready to do the real work of understanding themselves.`,
+      `People who are functioning on the outside but know something needs to change on the inside.`,
+      `Adults ready to stop coping and start actually shifting.`,
+    ],
+    direct: hasRaw ? [
+      `I work best with ${r} — people ready to understand their patterns, not just cope.`,
+      `${cap(r)}, and prepared to work at it.`,
+      `My best clients: ${r}, ready to do something concrete.`,
+    ] : [
+      `Adults dealing with ${spec} who want a therapist who's direct and invested in progress.`,
+      `People who've tried to fix it themselves and are ready for a different approach.`,
+      `Adults who want to understand their patterns, not just manage symptoms.`,
+    ],
+    relational: hasRaw ? [
+      `I work best with ${r} — people who've never had someone truly listen.`,
+      `${cap(r)}. Usually people who've been carrying something alone for a long time.`,
+      `The people who find me are usually ${r} — and ready for something to finally be different.`,
+    ] : [
+      `Adults navigating ${spec} who are ready to say the thing they've never said out loud.`,
+      `People who've been doing all the right things and still don't feel okay.`,
+      `Adults ready to be genuinely understood, not just managed.`,
+    ],
+    trusted: hasRaw ? [
+      `${cap(r)} — this practice is specifically designed to serve this population.`,
+      `Clients who present with ${r} and are motivated to engage in structured, evidence-based work.`,
+      `Adults experiencing ${r}, seeking targeted, research-supported intervention.`,
+    ] : [
+      `Adults presenting with ${spec}-related concerns, seeking evidence-based treatment.`,
+      `Motivated adults experiencing ${spec} prepared to engage in focused therapeutic work.`,
+      `Adults navigating ${spec} ready for targeted, effective intervention.`,
+    ],
+  };
+  return (sets[tone]||sets.calm).map(dc);
+}
+
+function buildOfficeLines(raw, D) {
+  const loc = D.neigh ? `${D.neigh}, ${D.city||''}` : D.city||'your area';
+  const hasRaw = raw && raw.length > 6;
+  const r = hasRaw ? low(raw).replace(/\.$/,'') : null;
+  const fmt = D.fmt||'hybrid';
+  const lines = hasRaw ? [
+    `${cap(r)} in ${loc}.`,
+    `The space: ${r}. Located in ${loc}.`,
+    `You'll find me in ${loc} — ${r}.`,
+  ] : [
+    fmt==='hybrid'
+      ? `A private, calm office in ${loc} — and online via secure video for clients who prefer it.`
+      : `A quiet, private office in ${loc} — easy to get to, nothing clinical about it.`,
+    `The space is calm, private, and easy to reach. ${loc}.`,
+    `A private office in ${loc}. Discreet, quiet, unhurried.`,
+  ];
+  return lines.map(dc);
+}
+
+const SVC_DESCS = {
+  individual:[
+    'One-on-one sessions focused on building real understanding and practical tools — not just coping.',
+    'Ongoing individual therapy for adults navigating complex challenges. Structured, honest, and tailored.',
+    'Private sessions for adults ready to understand their patterns and build something that actually lasts.',
+  ],
+  couples:[
+    'For partners who keep having the same argument and want a way through, not just a ceasefire.',
+    'Structured couples work using evidence-based methods — focused on patterns, not just conflict.',
+    'For couples navigating communication breakdown, disconnection, or major life transitions together.',
+  ],
+  consult:[
+    'A free 15-minute call to see if we\'re a good fit. No forms, no commitment, no pressure.',
+    'A brief conversation to see if I\'m the right person for what you\'re working through.',
+    'Free initial consultation — time to ask questions and get a sense of how I work.',
+  ],
+  family:[
+    'For families navigating conflict, communication breakdown, or a major transition together.',
+    'Family sessions focused on interaction patterns, not blame — building toward something that works.',
+    'Structured family therapy for households navigating difficult transitions or recurring conflict.',
+  ],
+  group:[
+    'A carefully held group space — the experience of being understood by people in similar situations.',
+    'Small-group sessions for people navigating similar challenges and working through them together.',
+    'Structured group therapy with the power of being witnessed by others who genuinely understand.',
+  ],
+  default:[
+    'Focused, evidence-based sessions tailored to your specific needs and goals.',
+    'Structured sessions drawing on evidence-based approaches — built around you, not a protocol.',
+    'Professional, individualized support for adults ready to do focused, meaningful work.',
+  ],
+};
+function matchSvc(name) {
+  const n=(name||'').toLowerCase();
+  if(/individual|one.on.one|personal/.test(n))return 'individual';
+  if(/couple|partner|marriage|relationship/.test(n))return 'couples';
+  if(/consult|intro|free|15.min/.test(n))return 'consult';
+  if(/family/.test(n))return 'family';
+  if(/group/.test(n))return 'group';
+  return 'default';
+}
+
+const CANCEL_POLICIES = {
+  '24h': 'I ask for at least 24 hours notice to cancel or reschedule. Late cancellations may be charged the full session fee. If something urgent comes up, please reach out as soon as you can.',
+  '48h': 'I require 48 hours notice to cancel or reschedule. Cancellations with less than 48 hours notice are charged the full fee. Genuine emergencies are handled case by case.',
+  'flex': 'Life happens. I ask that you let me know as soon as possible if you need to reschedule. Repeated late cancellations may come up in our work together, but I don\'t charge for occasional ones.',
+};
+
+/* ══ Build panels ══ */
+function buildPanels() {
+  const main = document.getElementById('mainArea');
+  main.innerHTML = '';
+
+  // ── No data state ──
+  if(!D || !D.name) {
+    main.innerHTML = `<div class="no-data">
+      <div class="no-data-icon">✦</div>
+      <div class="no-data-title">No wizard data found.</div>
+      <p class="no-data-sub">Start filling in the wizard first — your name, specialties, and services — then come back here to write your copy.</p>
+      <button class="btn-go-wizard" onclick="window.location.href='/clinical/build'">Go to wizard →</button>
+    </div>`;
+    return;
+  }
+
+  const tone = D.tone || 'calm';
+  const firstName = (D.name||'').split(',')[0].split(' ')[0];
+
+  // ── 1. Bio ──
+  const bioPanel = buildPanel('bio', main);
+  bioPanel.innerHTML = `
+    <div class="sph"><span class="sph-kicker">Step 1 of 6</span>
+    <h2 class="sph-title">Your bio.<br><em>Three questions.</em></h2>
+    <p class="sph-sub">Answer in plain English — how you'd explain it to a colleague over lunch. We'll handle the writing.</p></div>
+    <div class="chat-card">
+      <div class="chat-hdr">
+        <div class="chat-orb">✦</div>
+        <div class="chat-hdr-info"><div class="chat-hdr-title">Bio Writer</div><div class="chat-hdr-sub">3 questions · 2 minutes</div></div>
+        <div class="chat-pills"></div>
+      </div>
+      <div class="chat-msgs"></div>
+      <div class="chat-sugs hidden"></div>
+      <div class="chat-inp-row">
+        <input class="chat-inp" placeholder="Type your answer…" maxlength="180" autocomplete="off"/>
+        <button class="chat-skip" style="visibility:hidden">Skip</button>
+        <button class="chat-send" aria-label="Send"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M3 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="out-section" id="bio-out">
+        <div class="out-label">Your bio — edit until it sounds exactly like you talking to a colleague</div>
+        <div id="bio-block-wrap"></div>
+        <div class="unified-block-hint">Click anywhere to edit directly.</div>
+        <div class="out-actions">
+          <button class="btn-regen" id="bio-regen">↺ Try a different tone</button>
+          <span class="regen-badge" id="bio-badge"></span>
+          <button class="btn-use" id="bio-use">Use this bio →</button>
+        </div>
+      </div>
+    </div>`;
+
+  makeChat(bioPanel, {
+    questions: [
+      { q: `When clients first reach out to you, what are they usually feeling or going through?`, placeholder: `e.g. can't stop the anxious thoughts, exhausted but can't slow down`, suggestions: [`Can't stop the anxious thoughts`,`Feeling stuck and exhausted`,`Relationship keeps falling apart`,`Can't get past something that happened`,`Don't know who I am anymore`,`Functioning on the outside, empty inside`], required: false },
+      { q: `What usually changes for them by the time they finish working with you?`, placeholder: `e.g. feel like themselves again, actually have tools that work`, suggestions: [`Feel like themselves again`,`Actually have tools that work`,`The past doesn't control them anymore`,`Relationships feel genuinely different`,`Know what they want and why`], required: false },
+      { q: `One thing about how you work that surprises clients?`, placeholder: `e.g. I'm very direct — won't just listen and nod`, suggestions: [`I'm very direct — won't just nod`,`How much we use the body, not just talk`,`How quickly they feel understood`,`Sessions feel like real conversations`,`I push back when I need to`,`How practical it actually is`], required: false },
+    ],
+    onAllAnswered: (ans) => {
+      bioAnswers = ans;
+      const out = document.getElementById('bio-out'); out.classList.add('show');
+      const wrap = document.getElementById('bio-block-wrap'); const badge = document.getElementById('bio-badge');
+      const BIO_TOTAL = 8; let bioV=0; let bioEdited=false;
+      function renderBioBlock(v) {
+        wrap.innerHTML=''; const text=buildBio(ans,tone,D,v);
+        const block=document.createElement('div'); block.className='unified-block bio-block';
+        block.contentEditable='true'; block.spellcheck=false; block.id='bio-editable';
+        block.textContent=text; wrap.appendChild(block);
+        block.addEventListener('input',()=>{bioEdited=true;});
+        if(badge) badge.textContent='version '+(v+1)+' of '+BIO_TOTAL;
+      }
+      renderBioBlock(0);
+      document.getElementById('bio-regen').addEventListener('click', function() {
+        if(bioEdited){warnDiscard('Your edits will be replaced with a fresh version.',()=>{bioEdited=false;bioV=(bioV+1)%BIO_TOTAL;renderBioBlock(bioV);},this);return;}
+        bioV=(bioV+1)%BIO_TOTAL; renderBioBlock(bioV);
+      });
+      document.getElementById('bio-use').addEventListener('click', function() {
+        const block=document.getElementById('bio-editable'); if(!block)return;
+        saved.bio=block.textContent.trim();
+        this.textContent='✓ Saved'; this.classList.add('saved');
+        setTimeout(()=>markStepDone('bio'),600);
+      });
+    }
+  });
+
+  // ── 2. Opening line ──
+  const openPanel = buildPanel('opening', main);
+  openPanel.innerHTML = `
+    <div class="sph"><span class="sph-kicker">Step 2 of 6</span>
+    <h2 class="sph-title">Your opening line.<br><em>The first thing they read.</em></h2>
+    <p class="sph-sub">One sentence, above your name on the homepage. It should sound like something your client is already thinking.</p></div>
+    <div class="chat-card">
+      <div class="chat-hdr"><div class="chat-orb">✦</div><div class="chat-hdr-info"><div class="chat-hdr-title">Opening Line</div><div class="chat-hdr-sub">One question · 1 minute</div></div></div>
+      <div class="chat-msgs"></div>
+      <div class="chat-sugs hidden"></div>
+      <div class="chat-inp-row">
+        <input class="chat-inp" placeholder="Type your answer…" maxlength="160" autocomplete="off"/>
+        <button class="chat-skip">Skip</button>
+        <button class="chat-send" aria-label="Send"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M3 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="out-section" id="open-out">
+        <div class="out-label">Your opening line — edit until it feels exactly right</div>
+        <div id="open-block-wrap"></div>
+        <div class="unified-block-hint">Goes above your name on the homepage. One sentence.</div>
+        <div class="out-actions">
+          <button class="btn-regen" id="open-regen">↺ Fresh version</button>
+          <span class="regen-badge" id="open-badge"></span>
+          <button class="btn-use" id="open-use">Use this opening line →</button>
+        </div>
+      </div>
+    </div>`;
+
+  makeChat(openPanel, {
+    questions: [{
+      q: `What does your client usually say when they first describe what's going on? Even a rough phrase works.`,
+      placeholder:`e.g. "I can't turn my brain off" or "I feel empty but don't know why"`,
+      suggestions:[`Can't turn the brain off`,`Feel empty but don't know why`,`Functioning but exhausted`,`Keep having the same argument`,`Don't know who I am anymore`],
+      required: false,
+    }],
+    onAllAnswered: (ans) => {
+      const lines = buildOpeningLines(ans, tone, D);
+      const out = document.getElementById('open-out'); out.classList.add('show');
+      const wrap = document.getElementById('open-block-wrap');
+      const badge = document.getElementById('open-badge');
+      let openV=0; let openEdited=false;
+      function renderOpenBlock(v) {
+        wrap.innerHTML=''; const line=lines[v%lines.length];
+        const block=document.createElement('div'); block.className='unified-block opening-block';
+        block.contentEditable='true'; block.spellcheck=false; block.id='open-editable';
+        block.textContent='“'+line+'”'; wrap.appendChild(block);
+        block.addEventListener('input',()=>{openEdited=true;});
+        if(badge) badge.textContent=(v%lines.length+1)+' of '+lines.length;
+      }
+      renderOpenBlock(0);
+      document.getElementById('open-regen').addEventListener('click', function() {
+        if(openEdited){warnDiscard('Your edited line will be replaced.',()=>{openEdited=false;openV++;renderOpenBlock(openV);},this);return;}
+        openV++; renderOpenBlock(openV);
+      });
+      document.getElementById('open-use').addEventListener('click', function() {
+        const block=document.getElementById('open-editable'); if(!block)return;
+        saved.clientStatement=block.textContent.trim().replace(/^[“”"]+|[“”"]+$/g,'');
+        this.textContent='✓ Saved'; this.classList.add('saved');
+        setTimeout(()=>markStepDone('opening'),600);
+      });
+    }
+  });
+
+  // ── 3. Who you work with ──
+  const whoPanel = buildPanel('who', main);
+  whoPanel.innerHTML = `
+    <div class="sph"><span class="sph-kicker">Step 3 of 6</span>
+    <h2 class="sph-title">Who you work<br><em>best with.</em></h2>
+    <p class="sph-sub">One pull-quote sentence. Appears on your About page. Say it how you'd say it to a colleague.</p></div>
+    <div class="chat-card">
+      <div class="chat-hdr"><div class="chat-orb">✦</div><div class="chat-hdr-info"><div class="chat-hdr-title">Who I Work With</div><div class="chat-hdr-sub">One question · 1 minute</div></div></div>
+      <div class="chat-msgs"></div>
+      <div class="chat-sugs hidden"></div>
+      <div class="chat-inp-row">
+        <input class="chat-inp" placeholder="Type your answer…" maxlength="160" autocomplete="off"/>
+        <button class="chat-skip">Skip</button>
+        <button class="chat-send" aria-label="Send"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M3 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="out-section" id="who-out">
+        <div class="out-label">Your "Who I work best with" line — edit until it's 100% you</div>
+        <div id="who-block-wrap"></div>
+        <div class="unified-block-hint">Appears as a pull-quote on your About page.</div>
+        <div class="out-actions">
+          <button class="btn-regen" id="who-regen">↺ Different versions</button>
+          <span class="regen-badge" id="who-badge"></span>
+          <button class="btn-use" id="who-use">Use this →</button>
+        </div>
+      </div>
+    </div>`;
+
+  let whoV=0; let whoRaw='';
+  makeChat(whoPanel, {
+    questions:[{
+      q:`Who do you work <strong>best</strong> with? One sentence — the person you show up most for.`,
+      placeholder:`e.g. Adults navigating anxiety who are ready to do something different`,
+      suggestions:[`Adults navigating anxiety and major life changes`,`High-achieving adults who are exhausted underneath`,`People who've tried to manage it alone and are ready for something different`,`Couples who keep having the same argument`,`People in the middle of a major life transition`],
+      required:false,
+    }],
+    onAllAnswered:(ans)=>{
+      whoRaw=ans.a1||'';
+      const out=document.getElementById('who-out'); out.classList.add('show');
+      const wrap=document.getElementById('who-block-wrap'); const badge=document.getElementById('who-badge');
+      let whoV=0; let whoEdited=false;
+      function renderWhoBlock(v) {
+        const lines=buildWhoLines(whoRaw,tone,D); wrap.innerHTML=''; const line=lines[v%lines.length];
+        const block=document.createElement('div'); block.className='unified-block who-block';
+        block.contentEditable='true'; block.spellcheck=false; block.id='who-editable';
+        block.textContent='“'+line+'”'; wrap.appendChild(block);
+        block.addEventListener('input',()=>{whoEdited=true;});
+        if(badge) badge.textContent=(v%lines.length+1)+' of '+lines.length;
+      }
+      renderWhoBlock(0);
+      document.getElementById('who-regen').addEventListener('click', function() {
+        if(whoEdited){warnDiscard('Your edited line will be replaced.',()=>{whoEdited=false;whoV++;renderWhoBlock(whoV);},this);return;}
+        whoV++; renderWhoBlock(whoV);
+      });
+      document.getElementById('who-use').addEventListener('click', function() {
+        const block=document.getElementById('who-editable'); if(!block)return;
+        saved.who=block.textContent.trim().replace(/^[“”"]+|[“”"]+$/g,'');
+        this.textContent='✓ Saved'; this.classList.add('saved');
+        setTimeout(()=>markStepDone('who'),600);
+      });
+    }
+  });
+
+  // ── 4. Office / space ──
+  const officePanel = buildPanel('office', main);
+  if(D.fmt==='telehealth') {
+    officePanel.innerHTML=`
+      <div class="sph"><span class="sph-kicker">Step 4 of 6</span>
+      <h2 class="sph-title">Your space.<br><em>Online therapy.</em></h2></div>
+      <div class="chat-card" style="padding:20px 18px;">
+        <p style="font-size:13px;font-weight:300;color:var(--ink-2);line-height:1.75;margin-bottom:16px;">You've selected telehealth only — your About page already includes a paragraph about online therapy. Nothing extra needed here.</p>
+        <button class="btn-use" onclick="saved.office='';markStepDone('office');this.textContent='✓ Done';this.classList.add('saved');">Continue →</button>
+      </div>`;
+  } else {
+    officePanel.innerHTML=`
+      <div class="sph"><span class="sph-kicker">Step 4 of 6</span>
+      <h2 class="sph-title">Your space.<br><em>One sentence.</em></h2>
+      <p class="sph-sub">Helps clients picture arriving for the first time. Keep it sensory and specific.</p></div>
+      <div class="chat-card">
+        <div class="chat-hdr"><div class="chat-orb">✦</div><div class="chat-hdr-info"><div class="chat-hdr-title">Your Space</div><div class="chat-hdr-sub">One question · 30 seconds</div></div></div>
+        <div class="chat-msgs"></div>
+        <div class="chat-sugs hidden"></div>
+        <div class="chat-inp-row">
+          <input class="chat-inp" placeholder="e.g. a quiet, private office — easy to reach by subway" maxlength="160" autocomplete="off"/>
+          <button class="chat-skip">Skip</button>
+          <button class="chat-send" aria-label="Send"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M3 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="out-section" id="office-out">
+          <div class="out-label">Your space — edit until it feels like arriving for the first time</div>
+          <div id="office-block-wrap"></div>
+          <div class="unified-block-hint">One sensory sentence. Appears on your About page.</div>
+          <div class="out-actions">
+            <button class="btn-regen" id="office-regen">↺ Try another</button>
+            <span class="regen-badge" id="office-badge"></span>
+            <button class="btn-use" id="office-use">Use this →</button>
+          </div>
+        </div>
+      </div>`;
+    makeChat(officePanel, {
+      questions:[{
+        q:`What would a new client notice when they walk into your office?`,
+        placeholder:`e.g. quiet, private, easy to reach by subway`,
+        suggestions:[`Quiet and private — easy to reach by subway`,`Calm, light-filled, no waiting room`,`Cozy and private — street level`,`Clean, professional, nothing clinical about it`,`Warm and comfortable — clients say it feels different from other offices`],
+        required:false,
+      }],
+      onAllAnswered:(ans)=>{
+        const lines=buildOfficeLines(ans.a1||'',D);
+        const out=document.getElementById('office-out'); out.classList.add('show');
+        const optsEl=document.getElementById('office-opts'); optsEl.innerHTML='';
+        lines.forEach((line,i)=>{
+          const btn=document.createElement('button'); btn.className='out-opt';
+          btn.textContent=line;
+          btn.addEventListener('click',()=>{ optsEl.querySelectorAll('.out-opt').forEach(b=>b.classList.remove('selected')); btn.classList.add('selected'); });
+          optsEl.appendChild(btn);
+          if(i===0)btn.classList.add('selected');
+        });
+        document.getElementById('office-use').addEventListener('click',function(){
+          const sel=optsEl.querySelector('.out-opt.selected');
+          if(!sel)return;
+          saved.office=sel.textContent;
+          this.textContent='✓ Saved'; this.classList.add('saved');
+          setTimeout(()=>markStepDone('office'),600);
+        });
+      }
+    });
+  }
+
+  // ── 5. Service descriptions ──
+  const svcsPanel = buildPanel('svcs', main);
+  const svcs = D.svcs||[];
+  if(!svcs.length||!svcs.some(s=>s.nm)) {
+    svcsPanel.innerHTML=`<div class="sph"><span class="sph-kicker">Step 5 of 6</span><h2 class="sph-title">Service descriptions.</h2></div>
+      <div class="chat-card" style="padding:20px 18px;"><p style="font-size:13px;font-weight:300;color:var(--ink-3);line-height:1.75;margin-bottom:16px;">No services added yet. Go back to the wizard and add your services first, then return here.</p>
+      <button class="btn-use" onclick="markStepDone('svcs');this.textContent='✓ Skip';this.classList.add('saved');">Skip for now →</button></div>`;
+  } else {
+    const svcNoDesc={}; const svcDefaults={};
+    svcs.forEach((s,i)=>{const key=matchSvc(s.nm);svcDefaults[i]=SVC_DESCS[key]?.[0]||SVC_DESCS.default[0];svcNoDesc[i]=false;});
+    const validSvcs=svcs.filter(s=>s.nm);
+    svcsPanel.innerHTML=`<div class="sph"><span class="sph-kicker">Step 5 of 6</span>
+      <h2 class="sph-title">Service descriptions.<br><em>Already filled in.</em></h2>
+      <p class="sph-sub">Click any description and edit directly until it sounds like you.</p></div>
+      <div class="chat-card"><div id="svc-inline-list"></div>
+        <div style="padding:14px 18px;border-top:1px solid var(--b);background:var(--bg-warm);display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <button class="btn-use" id="svcs-use">Use all these descriptions →</button>
+          <span style="font-size:10px;color:var(--ink-4);font-style:italic;">Your edits are kept as you typed them.</span>
+        </div></div>`;
+    const listEl=document.getElementById('svc-inline-list');
+    validSvcs.forEach((s,rawIdx)=>{
+      const origIdx=svcs.indexOf(s); const defaultDesc=svcDefaults[origIdx];
+      const metaText=[s.dur,s.fee].filter(Boolean).join(' · ');
+      const item=document.createElement('div'); item.className='svc-inline-item'; item.style.animationDelay=(rawIdx*.06)+'s';
+      item.innerHTML='<div class="svc-inline-hdr"><div class="svc-inline-name">'+esc(s.nm)+'</div>'+(metaText?'<div class="svc-inline-meta">'+esc(metaText)+'</div>':'')+'</div>'+
+        '<div class="svc-inline-desc" contenteditable="true" spellcheck="false" id="svc-desc-'+origIdx+'">'+esc(defaultDesc)+'</div>'+
+        '<div class="svc-inline-footer"><span class="svc-inline-hint">Click to edit</span><div style="display:flex;gap:6px;align-items:center;">'+
+        '<button class="svc-inline-reset" data-idx="'+origIdx+'">↺ restore</button>'+
+        '<button class="svc-inline-none-toggle" data-idx="'+origIdx+'">No description</button></div></div>';
+      listEl.appendChild(item);
+      const descEl=item.querySelector('.svc-inline-desc');
+      const resetBtn=item.querySelector('.svc-inline-reset');
+      const noneBtn=item.querySelector('.svc-inline-none-toggle');
+      resetBtn.addEventListener('click',function(){
+        if(svcNoDesc[origIdx]){svcNoDesc[origIdx]=false;noneBtn.classList.remove('active');noneBtn.textContent='No description';descEl.contentEditable='true';descEl.style.opacity='';descEl.removeAttribute('data-nodesc');}
+        descEl.textContent=defaultDesc; descEl.focus();
+      });
+      noneBtn.addEventListener('click',function(){
+        svcNoDesc[origIdx]=!svcNoDesc[origIdx];
+        if(svcNoDesc[origIdx]){this.classList.add('active');this.textContent='✓ No description';descEl.contentEditable='false';descEl.style.opacity='.3';descEl.setAttribute('data-nodesc','true');}
+        else{this.classList.remove('active');this.textContent='No description';descEl.contentEditable='true';descEl.style.opacity='';descEl.removeAttribute('data-nodesc');descEl.focus();}
+      });
+    });
+    document.getElementById('svcs-use').addEventListener('click',function(){
+      const newSvcs=(D.svcs||[]).map((s,i)=>{
+        const descEl=document.getElementById('svc-desc-'+i);
+        const desc=svcNoDesc[i]?'':(descEl?descEl.textContent.trim():(svcDefaults[i]||''));
+        return Object.assign({},s,{desc});
+      });
+      saved.svcs=newSvcs; this.textContent='✓ Saved'; this.classList.add('saved');
+      setTimeout(()=>markStepDone('svcs'),600);
+    });
+  }
+
+// ── 6. Cancellation policy ──
+  const cancelPanel = buildPanel('cancel', main);
+  cancelPanel.innerHTML=`
+    <div class="sph"><span class="sph-kicker">Step 6 of 6</span>
+    <h2 class="sph-title">Cancellation policy.<br><em>Pick one.</em></h2>
+    <p class="sph-sub">Appears in your Services FAQ. Choose the one that fits how you actually work.</p></div>
+    <div class="chat-card">
+      <div class="cancel-tone-row">
+        <span class="cancel-tone-label">Tone</span>
+        <button class="cancel-tone-btn" data-p="flex">Gentle</button>
+        <button class="cancel-tone-btn active" data-p="24h">Balanced</button>
+        <button class="cancel-tone-btn" data-p="48h">Strict</button>
+      </div>
+      <div class="cancel-preview-wrap">
+        <div class="cancel-preview" id="cancel-preview" contenteditable="true" spellcheck="false"></div>
+        <div class="cancel-preview-hint">Edit directly — already sounds like a human wrote it.</div>
+      </div>
+      <div style="padding:4px 18px 16px;background:var(--bg-warm);border-top:1px solid var(--b);">
+        <button class="btn-use" id="cancel-use">Use this policy →</button>
+      </div>
+    </div>`;
+
+  let activeCancelPolicy='24h'; let cancelEdited=false;
+  const cancelPreviewEl=document.getElementById('cancel-preview');
+  function setCancelTone(p,force){
+    if(cancelEdited&&!force){warnDiscard('Switching tone will replace your text.',()=>{cancelEdited=false;setCancelTone(p,true);});return;}
+    activeCancelPolicy=p; cancelEdited=false;
+    document.querySelectorAll('.cancel-tone-btn').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
+    cancelPreviewEl.textContent=CANCEL_POLICIES[p]||'';
+  }
+  setCancelTone('24h',true);
+  document.querySelectorAll('.cancel-tone-btn').forEach(btn=>{btn.addEventListener('click',function(){setCancelTone(this.dataset.p,false);});});
+  cancelPreviewEl.addEventListener('input',function(){cancelEdited=true;});
+  document.getElementById('cancel-use').addEventListener('click',function(){
+    saved.cancelPolicy=cancelPreviewEl.textContent.trim()||'';
+    this.textContent='✓ Saved'; this.classList.add('saved');
+    setTimeout(()=>markStepDone('cancel'),600);
+  });
+
+  // ── Finish panel ──
+  const finishPanel = document.createElement('div');
+  finishPanel.id='panel-finish'; finishPanel.className='step-panel';
+  finishPanel.innerHTML=`
+    <div class="finish-panel show" id="finishCard">
+      <div class="finish-orb">✦</div>
+      <div class="finish-title">All copy is <em>ready.</em></div>
+      <p class="finish-sub">Everything is saved. When you go back to the wizard, all your fields will be filled in. You can edit anything directly.</p>
+      <div class="finish-fields" id="finish-fields"></div>
+      <button class="btn-finish" onclick="finishAndReturn()">Go back to wizard <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5l3.5 3.5L8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>`;
+  main.appendChild(finishPanel);
+
+  // Sidebar nav for finish
+  // ── 7. Intro video script ──
+  const videoPanel = buildPanel('video', main);
+
+  /* buildVideoScript: assembles script from chat answers + D context */
+  function buildVideoScript(ans, tone, D) {
+    var fn   = (D.name||'').split(',')[0].trim().split(' ')[0] || 'My name is [your name]';
+    var full = (D.name||'').split(',')[0].trim() || '[Your name]';
+    var cred = D.lic || 'licensed therapist';
+    var city = D.city ? ' in ' + D.city : '';
+    var spec = (D.specs||[]).slice(0,2).join(' and ').toLowerCase() || 'the challenges you\'re facing';
+
+    /* a1 → the person they want to reach (becomes the hook) */
+    var a1raw = (ans.a1||'').trim();
+    var hook;
+    if (a1raw) {
+      /* Clean up their answer into a natural hook */
+      var hookClean = a1raw.replace(/^(if you|you|for anyone|anyone who|this is for)/i,'').trim();
+      hookClean = sent(hookClean.replace(/\.$/,''));
+      hook = 'If you ' + low(hookClean).replace(/^(are|feel|have|\'ve|\'re|ve been|re)/,'').trim() + ' — this video is for you.';
+      /* If their answer already starts naturally, use it more directly */
+      if (a1raw.match(/^if you/i)) hook = sent(a1raw.replace(/\.$/,'')) + ' — this video is for you.';
+      if (a1raw.match(/^you/i)) hook = 'If ' + low(a1raw.replace(/\.$/,'')) + ' — this video is for you.';
+    } else {
+      var toneHooks = {
+        calm:    'If you\'ve been feeling like something needs to change but you\'re not sure where to start —',
+        seen:    'If you\'ve been carrying something heavy and you\'re finally ready to work through it —',
+        hopeful: 'If you\'re ready to feel like yourself again —',
+        trusted: 'If you want a therapist who is direct, practical, and actually focused on results —'
+      };
+      hook = (toneHooks[tone]||toneHooks.calm) + ' this video is for you.';
+    }
+
+    /* Identity line — always uses D data */
+    var identity = 'My name is ' + full + ', I\'m a ' + cred + city + '.';
+
+    /* What they specialize in — one sentence using D.specs */
+    var specLine = 'I work with people dealing with ' + spec + '.';
+
+    /* a2 → how they work + what it helps clients do */
+    var a2raw = (ans.a2||'').trim();
+    var approach;
+    if (a2raw) {
+      /* If they wrote "I help people by X so they can Y" keep it */
+      if (/so (they|you) can/i.test(a2raw)) {
+        approach = sent(a2raw);
+      } else if (a2raw.split(' ').length < 8) {
+        approach = 'My approach is ' + low(a2raw.replace(/\.$/,'')) + ' — so the changes you make actually stick.';
+      } else {
+        approach = sent(a2raw);
+      }
+    } else {
+      var app = (D.approach||[]).slice(0,1)[0]||'';
+      var appMap = {'CBT':'practical and skills-focused','Somatic':'body-aware','ACT':'acceptance-based',
+        'EMDR':'trauma-focused','IFS':'parts-based','Psychodynamic':'depth-oriented',
+        'Mindfulness-based':'mindfulness-informed','Integrative':'integrative'};
+      approach = app ? 'My work is ' + (appMap[app]||app.toLowerCase()) + ' — we work on what\'s actually keeping you stuck, not just talking around it.' : 'My approach is collaborative — you lead, I help you see what you can\'t see on your own.';
+    }
+
+    /* a3 → what the first session feels like (becomes session section) */
+    var a3raw = (ans.a3||'').trim();
+    var session;
+    if (a3raw) {
+      session = sent(a3raw);
+    } else if (D.first) {
+      session = sent(D.first);
+    } else {
+      session = 'In our first session, we slow down and figure out what\'s actually going on — no scripts, no pressure, just an honest conversation about where you are and what you need.';
+    }
+
+    /* Close — tone-matched using D.bookUrl if available */
+    var toneClose = {
+      calm:    'When you\'re ready, reach out — I offer a free 15-minute call so we can get a sense of each other before committing to anything.',
+      seen:    'If anything I said landed, send me a message. I offer a free 15-minute consultation — no pressure, just a real conversation.',
+      hopeful: 'If this resonates, I\'d love to connect. Reach out and we\'ll set up a free 15-minute call to see if we\'re a good fit.',
+      trusted: 'If you\'re ready, book a free 15-minute consultation. We\'ll figure out quickly if I\'m the right person for what you\'re working on.'
+    };
+    var close = toneClose[tone]||toneClose.calm;
+
+    return {
+      hook:     hook,
+      identity: identity + ' ' + specLine,
+      approach: approach,
+      session:  session,
+      close:    close
+    };
+  }
+
+  videoPanel.innerHTML=`
+    <div class="sph"><span class="sph-kicker">Step 7 — Optional</span>
+    <h2 class="sph-title">Your intro video.<br><em>Three questions.</em></h2>
+    <p class="sph-sub">Answer in your own words. The script builds from what you write — not from a template. Camera-shy? An audio-only recording with your phone propped up still works. Face-on is better, but done beats perfect.</p></div>
+    <div class="chat-card">
+      <div class="chat-hdr">
+        <div class="chat-orb">✦</div>
+        <div class="chat-hdr-info"><div class="chat-hdr-title">Video Script</div><div class="chat-hdr-sub">3 questions · 90-second script</div></div>
+        <div class="chat-pills"></div>
+      </div>
+      <div class="chat-msgs"></div>
+      <div class="chat-sugs hidden"></div>
+      <div class="chat-inp-row">
+        <input class="chat-inp" placeholder="Type your answer…" maxlength="220" autocomplete="off"/>
+        <button class="chat-skip">Skip</button>
+        <button class="chat-send" aria-label="Send"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M3 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="out-section" id="video-out">
+        <div class="out-label">Your script — edit any line until it sounds exactly like you</div>
+        <div class="vscript" id="video-script-rows"></div>
+        <div class="vscript-tip">Say it out loud. If a line feels stiff, rewrite it here before you record.</div>
+        <div class="out-actions">
+          <button class="btn-regen" id="video-regen">↺ Rebuild</button>
+          <button class="btn-use" id="video-copy-btn">Copy script</button>
+          <button class="btn-use" id="video-tp-btn" style="background:var(--bg-card);color:var(--amber-hi);border:1px solid var(--amber-lo);">Teleprompter</button>
+        </div>
+        <div class="vscript-record-tips">
+          <div class="vrt-title">Before you record</div>
+          <div class="vrt-grid">
+            <div class="vrt-item"><span class="vrt-dot"></span>Sit near a window — face the window, not your back to it. This one detail makes the biggest difference.</div>
+            <div class="vrt-item"><span class="vrt-dot"></span>Phone at eye level, horizontal, front camera.</div>
+            <div class="vrt-item"><span class="vrt-dot"></span>Plain background. Turn off noise machines.</div>
+            <div class="vrt-item"><span class="vrt-dot"></span>After recording, take one horizontal photo of yourself smiling — this becomes your YouTube thumbnail.</div>
+            <div class="vrt-item"><span class="vrt-dot"></span>One imperfect take beats ten polished ones.</div>
+            <div class="vrt-item"><span class="vrt-dot"></span>Upload to YouTube as Unlisted, paste the link in Step 2 of the wizard.</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  var videoAnswers = {};
+  var firstSessionHint = D.first ? D.first.split('.')[0] : '';
+
+  makeChat(videoPanel, {
+    questions: [
+      {
+        q: 'Picture the one person you most want to reach. What are they struggling with — and what do they want to change or feel?',
+        placeholder: 'e.g. exhausted from anxiety, feel like no one gets it, ready to actually change something',
+        suggestions: [
+          'Exhausted from anxiety they can\'t turn off',
+          'Feel like no one really gets what they\'re going through',
+          'Keep repeating the same patterns in relationships',
+          'Functional on the outside, empty on the inside',
+          'Ready to work through something from their past',
+          'Just want to feel like themselves again'
+        ],
+        required: false
+      },
+      {
+        q: 'How do you work — and what does that actually help people do or feel? Finish this: I help people by ___, so they can ___.',
+        placeholder: 'e.g. I\'m very direct — I won\'t just listen and nod. Or: we work with the body, not just words.',
+        suggestions: [
+          'I\'m direct — I\'ll tell you what I\'m noticing',
+          'We work with the body, not just talk',
+          'Sessions feel like real conversations, not clinical',
+          'I push back when it\'s useful — not just validating',
+          'How quickly people feel understood',
+          'How practical it is — you leave with things to actually do'
+        ],
+        required: false
+      },
+      {
+        q: 'How would you describe what a first session feels like — for someone who\'s nervous about starting therapy?',
+        placeholder: firstSessionHint || 'e.g. we slow down and figure out what\'s actually going on, no pressure',
+        suggestions: [
+          'We slow down and figure out what\'s actually happening',
+          'It\'s mostly me asking questions and listening',
+          'No agenda — just an honest conversation',
+          'You don\'t have to have it all figured out to show up',
+          'We\'ll figure out together if we\'re a good fit',
+          'You\'ll leave feeling heard, not diagnosed'
+        ],
+        required: false
+      }
+    ],
+    onAllAnswered: function(ans) {
+      videoAnswers = ans;
+      renderVideoScript();
+    }
+  });
+
+  function renderVideoScript() {
+    var script = buildVideoScript(videoAnswers, tone, D);
+    var labels = [
+      { label: '0:00 – 0:15', section: 'Hook', key: 'hook' },
+      { label: '0:15 – 0:35', section: 'Who you are', key: 'identity' },
+      { label: '0:35 – 1:00', section: 'How you work', key: 'approach' },
+      { label: '1:00 – 1:25', section: 'First session', key: 'session' },
+      { label: '1:25 – 1:40', section: 'Close', key: 'close' }
+    ];
+    var rows = labels.map(function(l) {
+      return '<div class="vscript-row">' +
+        '<div class="vscript-time">' + l.label + '</div>' +
+        '<div class="vscript-body">' +
+          '<div class="vscript-label">' + l.section + '</div>' +
+          '<div class="vscript-text" contenteditable="true" data-key="' + l.key + '">' + esc(script[l.key]) + '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+    document.getElementById('video-script-rows').innerHTML = rows;
+    document.getElementById('video-out').classList.add('show');
+  }
+
+  function getEditedScript() {
+    var lines = [];
+    document.querySelectorAll('#video-script-rows .vscript-text').forEach(function(el) {
+      lines.push(el.textContent.trim());
+    });
+    return lines;
+  }
+
+  document.getElementById('video-regen').addEventListener('click', function() {
+    renderVideoScript();
+  });
+
+  document.getElementById('video-copy-btn').addEventListener('click', function() {
+    var labels = ['Hook','Who you are','How you work','First session','Close'];
+    var times  = ['0:00–0:15','0:15–0:35','0:35–1:00','1:00–1:25','1:25–1:40'];
+    var lines  = getEditedScript();
+    var text = lines.map(function(l,i){ return '[' + labels[i] + ' — ' + times[i] + ']\n' + l; }).join('\n\n');
+    navigator.clipboard.writeText(text).then(function(){
+      document.getElementById('video-copy-btn').textContent='Copied ✓';
+      setTimeout(function(){ document.getElementById('video-copy-btn').textContent='Copy script'; }, 2000);
+    });
+    saved.introVideo = '__script_ready__';
+    markStepDone('video');
+  });
+
+  document.getElementById('video-tp-btn').addEventListener('click', function() {
+    var labels = ['Hook','Who you are','How you work','First session','Close'];
+    var lines  = getEditedScript();
+    var tp = window.open('','_blank','width=900,height=640');
+    var rows = lines.map(function(l,i){
+      return '<div style="margin-bottom:56px"><div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#B8922A;margin-bottom:14px">' + labels[i] + '</div>' +
+        '<div style="font-size:clamp(26px,3.5vw,40px);font-weight:300;line-height:1.6;color:#EDE3D0;font-family:Georgia,serif">' + l + '</div></div>';
+    }).join('');
+    tp.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#0C0907;padding:72px 10vw;font-family:Georgia,serif}h1{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#3A3530;margin-bottom:64px}footer{margin-top:64px;font-size:10px;color:#3A3530;letter-spacing:.14em;text-transform:uppercase}</style></head><body><h1>Wellovie Clinical — Video Script</h1>' + rows + '<footer>Read slowly · Aim for 90 seconds · One imperfect take is enough</footer></body></html>');
+    tp.document.close();
+  });
+
+  /* ── Add video nav item ── */
+  const videoNavItem = document.createElement('div');
+  videoNavItem.className='step-item'; videoNavItem.dataset.step='video';
+  videoNavItem.innerHTML=`<div class="step-num" id="snum-video">7</div><div class="step-info"><div class="step-name">Video script</div><div class="step-dest">Optional · About page</div></div>`;
+  videoNavItem.addEventListener('click',()=>goStep('video'));
+
+  const finishNavItem = document.createElement('div');
+  finishNavItem.className='step-item'; finishNavItem.dataset.step='finish';
+  finishNavItem.innerHTML=`<div class="step-num" id="snum-finish">✓</div><div class="step-info"><div class="step-name">Done</div><div class="step-dest">Back to wizard</div></div>`;
+  finishNavItem.addEventListener('click',()=>goStep('finish'));
+  finishNavItem.style.display='none';
+  document.getElementById('stepNav').appendChild(videoNavItem);
+  document.getElementById('stepNav').appendChild(finishNavItem);
+}
+
+// Override markStepDone to show finish when all done
+markStepDone = function(step) {
+  doneSteps.add(step);
+  const num = document.getElementById('snum-'+step);
+  if(num) num.textContent = '✓';
+  const item = document.querySelector(`.step-item[data-step="${step}"]`);
+  if(item) { item.classList.add('done'); item.classList.remove('active'); }
+
+  if(STEPS.every(s=>doneSteps.has(s))) {
+    // All done
+    saveBack(saved);
+    buildFinishSummary();
+    const finishItem = document.querySelector('[data-step="finish"]');
+    if(finishItem) finishItem.style.display='';
+    setTimeout(()=>goStep('finish'), 700);
+  } else {
+    const next = STEPS.find(s => !doneSteps.has(s));
+    if(next) setTimeout(()=>goStep(next), 700);
+  }
+}
+
+function buildFinishSummary() {
+  const el = document.getElementById('finish-fields');
+  if(!el) return;
+  const fieldNames = {bio:'Bio',clientStatement:'Opening line',who:'Who you work with',office:'Your space',svcs:'Service descriptions',cancelPolicy:'Cancellation policy'};
+  Object.entries(fieldNames).forEach(([key,label])=>{
+    const div=document.createElement('div');
+    const hasSaved = saved[key] !== undefined;
+    div.className='finish-field'+(hasSaved?'':' skip');
+    div.textContent=hasSaved?`${label} — saved`:(`${label} — skipped`);
+    el.appendChild(div);
+  });
+}
+
+function finishAndReturn() {
+  saveBack(saved);
+  goBackToWizard();
+}
+
+function buildPanel(id, container) {
+  const panel = document.createElement('div');
+  panel.id = 'panel-'+id;
+  panel.className = 'step-panel' + (id==='bio' ? ' active' : '');
+  container.appendChild(panel);
+  return panel;
+}
+
+/* ══ Init ══ */
+(function init() {
+  D = loadState();
+  if(D) {
+    document.getElementById('ctxName').textContent = (D.name||'').split(',')[0]||'—';
+    document.getElementById('ctxSpec').textContent = (D.specs||[]).slice(0,2).join(', ')||'—';
+    const toneNames={calm:'Calm & safe',seen:'Seen & understood',hopeful:'Hopeful & ready',trusted:'Trusted & capable'};
+    document.getElementById('ctxTone').textContent = toneNames[D.tone]||D.tone||'—';
+  }
+  buildPanels();
+})();
+</script>
+</body>
+</html>
